@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "buildEnv": "nodemon bin/buildEnv.js"
+    "buildEnv": "nodemon bin/buildEnv.js",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
