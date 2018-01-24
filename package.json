@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Date Planner - user experience",
   "main": "index.js",
-  "scripts": {
-    "test": "test",
-    "buildEnv": "node bin/buildEnv.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GoWithMeL1FB/gowithme-ui.git"
