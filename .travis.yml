@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+    - node_modules
+before_script:
+  - sudo apt-get -qq update # qq for less output
+install:
+  - yarn
+  - yarn buildEnv
+script:
