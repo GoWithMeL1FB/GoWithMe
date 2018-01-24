@@ -4,8 +4,6 @@
   "description": "Date Planner - user experience",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "buildEnv": "node bin/buildEnv.js"
   },
   "repository": {
     "type": "git",

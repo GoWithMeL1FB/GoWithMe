@@ -7,5 +7,4 @@ before_script:
   - sudo apt-get -qq update # qq for less output
 install:
   - yarn
-  - yarn buildEnv
 script:
