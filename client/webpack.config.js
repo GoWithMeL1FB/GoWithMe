@@ -1,9 +1,10 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: path.resolve(__dirname, './src/index.jsx'),
   output: {
-    filename: './public/bundle.js'
+    filename: path.resolve(__dirname, './public/bundle.js')
   },
   watch: true,
   module: {
@@ -19,3 +20,5 @@ module.exports = {
     ]
   }
 }
+
+//try to fix the path to get the react page to Rende

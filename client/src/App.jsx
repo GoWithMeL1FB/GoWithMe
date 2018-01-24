@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
+import Home from './components/Home/index.jsx'
+
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
   render() {
     return (
       <div>
-        yoooo
+      <Home />
+      <h2>hello from app</h2>
       </div>
     )
   }
