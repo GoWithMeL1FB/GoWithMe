@@ -1,0 +1,30 @@
+{
+  "name": "gowithme-ui",
+  "version": "1.0.0",
+  "description": "Date Planner - user experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoWithMeL1FB/gowithme-ui.git"
+  },
+  "author": "David Yonwook Chung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoWithMeL1FB/gowithme-ui/issues"
+  },
+  "homepage": "https://github.com/GoWithMeL1FB/gowithme-ui#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "dotenv": "^4.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3"
+  }
+}
