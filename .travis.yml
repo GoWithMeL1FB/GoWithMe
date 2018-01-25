@@ -19,7 +19,7 @@ deploy:
     skip_cleanup: true # prevents resetting and deleting all changes
     on: &2
       repo: GoWithMel1FB/gowithme-ui
-      branch: PugsUI
+      all_branch: true
     bucket: gwmui
     region: us-west-1
   - provider: codedeploy
