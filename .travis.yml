@@ -4,7 +4,7 @@ cache:
   directories:
     - node_modules
 before_script:
-  # - sudo apt-get -qq update # qq for less output # please work now...
+  # - sudo apt-get -qq update # qq for less output # why...
 install:
 script:
   - zip -r latest *
