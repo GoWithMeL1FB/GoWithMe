@@ -15,7 +15,7 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    local_dir: dpl_cd_upload
+    local_dir: dpl_cd_upload # you mofo...
     skip_cleanup: true # prevents resetting and deleting all changes
     on: &2
       repo: GoWithMel1FB/gowithme-ui
