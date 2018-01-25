@@ -17,9 +17,9 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     local_dir: dpl_cd_upload # you mofo...
     skip_cleanup: true # prevents resetting and deleting all changes
-    on: &2
+    on:
       repo: GoWithMel1FB/gowithme-ui
-      all_branch: true
+      all_branches: true
     bucket: gwmui
     region: us-west-1
   - provider: codedeploy
@@ -31,4 +31,6 @@ deploy:
     application: gowithme
     deployment_group: GoWithMe-DepGrp
     region: us-west-1c
-    on: *2
+    on:
+      repo: GoWithMel1FB/gowithme-ui
+      all_branches: true
