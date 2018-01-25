@@ -19,6 +19,7 @@ deploy:
     skip_cleanup: true # prevents resetting and deleting all changes
     on: &2
       repo: GoWithMel1FB/gowithme-ui
+      all_branches: true
     bucket: gwmui
     region: us-west-1
   - provider: codedeploy
