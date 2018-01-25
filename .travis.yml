@@ -19,7 +19,7 @@ deploy:
         on: &2
       repo: GoWithMel1FB/gowithme-ui
     bucket: gwmui
-    # region: us-west-1
+    region: us-west-1
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
@@ -28,5 +28,5 @@ deploy:
     bundle_type: zip
     application: gowithme
     deployment_group: GoWithMe-DepGrp
-    region: us-west-1b
+    region: us-west-1c
     on: *2
