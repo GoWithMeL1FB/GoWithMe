@@ -5,7 +5,7 @@ cache:
   directories:
     - node_modules
 before_script:
-  # - sudo apt-get -qq update # qq for less output # why is this shiz running in ruby ...
+ - sudo apt-get -qq update # qq for less output
 install:
 script:
   - zip -r latest *
@@ -15,8 +15,9 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
+    local_dir: dpl_cd_upload
     skip_cleanup: true # prevents resetting and deleting all changes
-        on: &2
+    on: &2
       repo: GoWithMel1FB/gowithme-ui
     bucket: gwmui
     region: us-west-1
