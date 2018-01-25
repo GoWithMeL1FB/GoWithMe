@@ -30,7 +30,7 @@ deploy:
     bundle_type: zip
     application: gowithme
     deployment_group: GoWithMe-DepGrp
-    region: us-west-1c
+    region: us-west-1
     on:
       repo: GoWithMel1FB/gowithme-ui
       all_branches: true
