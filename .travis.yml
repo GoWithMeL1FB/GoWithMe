@@ -34,3 +34,4 @@ deploy:
     on:
       repo: GoWithMel1FB/gowithme-ui
       all_branches: true
+    # wait-until-deployed: true
