@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Date Planner - user experience",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "setup:server": "cd server && yarn",
+    "setup:client": "cd client && yarn",
+    "start:server": "cd server && yarn start && yarn build",
+    "build": "cd client && yarn build",
+    "buildEnv": "node bin/buildEnv.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GoWithMeL1FB/gowithme-ui.git"
