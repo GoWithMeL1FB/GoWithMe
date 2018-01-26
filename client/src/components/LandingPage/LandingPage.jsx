@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Home extends Component {
-
+class LandingPage extends Component {
   render() {
     return (
       <div>
-        HELLLLOOOO???
-        {this.state.message}
+        is this going to be the landing page?????
       </div>
     )
   }
 }
 
-export default Home;
+export default LandingPage;
