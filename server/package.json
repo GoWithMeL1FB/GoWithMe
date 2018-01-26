@@ -4,9 +4,7 @@
   "description": "Date Planner - user experience",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "buildEnv": "nodemon bin/buildEnv.js",
-    "start": "nodemon index.js"
+    "start": "nodemon bin/buildEnv.js"
   },
   "repository": {
     "type": "git",
