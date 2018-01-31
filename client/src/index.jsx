@@ -4,9 +4,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import App from './App.jsx';
 
-ReactDOM.render(
+render(
   <BrowserRouter>
     <App />
   </BrowserRouter>
-  ,document.getElementById('app'),
+  , document.getElementById('app'),
 );
