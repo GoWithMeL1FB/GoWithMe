@@ -7,8 +7,9 @@ class LandingPage extends Component {
   render() {
     return (
       <div class='landingpage'>
-       
-        <p>Test csss this line should be red!</p>
+       <h1> GO WITH ME</h1>
+       <h3>  </h3>
+        <p>Test css this line should be red!</p>
         
       </div>
     )
