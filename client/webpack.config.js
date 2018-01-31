@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: '/src/index.jsx',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, './public'),
     filename: 'bundle.js'
@@ -14,12 +14,28 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+
         query: {
           presets: ['react', 'es2015'],
         }
-      }
-    ]
-  }
-}
+      },
+      {
+        test: /\.scss$/,
+          use: [{
+            loader: "style-loader"
+          }, {
+            loader: "css-loader" 
+          }, {
+            loader: "sass-loader"
+          }]
+    },
+    {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        'file-loader'
+      ]
+    }
+    ]}
+};
 
 //try to fix the path to get the react page to Rende
