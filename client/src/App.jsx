@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-//import LandingPage from './components/LandingPage/LandingPage.jsx';
-import Home from './components/Home/index.jsx'
+
+import LandingPage from './components/LandingPage/LandingPage.jsx';
+import Home from './components/Home/index.jsx';
+
 
 class App extends Component {
   constructor(props) {
@@ -10,8 +12,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div>       
-        <Home />
+      <div>
+       
+        <LandingPage />
+
       </div>
     )
   }
