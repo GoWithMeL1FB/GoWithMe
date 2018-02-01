@@ -6,7 +6,6 @@ class LoginPage extends Component {
     return (
       <div className="container">
       <p>Login</p>
-      <form action="/action_page.php">
       <div className="row">
       <div className="col-25">
        
@@ -19,7 +18,6 @@ class LoginPage extends Component {
       </div>
     </div>
     <a><button> Submit </button></a>
-      </form>
       </div>
     )
   }
