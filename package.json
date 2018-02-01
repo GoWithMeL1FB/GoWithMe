@@ -16,6 +16,7 @@
   "homepage": "https://github.com/GoWithMeL1FB/gowithme-ui#readme",
   "dependencies": {
     "lodash": "^4.17.4",
+    "materialize-css": "^0.100.2",
     "react-materialize": "^1.1.2"
   },
   "devDependencies": {
