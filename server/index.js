@@ -10,4 +10,4 @@ server.use('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
 })
 
-server.listen(3050, () => console.log('static files are being served'));
+server.listen(3050, () => console.log('static files are being served', 3050));
