@@ -7,10 +7,11 @@ class LandingPage extends Component {
   render() {
     return (
       <div class='landingpage'>
-       <h1> GO WITH ME</h1>
-       <h3>  </h3>
-        <p>Test css this line should be red!</p>
-        
+       <div id='logo'>&#9736;</div>
+       <h2>GO</h2>
+       <h2>WITH</h2>
+       <h2>ME</h2>
+       <h3>we plan. you play.</h3>
       </div>
     )
   }
