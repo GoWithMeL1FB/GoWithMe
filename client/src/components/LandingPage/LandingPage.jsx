@@ -5,22 +5,21 @@ import Parallax from 'react-materialize';
 import { Button } from 'react-materialize';
 
 class LandingPage extends Component {
+
   render() {
     return (
       <div className='landingpage'>
         
         <Button
           waves='light'
-          onClick={() => console.log('hi')}
-          text='sign up'
-        ></Button>
+          onClick={() => this.props.history.push('/Home')}
+        >Sign Up</Button>
 
         <Button
           waves='light'
           onClick={() => console.log('hi')}
-          text='log in'
-        ></Button>
-        
+        >Log In</Button>
+
         <div id='logo'>&#9736;</div>
         
         <h2>GO</h2>

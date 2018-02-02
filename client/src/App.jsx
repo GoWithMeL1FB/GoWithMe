@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/index.jsx';
+import EditProfile from './components/EditProfile/EditProfile.jsx'
 
 
 class App extends Component {
@@ -13,8 +14,11 @@ class App extends Component {
   render() {
     return (
       <div>
-       
-        <LandingPage />
+        <Switch>
+          <Route path='/EditProfile' component={EditProfile} />
+          <Route path='/Home' component={Home} />
+          <Route path='/' component={LandingPage} />
+        </Switch>
 
       </div>
     )
