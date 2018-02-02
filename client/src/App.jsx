@@ -13,7 +13,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <Switch>
           <Route path='/EditProfile' component={EditProfile} />
           <Route path='/Home' component={Home} />
