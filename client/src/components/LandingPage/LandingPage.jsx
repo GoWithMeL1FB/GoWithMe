@@ -3,6 +3,7 @@ import axios from 'axios';
 import './LandingPage.scss';
 import Parallax from 'react-materialize';
 import { Button } from 'react-materialize';
+import Signup from '../SignupPage/SignupPage.jsx'
 
 class LandingPage extends Component {
 
@@ -10,10 +11,7 @@ class LandingPage extends Component {
     return (
       <div className='landingpage'>
         
-        <Button
-          waves='light'
-          onClick={() => this.props.history.push('/Home')}
-        >Sign Up</Button>
+        <Signup></Signup>
 
         <Button
           waves='light'
