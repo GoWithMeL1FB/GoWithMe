@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Navbar, NavItem, Icon } from 'react-materialize';
+import Search from '../../global/Search/Search.jsx'
 
 class Nav extends Component {
  
