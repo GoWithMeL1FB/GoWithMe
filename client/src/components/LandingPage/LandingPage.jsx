@@ -17,7 +17,7 @@ class LandingPage extends Component {
 
         <Button
           waves='light'
-          onClick={() => console.log('hi')}
+          onClick={() => this.props.history.push('/Login')}
         >Log In</Button>
 
         <div id='logo'>&#9736;</div>
