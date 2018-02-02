@@ -15,7 +15,7 @@
       "jest"
     ],
     "rules": {
-      "linebreak-style": false,
+      "linebreak-style": 0,
       "semi": 2,
       "prettier/prettier": [
         "error",
@@ -32,7 +32,7 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error",
+    "jest/valid-expect": "error"
     },
     "parserOptions": { "ecmaVersion": 6 },
     "env": { "es6": true },
