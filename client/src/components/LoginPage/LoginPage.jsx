@@ -3,8 +3,21 @@ import React, { Component } from 'react';
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      password: null,
+      Username: null
+    };
+    this.LoginClickHandler = this.LoginClickHandler.bind(this);
   }
+
+LoginClickHandler(username, password ) {
+  console.log('username', username);
+  console.log('password', password);
+
+
+  
+}
+
   render() {
     return (
       <div className="container">
@@ -14,19 +27,19 @@ class LoginPage extends Component {
           <div className="col-75">
             <input
               type="text"
-              id="fname"
-              nameName="firstname"
+              id="userName"
               placeholder="Your Username"
+              ref="userName"
             />
             <input
               type="text"
-              id="fname"
-              nameName="firstname"
+              id="password"
               placeholder="Your password"
+              ref="password"
             />
           </div>
         </div>
-        <button> Submit </button>
+        <button onClick={() =>{ this.LoginClickHandler(this.refs.userName.value ,this.refs.password.value)} } > Submit </button>
         </div>
     );
   }
