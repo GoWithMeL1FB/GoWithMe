@@ -3,8 +3,14 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 class SignupPage extends Component {
+  constructor() {
+    super();
+    this.state = {};
+    this.createUser = this.createUser.bind(this);
+  }
 
   createUser() {
+    console.log('sighup');
     axios.post('/signup', {
       function(){
         console.log('sign up button reacting')
@@ -26,7 +32,7 @@ class SignupPage extends Component {
 	    	  <Input type="password" label="Password" s={12} />
     		  <Input type="email" label="Email" s={12} />
         </Row>
-        <Button>Submit</Button>
+        <Button onClick={this.createUser}>Submit</Button>
       </Modal>
     )
   }
