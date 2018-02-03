@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -10,11 +11,26 @@ class LoginPage extends Component {
     this.LoginClickHandler = this.LoginClickHandler.bind(this);
   }
 
-LoginClickHandler(username, password ) {
+LoginClickHandler(un, pw ) {
   console.log('username', username);
   console.log('password', password);
+  const payload = {
+   username: un,
+   password: pw
+}
+
+axios.post(`${process.env.REST_SERVER_URL}/api/auth/login)`, payload)
+  .then(res => {
+
+  //activate session and redirect to home page
+  const { accessToken } = res;
+  localStorage.setItem('token', accessToken);
+  this.props.history.push('/Home');
 
 
+}).catch(err => {
+  console.error('login error', err)
+})
   
 }
 
