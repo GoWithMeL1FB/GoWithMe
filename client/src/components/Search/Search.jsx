@@ -1,22 +1,22 @@
 import React from 'react';
 import axios from 'axios';
-//const id = process.env.CLIENTID;
-//const secret = process.env.CLIENTSECRET;
+const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
+const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
 
 const foursquare = require('react-foursquare')({
-  clientID: '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG',
-  clientSecret: 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50'
+  clientID: id,
+  clientSecret: secret
 });
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'here',
-      state: 'lat'
+      city: null,
+      state: null,
+      query: "event"
     };
-    this.handleCityChange = this.handleCityChange.bind(this)
-    this.handleStateChange = this.handleStateChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
   }
@@ -26,12 +26,8 @@ class Search extends React.Component {
     this.UpdateByLocation();
   }
 
-  handleCityChange(event) {
-    this.setState({ city: event.target.value})
-
-  }
-  handleStateChange(event) {
-    this.setState({ city: event.target.value})
+  handleChange(event) {
+    this.setState({ [event.target.id]: event.target.value})
   }
 
   UpdateByLocation(){
@@ -44,7 +40,7 @@ class Search extends React.Component {
       console.log(this.state);
       
     }).catch(err => {
-      console.error('Get location err', err)
+      console.error('Get location err', err);
     })
   }
     
@@ -52,8 +48,8 @@ class Search extends React.Component {
 ClickHandler() {
   let params = {
     near: `${this.state.city},${this.state.state}`,
-    query: `${this.refs.query.value}`,
-    limit: 1
+    query: `${this.state.query}`,
+    limit: 25
   }
 
   foursquare.venues.getVenues(params)
@@ -75,21 +71,22 @@ ClickHandler() {
           <p>Location</p>
             <input
               type="text"
+              id="city"
               placeholder={this.state.city}
-              onChange={this.handleCityChange}
-              ref="city"
+              onChange={this.handleChange}
             />
             <input
               type="text"
+              id="state"
               placeholder={this.state.state}
-              onChange={this.handleStateChange}
-              ref="state"
+              onChange={this.handleChange}
             />
             <p>Activity</p>
             <input
               type="text"
+              id="query"
               placeholder="Search"
-              ref="query"
+              onChange={this.handleChange}
             />
           </div>
         </div>
