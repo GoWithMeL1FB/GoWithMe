@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
-const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
+//const id = 
+//const secret = 
 
 const foursquare = require('react-foursquare')({
   clientID: id,
