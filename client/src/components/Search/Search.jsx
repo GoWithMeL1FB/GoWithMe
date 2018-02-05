@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-//const id = 
-//const secret = 
+import Events from '../Events/Events.jsx'
+import { DragDropContainer } from 'react-drag-drop-container';
+const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG'
+const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50'
 
 const foursquare = require('react-foursquare')({
   clientID: id,
@@ -14,7 +16,8 @@ class Search extends React.Component {
     this.state = {
       city: null,
       state: null,
-      query: "event"
+      query: "event",
+      results: []
     };
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
@@ -43,8 +46,7 @@ class Search extends React.Component {
       console.error('Get location err', err);
     })
   }
-    
-
+  
 ClickHandler() {
   let params = {
     near: `${this.state.city},${this.state.state}`,
@@ -53,8 +55,9 @@ ClickHandler() {
   }
 
   foursquare.venues.getVenues(params)
-  .then(response => {
-    console.log('Search response!!!', response)
+  .then(res => {
+    console.log('Search response!!!', res)
+    this.setState({results: res.response.venues})
   })
   .catch(err => {
     console.log('inside of catch', err)
@@ -81,7 +84,9 @@ ClickHandler() {
               placeholder={this.state.state}
               onChange={this.handleChange}
             />
+            
             <p>Activity</p>
+            
             <input
               type="text"
               id="query"
@@ -91,6 +96,16 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
+        {this.state.results.map(venue => (
+          <div key={venue.id}>
+          <DragDropContainer>
+            <Events 
+            name={venue.name}
+            address={venue.location.address}
+            />
+           </DragDropContainer>
+          </div>
+      ))}
         </div>
     );
   }
