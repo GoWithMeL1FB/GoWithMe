@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   output: {
     path: path.resolve(__dirname, './public'),
     filename: 'bundle.js'
@@ -16,7 +16,7 @@ module.exports = {
         loader: 'babel-loader',
 
         query: {
-          presets: ['react', 'es2015'],
+          presets: ['react', 'es2015', 'stage-0'],
         }
       },
       {
