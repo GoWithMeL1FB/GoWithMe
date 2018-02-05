@@ -53,7 +53,7 @@ class SignupPage extends Component {
     return (
       <Modal
         header="Registration"
-        trigger={<Button waves='light' > Signup <Icon left>fiber_new</Icon></Button>}
+        trigger={<Button waves='light' > Signup </Button>}
         >
         <Row>
           <Input s={6} defaultValue='david12345' label="Username" name="username" onChange={this.onChangeHandler}/>

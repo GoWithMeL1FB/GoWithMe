@@ -3,7 +3,8 @@ import axios from 'axios';
 import './LandingPage.scss';
 import Parallax from 'react-materialize';
 import { Button } from 'react-materialize';
-import Signup from '../SignupPage/SignupPage.jsx'
+import Signup from '../SignupPage/SignupPage.jsx';
+import Login from '../LoginPage/LoginPage.jsx';
 
 class LandingPage extends Component {
 
@@ -13,10 +14,7 @@ class LandingPage extends Component {
         
         <Signup></Signup>
 
-        <Button
-          waves='light'
-          onClick={() => this.props.history.push('/Login')}
-        >Log In</Button>
+        <Login></Login>
 
         <div id='logo'>&#9736;</div>
         
