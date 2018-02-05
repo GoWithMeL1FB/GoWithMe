@@ -5,17 +5,44 @@ import axios from 'axios';
 class SignupPage extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      username: '',
+      birthday: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      email: '' 
+    };
     this.createUser = this.createUser.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  createUser() {
-    console.log('sighup');
-    axios.post('/signup', {
-      function(){
-        console.log('sign up button reacting')
-      }
+  onChangeHandler(e) {
+    this.setState({
+      [e.target.name]: e.target.value
     })
+  }
+
+  createUser = () => {
+    
+    const payload = JSON.stringify(this.state);
+
+    axios.post('/api/auth/signup', payload)
+    .then(
+      function(res) {
+        console.log('user created', res)
+      }
+    )
+    .catch(
+      function (err) {
+        console.log('user creation failed', err);
+      }
+    )
+    .then(
+      function(){
+        this.props.history.push('/');
+      }
+    )
   }
 
   render() {
@@ -25,12 +52,12 @@ class SignupPage extends Component {
         trigger={<Button waves='light'> Signup <Icon left>fiber_new</Icon></Button>}
         >
         <Row>
-          <Input s={6} label="Username" />
-          <Input s={6} label="BirthYear" />
-		      <Input s={6} label="First Name" />
-		      <Input s={6} label="Last Name" />
-	    	  <Input type="password" label="Password" s={12} />
-    		  <Input type="email" label="Email" s={12} />
+          <Input s={6} label="Username" name="username" onChange={this.onChangeHandler}/>
+          <Input s={6} label="BirthYear" name="birthyear" onChange={this.onChangeHandler}/>
+		      <Input s={6} label="First Name" name="firstName" onChange={this.onChangeHandler}/>
+		      <Input s={6} label="Last Name" name="lastName" onChange={this.onChangeHandler}/>
+	    	  <Input type="password" label="Password" s={12} name="password" onChange={this.onChangeHandler}/>
+    		  <Input type="email" label="Email" s={12} name="email" onChange={this.onChangeHandler}/>
         </Row>
         <Button onClick={this.createUser}>Submit</Button>
       </Modal>
