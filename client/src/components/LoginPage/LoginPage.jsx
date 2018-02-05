@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 class LoginPage extends Component {
@@ -36,27 +37,28 @@ axios.post(`${process.env.REST_SERVER_URL}/api/auth/login)`, payload)
 
   render() {
     return (
-      <div className="container">
-        <p>Login</p>
-        <div className="row">
-          <div className="col-25" />
-          <div className="col-75">
-            <input
-              type="text"
-              id="userName"
-              placeholder="Your Username"
-              ref="userName"
-            />
-            <input
-              type="text"
-              id="password"
-              placeholder="Your password"
-              ref="password"
-            />
-          </div>
-        </div>
-        <button onClick={() =>{ this.LoginClickHandler(this.refs.userName.value ,this.refs.password.value)} } > Submit </button>
-        </div>
+      <Modal
+        header="Log in"
+        trigger={<Button waves='light' > Login </Button>}
+      >
+        <Row>
+          <Input 
+            s={6}
+            label="Username"
+            name="username"
+            onChange={this.onChangeHandler}
+          />
+          <Input
+            s={6}
+            label="Password"
+            name="password"
+            onChange={this.onChangeHandler}
+          />
+          <Button onClick={() =>{ 
+            this.LoginClickHandler(this.refs.userName.value ,this.refs.password.value)} } 
+          > Submit </Button>
+        </Row>
+      </Modal>
     );
   }
 }
