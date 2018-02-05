@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Events from '../Events/Events.jsx'
 import { DragDropContainer } from 'react-drag-drop-container';
-const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG'
-const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50'
+const id = 
+const secret = 
 
 const foursquare = require('react-foursquare')({
   clientID: id,
@@ -51,13 +51,14 @@ ClickHandler() {
   let params = {
     near: `${this.state.city},${this.state.state}`,
     query: `${this.state.query}`,
-    limit: 25
+    limit: 25,
+    venuePhotos: 1,
   }
 
-  foursquare.venues.getVenues(params)
+  foursquare.venues.recommendations(params)
   .then(res => {
     console.log('Search response!!!', res)
-    this.setState({results: res.response.venues})
+    this.setState({results: res.response.group.results})
   })
   .catch(err => {
     console.log('inside of catch', err)
@@ -100,8 +101,8 @@ ClickHandler() {
           <div key={venue.id}>
           <DragDropContainer>
             <Events 
-            name={venue.name}
-            address={venue.location.address}
+            name={venue.venue.name}
+            address={venue.venue.location.address}
             />
            </DragDropContainer>
           </div>
