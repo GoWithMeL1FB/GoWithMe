@@ -12,4 +12,4 @@ server.use('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
 }) // at the moment, server is using / listening on all ports
 
-server.listen(PORT, () => console.log('static files are being served'));
+server.listen(3050, () => console.log('static files are being served', 3050));
