@@ -4,7 +4,7 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import Search from '../../global/Search/Search.jsx'
 
 class Nav extends Component {
- 
+
   render() {
     return (
       <div>
