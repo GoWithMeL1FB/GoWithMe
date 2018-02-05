@@ -3,15 +3,16 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 class SignupPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       birthday: '',
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       password: '',
-      email: '' 
+      email: '',
+      bio: 'hi' 
     };
     this.createUser = this.createUser.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -23,24 +24,27 @@ class SignupPage extends Component {
     })
   }
 
-  createUser = () => {
-    
-    const payload = JSON.stringify(this.state);
-
-    axios.post('/api/auth/signup', payload)
+  createUser() {
+    const { username, birthday, firstname, lastname, password, email, bio } = this.state;
+    const payload = {
+      username,
+      birthday,
+      firstname,
+      lastname,
+      password,
+      email,
+      bio
+    }
+    console.log('payload:', payload)
+    axios.post('http://localhost:3030/api/auth/signup', payload)
     .then(
-      function(res) {
-        console.log('user created', res)
+      (res) => {
+        console.log('user creationg info submitted', res)
       }
     )
     .catch(
-      function (err) {
+      (err) => {
         console.log('user creation failed', err);
-      }
-    )
-    .then(
-      function(){
-        this.props.history.push('/');
       }
     )
   }
@@ -49,17 +53,17 @@ class SignupPage extends Component {
     return (
       <Modal
         header="Registration"
-        trigger={<Button waves='light'> Signup <Icon left>fiber_new</Icon></Button>}
+        trigger={<Button waves='light' > Signup <Icon left>fiber_new</Icon></Button>}
         >
         <Row>
-          <Input s={6} label="Username" name="username" onChange={this.onChangeHandler}/>
-          <Input s={6} label="BirthYear" name="birthyear" onChange={this.onChangeHandler}/>
-		      <Input s={6} label="First Name" name="firstName" onChange={this.onChangeHandler}/>
-		      <Input s={6} label="Last Name" name="lastName" onChange={this.onChangeHandler}/>
-	    	  <Input type="password" label="Password" s={12} name="password" onChange={this.onChangeHandler}/>
-    		  <Input type="email" label="Email" s={12} name="email" onChange={this.onChangeHandler}/>
+          <Input s={6} defaultValue='david12345' label="Username" name="username" onChange={this.onChangeHandler}/>
+          <Input s={6} defaultValue='1989' label="BirthYear" name="birthday" onChange={this.onChangeHandler}/>
+		      <Input s={6} defaultValue='david' label="First Name" name="firstname" onChange={this.onChangeHandler}/>
+		      <Input s={6} defaultValue='chung' label="Last Name" name="lastname" onChange={this.onChangeHandler}/>
+	    	  <Input defaultValue='12345678' type="password" label="Password" s={12} name="password" onChange={this.onChangeHandler}/>
+    		  <Input defaultValue='chungdy1@uci.edu' type="Email" label="email" s={12} name="email" onChange={this.onChangeHandler}/>
         </Row>
-        <Button onClick={this.createUser}>Submit</Button>
+        <Button onClick={this.createUser} className='modal-close'>Submit</Button>
       </Modal>
     )
   }

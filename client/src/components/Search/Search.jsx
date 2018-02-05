@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Events from '../Events/Events.jsx'
 import { DragDropContainer } from 'react-drag-drop-container';
-const id = 
-const secret = 
+const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
+const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
 
 const foursquare = require('react-foursquare')({
   clientID: id,
