@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="container">
         <Switch>
-        <Route path='/Search' component={Search} />
+          <Route path='/Search' component={Search} />
           <Route path='/Signup' component={Signup} />
           <Route path='/EditProfile' component={EditProfile} />
           <Route path='/Login' component={Login} />
