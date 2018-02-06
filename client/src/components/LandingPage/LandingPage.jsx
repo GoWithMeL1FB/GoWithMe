@@ -11,13 +11,9 @@ class LandingPage extends Component {
   render() {
     return (
       <div className='landingpage'>
-        
         <Signup></Signup>
-
         <Login></Login>
-
         <div id='logo'>&#9736;</div>
-        
         <h2>GO</h2>
         <h2>WITH</h2>
         <h2>ME</h2>

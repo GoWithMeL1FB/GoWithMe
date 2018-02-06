@@ -1,6 +1,12 @@
+# Dependecy directories
 node_modules
+package-lock.json
+yarn.lock
 
-.DS_Store
-
-bundle.js
+# environment variables
 .env
+bundle.js
+
+# debug logs
+npm-debug.log
+.DS_Store

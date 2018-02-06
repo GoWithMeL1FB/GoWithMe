@@ -6,47 +6,47 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null
+      username: '',
+      password: '',
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.logState = this.logState.bind(this);
   }
 
-onChangeHandler(e) {
-  this.setState({
-    [e.target.name]: e.target.value
-  })
-}
-
-loginUser() {
-  const { username, password } = this.state;
-  const payload = {
-    username,
-    password
+  logState() {
+    console.log(this.state);
   }
-  axios.post('http://localhost:3030/api/augh/login', payload)
-  .then(
-    (res) => {
-      console.log('Log in Successful! res:', res)
-      this.props.history.push('/Home');
+
+  onChangeHandler(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  loginUser() {
+    const { username, password } = this.state;
+    const payload = {
+      username,
+      password
     }
-  )
-  .catch(
-    (err) => {
+    axios.post('http://localhost:3050/api/augh/login', payload)
+    .then((results) => {
+      console.log('Log in Successful! res:', results);
+    })
+    .catch((err) => {
       console.log('Log in Failed err:', err);
-    }
-  )
-}
+    })
+  }
 
   render() {
     return (
       <Modal
         header="Log in"
-        trigger={<Button waves='light' > Login </Button>}
+        trigger={<Button waves='light'>Login</Button>}
       >
         <Row>
-          <Input 
+          <Input
             s={6}
             label="Username"
             name="username"
@@ -58,8 +58,8 @@ loginUser() {
             name="password"
             onChange={this.onChangeHandler}
           />
-          <Button onClick={this.loginUser}
-          > Submit </Button>
+          <Button onClick={this.loginUser}>Submit</Button>
+          <Button onClick={this.logState}>state</Button>
         </Row>
       </Modal>
     );
