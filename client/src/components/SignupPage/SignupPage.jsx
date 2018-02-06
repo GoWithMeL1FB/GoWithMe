@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
-import Home from '../Home/index'
 class SignupPage extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +40,6 @@ class SignupPage extends Component {
       (res) => {
         console.log('user creationg info submitted', res)
         this.props.history.push('/Home');
-        res.render(Home)
       }
     )
     .catch(
