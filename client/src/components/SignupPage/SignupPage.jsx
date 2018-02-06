@@ -40,6 +40,8 @@ class SignupPage extends Component {
     .then(
       (res) => {
         console.log('user creationg info submitted', res)
+        this.props.history.push('/Home');
+
       }
     )
     .catch(
@@ -47,7 +49,6 @@ class SignupPage extends Component {
         console.log('user creation failed', err);
       }
     )
-    this.props.history.push('/Home');
   }
 
   render() {
@@ -99,7 +100,7 @@ class SignupPage extends Component {
           onClick={this.createUser} 
           className='modal-close'>
           Submit
-        </Button>
+        </Button> //this.props.history.push on custom
       </Modal>
     )
   }

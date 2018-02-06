@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
+import {
+  Redirect
+} from 'react-router-dom';
+
+import Home from '../Home/index.jsx'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -8,6 +13,7 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
+      redirectToReferrer: false
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.loginUser = this.loginUser.bind(this);
@@ -33,12 +39,14 @@ class LoginPage extends Component {
     axios.post('http://localhost:3050/api/augh/login', payload)
     .then((results) => {
       console.log('Log in Successful! res:', results);
+      this.props.redirectToHome();
+      //this.props redux bs setting edit login state to be true
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
     })
   }
-
+  
   render() {
     return (
       <Modal
