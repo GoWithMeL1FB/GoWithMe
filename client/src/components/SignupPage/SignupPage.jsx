@@ -40,6 +40,7 @@ class SignupPage extends Component {
     .then(
       (res) => {
         console.log('user creationg info submitted', res)
+        this.props.history.push('/Home');
       }
     )
     .catch(
@@ -56,14 +57,49 @@ class SignupPage extends Component {
         trigger={<Button waves='light' > Signup </Button>}
         >
         <Row>
-          <Input s={6} defaultValue='david12345' label="Username" name="username" onChange={this.onChangeHandler}/>
-          <Input s={6} defaultValue='1989' label="BirthYear" name="birthday" onChange={this.onChangeHandler}/>
-		      <Input s={6} defaultValue='david' label="First Name" name="firstname" onChange={this.onChangeHandler}/>
-		      <Input s={6} defaultValue='chung' label="Last Name" name="lastname" onChange={this.onChangeHandler}/>
-	    	  <Input defaultValue='12345678' type="password" label="Password" s={12} name="password" onChange={this.onChangeHandler}/>
-    		  <Input defaultValue='chungdy1@uci.edu' type="Email" label="email" s={12} name="email" onChange={this.onChangeHandler}/>
+          <Input 
+            s={6} 
+            defaultValue='david12345' 
+            label="Username" 
+            name="username" 
+            onChange={this.onChangeHandler}/>
+          <Input 
+            s={6} 
+            defaultValue='1989' 
+            label="BirthYear" 
+            name="birthday" 
+            onChange={this.onChangeHandler}/>
+          <Input 
+            s={6} 
+            defaultValue='david' 
+            label="First Name" 
+            name="firstname" 
+            onChange={this.onChangeHandler}/>
+          <Input 
+            s={6} 
+            defaultValue='chung' 
+            label="Last Name" 
+            name="lastname" 
+            onChange={this.onChangeHandler}/>
+          <Input 
+            defaultValue='12345678' 
+            type="password" 
+            label="Password" 
+            s={12} name="password" 
+            onChange={this.onChangeHandler}/>
+          <Input 
+            defaultValue='chungdy1@uci.edu' 
+            type="Email" 
+            label="email" 
+            s={12} 
+            name="email" 
+            onChange={this.onChangeHandler}/>
         </Row>
-        <Button onClick={this.createUser} className='modal-close'>Submit</Button>
+        <Button 
+          onClick={this.createUser} 
+          className='modal-close'>
+          Submit
+        </Button>
       </Modal>
     )
   }
