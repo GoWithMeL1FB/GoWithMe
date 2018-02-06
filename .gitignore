@@ -1,7 +1,6 @@
 # Dependecy directories
 node_modules
 package-lock.json
-package-lock.json
 yarn.lock
 
 # environment variables
