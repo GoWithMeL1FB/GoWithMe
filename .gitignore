@@ -1,6 +1,10 @@
+# Dependecy directories
 node_modules
+package-lock.json
 
-.DS_Store
+# environment variables
+.env
+bundle.js
 
 bundle.js
 .env
