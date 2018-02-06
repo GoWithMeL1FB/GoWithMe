@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
+
 class SignupPage extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,7 @@ class SignupPage extends Component {
       lastname: '',
       password: '',
       email: '',
-      bio: 'hi'
+      bio: 'hi' 
     };
     this.createUser = this.createUser.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -39,7 +40,6 @@ class SignupPage extends Component {
     .then(
       (res) => {
         console.log('user creationg info submitted', res)
-        this.props.history.push('/Home');
       }
     )
     .catch(
@@ -47,6 +47,7 @@ class SignupPage extends Component {
         console.log('user creation failed', err);
       }
     )
+    this.props.history.push('/Home');
   }
 
   render() {
@@ -56,46 +57,46 @@ class SignupPage extends Component {
         trigger={<Button waves='light' > Signup </Button>}
         >
         <Row>
-          <Input
-            s={6}
-            defaultValue='david12345'
-            label="Username"
-            name="username"
+          <Input 
+            s={6} 
+            defaultValue='david12345' 
+            label="Username" 
+            name="username" 
             onChange={this.onChangeHandler}/>
-          <Input
-            s={6}
-            defaultValue='1989'
-            label="BirthYear"
-            name="birthday"
+          <Input 
+            s={6} 
+            defaultValue='1989' 
+            label="BirthYear" 
+            name="birthday" 
             onChange={this.onChangeHandler}/>
-          <Input
-            s={6}
-            defaultValue='david'
-            label="First Name"
-            name="firstname"
+          <Input 
+            s={6} 
+            defaultValue='david' 
+            label="First Name" 
+            name="firstname" 
             onChange={this.onChangeHandler}/>
-          <Input
-            s={6}
-            defaultValue='chung'
-            label="Last Name"
-            name="lastname"
+          <Input 
+            s={6} 
+            defaultValue='chung' 
+            label="Last Name" 
+            name="lastname" 
             onChange={this.onChangeHandler}/>
-          <Input
-            defaultValue='12345678'
-            type="password"
-            label="Password"
-            s={12} name="password"
+          <Input 
+            defaultValue='12345678' 
+            type="password" 
+            label="Password" 
+            s={12} name="password" 
             onChange={this.onChangeHandler}/>
-          <Input
-            defaultValue='chungdy1@uci.edu'
-            type="Email"
-            label="email"
-            s={12}
-            name="email"
+          <Input 
+            defaultValue='chungdy1@uci.edu' 
+            type="Email" 
+            label="email" 
+            s={12} 
+            name="email" 
             onChange={this.onChangeHandler}/>
         </Row>
-        <Button
-          onClick={this.createUser}
+        <Button 
+          onClick={this.createUser} 
           className='modal-close'>
           Submit
         </Button>

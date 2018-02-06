@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
@@ -12,13 +12,16 @@ class App extends Component {
     this.state = {};
   }
   render() {
+    console.log('props for App', this.props)
     return (
+    
       <div className="container">
       <Switch>
         <Route path='/Home' component={Home} />
         <Route path='/' component={LandingPage} />
       </Switch>
       </div>
+
     )
   }
 }
