@@ -103,6 +103,8 @@ ClickHandler() {
             <Events 
             name={venue.venue.name}
             address={venue.venue.location.address}
+            price={venue.venue.price.message}
+            category={venue.venue.categories[0].name}
             />
            </DragDropContainer>
           </div>

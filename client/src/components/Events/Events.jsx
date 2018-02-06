@@ -15,6 +15,7 @@ class Events extends React.Component {
       <div className="container">
         <p>{this.props.name}</p>
        <p>{this.props.address}</p>
+       <p>Description: {this.props.price} {this.props.category} </p>
         </div>
     )
   }
