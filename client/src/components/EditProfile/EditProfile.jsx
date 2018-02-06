@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import { Row, Input } from 'react-materialize';
-import Nav from '../global/Nav/Nav.jsx'
 
 class EditProfile extends Component {
   render() {
     return (
       <div>
-      <Nav />
-      <br/>
-      <br/>
-      <Row>
-		    <Input placeholder="Placeholder" s={6} label="First Name" />
-		    <Input s={6} label="Last Name" />
-		    <Input s={12} label="disabled" defaultValue="I am not editable" disabled />
-		    <Input type="password" label="password" s={12} />
-		    <Input type="email" label="Email" s={12} />
-      </Row>
+      <span>Edit Profile</span>
+        <Row>
+          <Input s={6} name="firstname" label="First Name" />
+          <Input s={6} name="lastname" label="Last Name" />
+          <Input s={6} type="email" name="email" label="Email" />
+          <Input s={6} name="birthday" label="Birthday" />
+          <Input s={12} name="bio" label="Bio" />
+        </Row>
       </div>
     )
   }
