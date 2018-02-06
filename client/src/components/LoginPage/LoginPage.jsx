@@ -6,33 +6,37 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: null,
-      Username: null
+      username: null,
+      password: null
     };
-    this.LoginClickHandler = this.LoginClickHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.loginUser = this.loginUser.bind(this);
   }
 
-LoginClickHandler(un, pw ) {
-  console.log('username', username);
-  console.log('password', password);
-  const payload = {
-   username: un,
-   password: pw
+onChangeHandler(e) {
+  this.setState({
+    [e.target.name]: e.target.value
+  })
 }
 
-axios.post(`${process.env.REST_SERVER_URL}/api/auth/login)`, payload)
-  .then(res => {
-
-  //activate session and redirect to home page
-  const { accessToken } = res;
-  localStorage.setItem('token', accessToken);
-  this.props.history.push('/Home');
-
-
-}).catch(err => {
-  console.error('login error', err)
-})
-  
+loginUser() {
+  const { username, password } = this.state;
+  const payload = {
+    username,
+    password
+  }
+  axios.post('http://localhost:3030/api/augh/login', payload)
+  .then(
+    (res) => {
+      console.log('Log in Successful! res:', res)
+      this.props.history.push('/Home');
+    }
+  )
+  .catch(
+    (err) => {
+      console.log('Log in Failed err:', err);
+    }
+  )
 }
 
   render() {
@@ -54,8 +58,7 @@ axios.post(`${process.env.REST_SERVER_URL}/api/auth/login)`, payload)
             name="password"
             onChange={this.onChangeHandler}
           />
-          <Button onClick={() =>{ 
-            this.LoginClickHandler(this.refs.userName.value ,this.refs.password.value)} } 
+          <Button onClick={this.loginUser}
           > Submit </Button>
         </Row>
       </Modal>
