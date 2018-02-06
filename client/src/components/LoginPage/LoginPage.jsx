@@ -1,62 +1,67 @@
 import React, { Component } from 'react';
+import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: null,
-      Username: null
+      username: '',
+      password: '',
     };
-    this.LoginClickHandler = this.LoginClickHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.loginUser = this.loginUser.bind(this);
+    this.logState = this.logState.bind(this);
   }
 
-LoginClickHandler(un, pw ) {
-  console.log('username', username);
-  console.log('password', password);
-  const payload = {
-   username: un,
-   password: pw
-}
+  logState() {
+    console.log(this.state);
+  }
 
-axios.post(`${process.env.REST_SERVER_URL}/api/auth/login)`, payload)
-  .then(res => {
+  onChangeHandler(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
 
-  //activate session and redirect to home page
-  const { accessToken } = res;
-  localStorage.setItem('token', accessToken);
-  this.props.history.push('/Home');
-
-
-}).catch(err => {
-  console.error('login error', err)
-})
-  
-}
+  loginUser() {
+    const { username, password } = this.state;
+    const payload = {
+      username,
+      password
+    }
+    axios.post('http://localhost:3050/api/augh/login', payload)
+    .then((results) => {
+      console.log('Log in Successful! res:', results);
+    })
+    .catch((err) => {
+      console.log('Log in Failed err:', err);
+    })
+  }
 
   render() {
     return (
-      <div className="container">
-        <p>Login</p>
-        <div className="row">
-          <div className="col-25" />
-          <div className="col-75">
-            <input
-              type="text"
-              id="userName"
-              placeholder="Your Username"
-              ref="userName"
-            />
-            <input
-              type="text"
-              id="password"
-              placeholder="Your password"
-              ref="password"
-            />
-          </div>
-        </div>
-        <button onClick={() =>{ this.LoginClickHandler(this.refs.userName.value ,this.refs.password.value)} } > Submit </button>
-        </div>
+      <Modal
+        header="Log in"
+        trigger={<Button waves='light'>Login</Button>}
+      >
+        <Row>
+          <Input
+            s={6}
+            label="Username"
+            name="username"
+            onChange={this.onChangeHandler}
+          />
+          <Input
+            s={6}
+            label="Password"
+            name="password"
+            onChange={this.onChangeHandler}
+          />
+          <Button onClick={this.loginUser}>Submit</Button>
+          <Button onClick={this.logState}>state</Button>
+        </Row>
+      </Modal>
     );
   }
 }
