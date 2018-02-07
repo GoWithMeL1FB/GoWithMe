@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
-import {
-  Redirect
-} from 'react-router-dom';
 
+import './button.scss';
 import Home from '../Home/index.jsx'
 
 class LoginPage extends Component {
@@ -36,10 +34,10 @@ class LoginPage extends Component {
       username,
       password
     }
-    axios.post('http://localhost:3050/api/augh/login', payload)
+    axios.post('http://localhost:3030/api/auth/login', payload)
     .then((results) => {
       console.log('Log in Successful! res:', results);
-      this.props.redirectToHome();
+      // this.props.redirectToHome();
       //this.props redux bs setting edit login state to be true
     })
     .catch((err) => {
@@ -67,7 +65,12 @@ class LoginPage extends Component {
             onChange={this.onChangeHandler}
           />
           <Button onClick={this.loginUser}>Submit</Button>
-          <Button onClick={this.logState}>state</Button>
+          <button>
+            <a href="#" className="fa fa-facebook"></a>
+          </button>
+          <button>
+            <a href="#" className="fa fa-google"></a>
+          </button>
         </Row>
       </Modal>
     );
