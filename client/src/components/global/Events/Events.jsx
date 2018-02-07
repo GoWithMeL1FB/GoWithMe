@@ -34,7 +34,7 @@ class Events extends React.Component {
   }
 
   render() {
-    const photo = `${this.props.prefix}36x36${this.props.suffix}`
+    const photo = `${this.props.prefix}100x100${this.props.suffix}`
     
     return (
       <div className="container" >
