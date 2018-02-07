@@ -39,10 +39,14 @@ class Search extends React.Component {
   UpdateByLocation(){
     axios.get("http://ip-api.com/json")
     .then(res => {
-      this.setState({ 
+       /*
+        **Local state**
+       this.setState({ 
         city: res.data.city,
         state: res.data.region
-       }); 
+       }); */
+
+       //redux state
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
@@ -53,8 +57,19 @@ class Search extends React.Component {
   }
   
 ClickHandler() {
+  /*
+  local state
   let params = {
     near: `${this.state.city},${this.state.state}`,
+    query: `${this.state.query}`,
+    limit: 25,
+    venuePhotos: 1,
+  }
+  */
+
+  //redux state
+  let params = {
+    near: `${this.props.location.city},${this.props.location.state}`,
     query: `${this.state.query}`,
     limit: 25,
     venuePhotos: 1,
@@ -81,13 +96,13 @@ ClickHandler() {
             <input
               type="text"
               id="city"
-              placeholder={this.state.city}
+              placeholder={this.props.location.city}
               onChange={this.handleChange}
             />
             <input
               type="text"
               id="state"
-              placeholder={this.state.state}
+              placeholder={this.props.location.state}
               onChange={this.handleChange}
             />
             
