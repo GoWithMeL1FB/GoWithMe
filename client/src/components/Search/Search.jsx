@@ -117,19 +117,23 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
-        {this.state.results.map(venue => (
+        {this.state.results.map(venue => {
+          let price= venue.venue.price?venue.venue.price.message:null;
+          return(
           <div key={venue.id}>
-
           <DragDropContainer>
             <Events 
+            id={venue.id}
             name={venue.venue.name}
             address={venue.venue.location.address}
-            price={venue.venue.price.message}
+            price={price}
             category={venue.venue.categories[0].name}
+            prefix={venue.photo.prefix}
+            suffix={venue.photo.suffix}
             />
            </DragDropContainer>
           </div>
-      ))}
+      )})}
         </div>
     );
   }
