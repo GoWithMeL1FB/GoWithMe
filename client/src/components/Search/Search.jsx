@@ -2,9 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import Events from '../Events/Events.jsx'
 import { DragDropContainer } from 'react-drag-drop-container';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { UpdateCity } from '../../ReduxActions/UpdateCity.jsx';
+import { UpdateState } from '../../ReduxActions/UpdateState.jsx';
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
-const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
-
+const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50'
 const foursquare = require('react-foursquare')({
   clientID: id,
   clientSecret: secret
@@ -40,7 +43,9 @@ class Search extends React.Component {
         city: res.data.city,
         state: res.data.region
        }); 
-      console.log(this.state);
+       this.props.UpdateCity(res.data.city)
+       this.props.UpdateState(res.data.region)
+      console.log(this.props.location.city);
       
     }).catch(err => {
       console.error('Get location err', err);
@@ -99,6 +104,7 @@ ClickHandler() {
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
         {this.state.results.map(venue => (
           <div key={venue.id}>
+
           <DragDropContainer>
             <Events 
             name={venue.venue.name}
@@ -114,4 +120,21 @@ ClickHandler() {
   }
 }
 
-export default Search;
+
+function mapStateToProps(state) {
+  return { location: state.location };
+}
+
+// connect action to this components state
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      UpdateCity: UpdateCity,
+      UpdateState:UpdateState
+    },
+    dispatch
+  );
+}
+
+
+export default connect(mapStateToProps, matchDispatchToProps)(Search);
