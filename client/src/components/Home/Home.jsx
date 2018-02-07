@@ -17,14 +17,7 @@ class Home extends Component {
       <div>
         <Nav />
         <Row>
-          <Col s={3}>
-            <Collection header='Sidebar'>
-              <CollectionItem>Alvin</CollectionItem>
-              <CollectionItem>Alvin</CollectionItem>
-              <CollectionItem>Alvin</CollectionItem>
-              <CollectionItem>Alvin</CollectionItem>
-            </Collection>
-          </Col>
+          <Sidebar />
 
           <Col s={9}>
             <Switch>
