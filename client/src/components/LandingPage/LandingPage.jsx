@@ -15,7 +15,6 @@ class LandingPage extends Component {
 
   redirectToHome () {
       this.props.history.push('/Home');  
-      // <button onClick={()=>{this.props.history.push('/Home')}}/>
   }
 
   render() {

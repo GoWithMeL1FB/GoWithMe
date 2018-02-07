@@ -27,9 +27,13 @@ module.exports = {
             loader: "css-loader" 
           }, {
             loader: "sass-loader"
-          }]
-          
-    },
+          }]  
+      },
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        include: path.join(__dirname, 'src')
+      },
     {
       test: /\.(png|svg|jpg|gif)$/,
       use: [
