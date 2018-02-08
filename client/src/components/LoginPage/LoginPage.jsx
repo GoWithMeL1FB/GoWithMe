@@ -32,7 +32,7 @@ class LoginPage extends Component {
     const { username, password } = this.state;
     const payload = {
       username,
-      password
+      password,
     }
     axios.post('http://localhost:3030/api/auth/login', payload)
     .then((results) => {
