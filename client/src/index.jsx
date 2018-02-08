@@ -9,9 +9,9 @@ import App from './App.jsx';
 
 render(
   <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
   , document.getElementById('app'),
 );
