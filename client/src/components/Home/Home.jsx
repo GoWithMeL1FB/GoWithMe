@@ -19,7 +19,7 @@ class Home extends Component {
         <Row>
           <Sidebar />
 
-          <Col s={9}>
+          <Col s={12}>
             <Switch>
               <Route path="/Home/createDateCourse" component={createDateCourse}></Route>
               <Route path="/Home/editProfile" component={EditProfile}></Route>
