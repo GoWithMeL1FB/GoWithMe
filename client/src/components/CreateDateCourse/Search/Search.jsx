@@ -33,6 +33,7 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
+
     this.UpdateByLocation();
   }
 
@@ -121,12 +122,12 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
-        
+
         {this.state.results.map(venue => {
           let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer 
+          <DragDropContainer
             item={venue}
             returnToBase={true}
             dragData={{
@@ -134,13 +135,15 @@ ClickHandler() {
             }}
             >
             <Events
-            id={venue.id}
-            name={venue.venue.name}
-            address={venue.venue.location.address}
-            price={price}
-            category={venue.venue.categories[0].name}
-            prefix={venue.photo.prefix}
-            suffix={venue.photo.suffix}
+              id={venue.id}
+              title={venue.venue.name}
+              location={venue.venue.location.address}
+              price={price}
+              category='eat'
+              description={venue.venue.categories[0].name}
+              attendees='1-2'
+              prefix={venue.photo.prefix}
+              suffix={venue.photo.suffix}
             />
            </DragDropContainer>
            <button onClick={() => this.handleSave()}>Save</button>
