@@ -6,16 +6,16 @@
   background: url('./background.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
-  -moz-background-size: cover;     
+  -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
   margin: auto;
   padding-bottom: 5%;
-    
+
 }
 
 .landingpage h2 {
-  
+
   letter-spacing: 1em;
 }
 
