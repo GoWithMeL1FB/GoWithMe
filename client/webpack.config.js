@@ -30,7 +30,7 @@ module.exports = {
           }]  
       },
       {
-        test: /\.js$/,
+        test: /\.css$/,
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       },

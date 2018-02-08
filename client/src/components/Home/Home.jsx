@@ -6,7 +6,9 @@ import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 import Sidebar from '../global/Sidebar/Sidebar.jsx';
-import createDateCourse from '../createDateCourse/createDateCourse.jsx';
+import HomeView from '../HomeView/HomeView.jsx';
+import CreateDateCourse from '../CreateDateCourse/CreateDateCourse.jsx'
+import Search from '../Search/Search.jsx';
 
 import { Collection, CollectionItem, Col, Row } from 'react-materialize';
 
@@ -21,8 +23,10 @@ class Home extends Component {
 
           <Col s={9}>
             <Switch>
-              <Route path="/Home/createDateCourse" component={createDateCourse}></Route>
-              <Route path="/Home/editProfile" component={EditProfile}></Route>
+              <Route path="/Home/CreateDateCourse" component={CreateDateCourse}></Route>
+              <Route path="/Home/EditProfile" component={EditProfile}></Route>
+              <Route path="/Home/HomeView" component={HomeView}></Route>
+              <Route exact path='/Home' component={HomeView}/>
             </Switch>
           </Col>
         </Row>

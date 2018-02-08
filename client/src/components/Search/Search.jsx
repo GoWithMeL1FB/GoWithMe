@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Events from '../Events/Events.jsx'
+import Events from '../global/Events/Events.jsx'
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

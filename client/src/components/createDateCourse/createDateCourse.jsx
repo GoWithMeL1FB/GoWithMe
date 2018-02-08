@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { Card, Col } from 'react-materialize';
+import axios from 'axios';
 
-import Featured from './featuredDateCourse/featuredDateCourse.jsx'
-import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
+import { Row, Col } from 'react-materialize';
+import Search from '../Search/Search.jsx';
+import DropBox from '../Search/DropContainer.jsx';
 
-class createDateCourse extends Component {
-  render() {
-    return (
-      <div>
-        <Featured></Featured>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-      </div>
+class CreateDateCourse extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: ''
+    };
+  }
+
+  render () {
+    return(
+      <Row>
+        <Col s={8}>
+          <Search></Search>
+        </Col>
+        <Col s={4}>
+          <DropBox></DropBox>
+        </Col>
+      </Row>
     )
   }
 }
 
-export default createDateCourse;
+export default CreateDateCourse;
