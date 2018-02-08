@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Events from '../Events/Events.jsx'
+import Events from '../global/Events/Events.jsx'
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -121,7 +121,16 @@ ClickHandler() {
           let price= venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer>
+          <DragDropContainer 
+            dragData={{
+              label: 'string',
+              id: '123'
+            }}
+            onDragEnd={
+              console.log(dragData)
+            }
+            targetKey="box"
+            >
             <Events 
             id={venue.id}
             name={venue.venue.name}
