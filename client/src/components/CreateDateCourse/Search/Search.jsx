@@ -6,8 +6,8 @@ import Events from '../../global/Events/Events.jsx';
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { UpdateCity } from '../../../ReduxActions/UpdateCity.jsx';
-import { UpdateState } from '../../../ReduxActions/UpdateState.jsx';
+import { UpdateCity } from '../../ReduxActions/UpdateCity.jsx';
+import { UpdateState } from '../../ReduxActions/UpdateState.jsx';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
@@ -33,7 +33,7 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
-    
+
     this.UpdateByLocation();
   }
 
@@ -46,7 +46,7 @@ class Search extends React.Component {
     .then(res => {
        /*
         **Local state**
-       this.setState({ 
+       this.setState({
         city: res.data.city,
         state: res.data.region
        }); */
@@ -55,12 +55,12 @@ class Search extends React.Component {
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
-      
+
     }).catch(err => {
       console.error('Get location err', err);
     })
   }
-  
+
 ClickHandler() {
   /*
   local state
@@ -110,9 +110,9 @@ ClickHandler() {
               placeholder={this.props.location.state}
               onChange={this.handleChange}
             />
-            
+
             <p>Activity</p>
-            
+
             <input
               type="text"
               id="query"
@@ -127,14 +127,8 @@ ClickHandler() {
           let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer 
-            item={venue}
-            returnToBase={true}
-            dragData={{
-              venue: venue
-            }}
-            >
-            <Events 
+          <DragDropContainer>
+            <Events
             id={venue.id}
             name={venue.venue.name}
             address={venue.venue.location.address}
