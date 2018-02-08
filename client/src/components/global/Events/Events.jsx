@@ -7,7 +7,6 @@ class Events extends React.Component {
     this.state = {
       favorites: {}
     };
-  
     this.handleSave = this.handleSave.bind(this);
   }
 
@@ -35,7 +34,7 @@ class Events extends React.Component {
 
   render() {
     const photo = `${this.props.prefix}36x36${this.props.suffix}`
-    
+
     return (
       <div className="container" >
       <img  src={photo}/>
