@@ -4,7 +4,6 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
-import Search from './components/Search/Search.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
 
 class App extends Component {
@@ -21,7 +20,6 @@ class App extends Component {
         <Switch>
           <Route path='/Login' component={LoginPage}/>
           <Route path='/Home' component={Home} />
-          <Route path='/Search' component={Search} />
           <Route path='/' component={LandingPage} />
         </Switch>
       </BrowserRouter>

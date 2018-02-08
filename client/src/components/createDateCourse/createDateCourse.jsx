@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { Row, Col } from 'react-materialize';
-import Search from '../Search/Search.jsx';
-import DropBox from '../Search/DropContainer.jsx';
+import Search from './Search/Search.jsx';
+import DropBox from './Search/DropBox.jsx';
 
 class CreateDateCourse extends Component {
   constructor(props) {

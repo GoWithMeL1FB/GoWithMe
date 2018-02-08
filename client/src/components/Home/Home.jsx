@@ -8,7 +8,6 @@ import Footer from '../global/Footer/Footer.jsx';
 import Sidebar from '../global/Sidebar/Sidebar.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
 import CreateDateCourse from '../CreateDateCourse/CreateDateCourse.jsx'
-import Search from '../Search/Search.jsx';
 
 import { Collection, CollectionItem, Col, Row } from 'react-materialize';
 
