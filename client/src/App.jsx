@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { render } from 'react-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
-import { Redirect } from '../../../../Library/Caches/typescript/2.6/node_modules/@types/react-router';
 
-// function checkToken() {
+ function checkToken() {
+  
+  axios.post('http://localhost:3030/api/auth/verify')
+  .set('token', sessionStorage.getItem('authentication'))
+  .then((results) => {
+    console.log(results)
+    return results.value;
+  })
+  .catch((err) => {
+    console.log('user verification failed', err);
+  })
+ }
 
-// }
-
-// const PrivateRoute = ({component: Component, ...rest}) => (
-//   <Route  {...rest} render={props => (
-//     checkToken ? (
-//       <Component {...props}/>
-//     ) : (
-//       <Redirect to={{
-//         pathname: '/Login',
-//         state: {from: props.location}
-//       }}/>
-//     )
-//   )}/>
-// )
+const PrivateRoute = ({component: Component, ...rest}) => (
+  <Route  {...rest} render={props => (
+    true ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/Login',
+        state: {from: props.location}
+      }}/>
+    )
+  )}/>
+)
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +45,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path='/Login' component={LoginPage}/>
-          <Route path='/Home' component={Home} />
+          <PrivateRoute path='/Home' component={Home} />
           <Route path='/' component={LandingPage} />
         </Switch>
       </BrowserRouter>
