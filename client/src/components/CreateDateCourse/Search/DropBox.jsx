@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { DropTarget } from 'react-drag-drop-container';
+import { Row, Col, Icon } from 'react-materialize';
 
 class DropBox extends React.Component {
   constructor(props){
@@ -16,10 +17,14 @@ class DropBox extends React.Component {
 
   render () {
     return(
-      <div>
-        <DropTarget targetKey="box"></DropTarget>
+      <Row>
+        <Col s={12}>
+        <DropTarget targetKey="box"><Icon>add_circle_outline</Icon></DropTarget>
+        </Col>
+        <Col s={12}>
         <button onClick={() => {console.log('hi')}}>Save</button>
-      </div>
+        </Col>
+      </Row>
     )
   }
 }
