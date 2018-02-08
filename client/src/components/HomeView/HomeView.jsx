@@ -6,15 +6,20 @@ import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
 
 class HomeView extends Component {
   render() {
+    constructor() {
+      super()
+      this.state = {
+        events: [{title: 'first event', description: 'asldkgj'}];
+      }
+    }
     return (
       <div>
-        <Featured></Featured>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
-        <OtherDateCourse></OtherDateCourse>
+        <Featured/>
+        {
+          this.state.events.map((event, index) => {
+            return <OtherDateCourse/>
+          })
+        }
       </div>
     )
   }
