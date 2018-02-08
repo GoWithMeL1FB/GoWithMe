@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar, NavItem, Icon } from 'react-materialize';
-import Search from '../../global/Search/Search.jsx'
 
 class Nav extends Component {
 

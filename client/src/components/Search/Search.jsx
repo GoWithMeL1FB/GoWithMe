@@ -123,7 +123,8 @@ ClickHandler() {
           <div key={venue.id}>
           <DragDropContainer 
             dragData={{
-              id: venue.id
+              label: 'string',
+              id: '123'
             }}
             onDragEnd={
               console.log(dragData)
