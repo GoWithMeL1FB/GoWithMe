@@ -45,7 +45,7 @@ class Search extends React.Component {
     .then(res => {
        /*
         **Local state**
-       this.setState({ 
+       this.setState({
         city: res.data.city,
         state: res.data.region
        }); */
@@ -54,12 +54,12 @@ class Search extends React.Component {
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
-      
+
     }).catch(err => {
       console.error('Get location err', err);
     })
   }
-  
+
 ClickHandler() {
   /*
   local state
@@ -109,9 +109,9 @@ ClickHandler() {
               placeholder={this.props.location.state}
               onChange={this.handleChange}
             />
-            
+
             <p>Activity</p>
-            
+
             <input
               type="text"
               id="query"

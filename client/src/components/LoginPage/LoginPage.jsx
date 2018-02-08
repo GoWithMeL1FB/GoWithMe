@@ -3,7 +3,7 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 import './button.css';
-import Home from '../Home/index.jsx'
+import Home from '../Home/Home.jsx'
 
 class LoginPage extends Component {
   constructor(props) {
