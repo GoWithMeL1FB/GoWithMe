@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
-import './button.scss';
+import './button.css';
 import Home from '../Home/index.jsx'
 
 class LoginPage extends Component {
@@ -44,7 +44,7 @@ class LoginPage extends Component {
       console.log('Log in Failed err:', err);
     })
   }
-  
+
   render() {
     return (
       <Modal

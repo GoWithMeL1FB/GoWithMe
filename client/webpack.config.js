@@ -20,19 +20,8 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-          use: [{
-            loader: "style-loader"
-          }, {
-            loader: "css-loader" 
-          }, {
-            loader: "sass-loader"
-          }]  
-      },
-      {
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src')
+        test: /\.(scss|css)$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
     {
       test: /\.(png|svg|jpg|gif)$/,
