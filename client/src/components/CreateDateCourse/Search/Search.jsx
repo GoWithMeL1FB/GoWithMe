@@ -144,6 +144,8 @@ ClickHandler() {
             />
            </DragDropContainer>
            <button onClick={() => this.handleSave()}>Save</button>
+                attendees='1-2'
+                category='eat'
           </div>
       )})}
         </div>
