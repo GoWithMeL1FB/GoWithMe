@@ -130,10 +130,12 @@ testt() {
           return(
           <div key={venue.id}>
           <DragDropContainer 
+            returnToBase={true}
             dragData={{
-              id: 'hi'
+              label: this.props.children,
+              index: this.props.index
             }}
-            onDrag={this.testt}
+            onDrop={this.testt}
             >
             <Events 
             id={venue.id}

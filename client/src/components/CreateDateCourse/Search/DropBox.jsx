@@ -11,15 +11,24 @@ class DropBox extends React.Component {
     };
   }
 
-  saveDateCourse() {
-    console.log('hi');
+  handleDrop = (e) => {
+    console.log(e);
   }
 
   render () {
     return(
       <Row>
         <Col s={12}>
-        <DropTarget targetKey="box"><Icon>add_circle_outline</Icon></DropTarget>
+        <DropTarget 
+          dragData={{
+            label: this.props.children,
+            index: this.props.index
+          }}
+          onHit={this.handleDrop}
+          >
+          <Icon>add_circle_outline</Icon>
+        </DropTarget>
+
         </Col>
         <Col s={12}>
         <button onClick={() => {console.log('hi')}}>Save</button>
@@ -29,4 +38,4 @@ class DropBox extends React.Component {
   }
 }
 
-export default DropBox;
+export default DropBox; 
