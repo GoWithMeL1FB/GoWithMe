@@ -15,15 +15,36 @@
     "node",
     "security",
     "mocha",
-    "import"
+    "import",
+    "prettier"
     ],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "sourceType": "module"
     },
   "rules": {
-    "import/prefer-default-export": 0,
-    "node/no-unsupported-features": 0,
-    "no-console": "off"
+    "linebreak-style": 1,
+    "semi": ["error", "always"],
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true, "trailingComma": true }
+    ],
+    "no-console": "off",
+  "import/first": 1,
+  "import/prefer-default-export": 0,
+  "import/no-unresolved": [
+    2,
+    { "caseSensitive": false }
+  ],
+  "jest/no-disabled-tests": "warn",
+  "jest/no-focused-tests": "error",
+  "jest/no-identical-title": "error",
+  "jest/prefer-to-have-length": "warn",
+  "jest/valid-expect": "error"
+  },
+  "parserOptions": { "ecmaVersion": 8 },
+  "env": { "es6": true },
+  "ecmaFeatures": {
+    "jsx": true
   }
 }
