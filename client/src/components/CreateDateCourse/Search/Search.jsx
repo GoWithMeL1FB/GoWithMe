@@ -28,6 +28,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
+    this.testt = this.testt.bind(this);
   }
 
   componentWillMount() {
@@ -88,6 +89,10 @@ ClickHandler() {
   });
 }
 
+testt() {
+  console.log('hi')
+}
+
   render() {
     return (
       <div className="container">
@@ -125,8 +130,10 @@ ClickHandler() {
           return(
           <div key={venue.id}>
           <DragDropContainer 
-            
-            targetKey="box"
+            dragData={{
+              id: 'hi'
+            }}
+            onDrag={this.testt}
             >
             <Events 
             id={venue.id}
