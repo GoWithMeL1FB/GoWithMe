@@ -5,6 +5,24 @@ import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
+import { Redirect } from '../../../../Library/Caches/typescript/2.6/node_modules/@types/react-router';
+
+// function checkToken() {
+
+// }
+
+// const PrivateRoute = ({component: Component, ...rest}) => (
+//   <Route  {...rest} render={props => (
+//     checkToken ? (
+//       <Component {...props}/>
+//     ) : (
+//       <Redirect to={{
+//         pathname: '/Login',
+//         state: {from: props.location}
+//       }}/>
+//     )
+//   )}/>
+// )
 
 class App extends Component {
   constructor(props) {
