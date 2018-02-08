@@ -124,20 +124,19 @@ ClickHandler() {
           let price= venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer
-
-            targetKey="box"
-            >
-            <Events
-            id={venue.id}
-            name={venue.venue.name}
-            address={venue.venue.location.address}
-            price={price}
-            category={venue.venue.categories[0].name}
-            prefix={venue.photo.prefix}
-            suffix={venue.photo.suffix}
-            />
-           </DragDropContainer>
+            <DragDropContainer targetKey="box">
+              <Events
+                id={venue.id}
+                title={venue.venue.name}
+                location={venue.venue.location.address}
+                price={price}
+                category='eat'
+                description={venue.venue.categories[0].name}
+                attendees='1-2'
+                prefix={venue.photo.prefix}
+                suffix={venue.photo.suffix}
+              />
+            </DragDropContainer>
           </div>
       )})}
         </div>
