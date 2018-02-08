@@ -11,12 +11,13 @@ class DropBox extends React.Component {
   }
 
   saveDateCourse() {
-
+    console.log('hi');
   }
 
   render () {
     return(
       <div>
+        <DropTarget targetKey="box"></DropTarget>
         <button onClick={() => {console.log('hi')}}>Save</button>
       </div>
     )

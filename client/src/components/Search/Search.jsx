@@ -121,7 +121,15 @@ ClickHandler() {
           let price= venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer>
+          <DragDropContainer 
+            dragData={{
+              id: venue.id
+            }}
+            onDragEnd={
+              console.log(dragData)
+            }
+            targetKey="box"
+            >
             <Events 
             id={venue.id}
             name={venue.venue.name}
