@@ -1,6 +1,6 @@
 {
     "extends": [
-      "airbnb", 
+      "airbnb",
       "prettier",
       "plugin:security/recommended",
       "eslint:recommended",
@@ -15,17 +15,17 @@
       "jest"
     ],
     "rules": {
-      "linebreak-style": 0,
-      "semi": 2,
+      "linebreak-style": 1,
+      "semi": ["error", "always"],
       "prettier/prettier": [
         "error",
         { "singleQuote": true, "trailingComma": true }
       ],
       "no-console": "off",
-    "import/first": "off",
-    "import/prefer-default-export": "off",
+    "import/first": 1,
+    "import/prefer-default-export": 0,
     "import/no-unresolved": [
-      2, 
+      2,
       { "caseSensitive": false }
     ],
     "jest/no-disabled-tests": "warn",
@@ -34,10 +34,9 @@
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error"
     },
-    "parserOptions": { "ecmaVersion": 6 },
+    "parserOptions": { "ecmaVersion": 8 },
     "env": { "es6": true },
     "ecmaFeatures": {
       "jsx": true
     }
   }
-  
