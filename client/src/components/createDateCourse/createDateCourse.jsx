@@ -15,6 +15,7 @@ class CreateDateCourse extends Component {
 
   render () {
     return(
+      <center>
       <Row>
         <Col s={8}>
           <Search></Search>
@@ -23,6 +24,7 @@ class CreateDateCourse extends Component {
           <DropBox></DropBox>
         </Col>
       </Row>
+      </center>
     )
   }
 }

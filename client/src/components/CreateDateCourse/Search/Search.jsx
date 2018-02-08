@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Events from '../../global/Events/Events.jsx'
+
+import Events from '../../global/Events/Events.jsx';
 
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
@@ -28,6 +29,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
+
   }
 
   componentWillMount() {
@@ -120,13 +122,17 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
+        
         {this.state.results.map(venue => {
-          let price= venue.venue.price?venue.venue.price.message:null;
+          let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
           <DragDropContainer 
-            
-            targetKey="box"
+            item={venue}
+            returnToBase={true}
+            dragData={{
+              venue: venue
+            }}
             >
             <Events 
             id={venue.id}
