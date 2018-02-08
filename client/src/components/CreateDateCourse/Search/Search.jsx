@@ -123,16 +123,15 @@ ClickHandler() {
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
         {this.state.results.map(venue => {
-          let price= venue.venue.price?venue.venue.price.message:null;
+          let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
           <DragDropContainer 
+            item={venue}
             returnToBase={true}
             dragData={{
-              label: this.props.children,
-              index: this.props.index
+              venue: venue
             }}
-            onDrop={this.testt}
             >
             <Events 
             id={venue.id}

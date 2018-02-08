@@ -25,6 +25,8 @@ class DropBox extends React.Component {
         <Col s={12}>
         <DropTarget 
           dragData={{
+            venue: this.props.venue,
+            item: this.props.item,
             label: this.props.children,
             index: this.props.index
           }}
