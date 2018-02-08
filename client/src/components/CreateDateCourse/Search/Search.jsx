@@ -6,8 +6,13 @@ import Events from '../../global/Events/Events.jsx';
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+<<<<<<< master:client/src/components/CreateDateCourse/Search/Search.jsx
 import { UpdateCity } from '../../../ReduxActions/UpdateCity.jsx';
 import { UpdateState } from '../../../ReduxActions/UpdateState.jsx';
+=======
+import { UpdateCity } from '../../ReduxActions/UpdateCity.jsx';
+import { UpdateState } from '../../ReduxActions/UpdateState.jsx';
+>>>>>>> [user] - user can update their info... missing get userById:client/src/components/Search/Search.jsx
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
@@ -33,7 +38,7 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
-    
+
     this.UpdateByLocation();
   }
 
@@ -46,7 +51,7 @@ class Search extends React.Component {
     .then(res => {
        /*
         **Local state**
-       this.setState({ 
+       this.setState({
         city: res.data.city,
         state: res.data.region
        }); */
@@ -55,12 +60,12 @@ class Search extends React.Component {
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
-      
+
     }).catch(err => {
       console.error('Get location err', err);
     })
   }
-  
+
 ClickHandler() {
   /*
   local state
@@ -110,9 +115,9 @@ ClickHandler() {
               placeholder={this.props.location.state}
               onChange={this.handleChange}
             />
-            
+
             <p>Activity</p>
-            
+
             <input
               type="text"
               id="query"
@@ -127,6 +132,7 @@ ClickHandler() {
           let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
+<<<<<<< master:client/src/components/CreateDateCourse/Search/Search.jsx
           <DragDropContainer 
             item={venue}
             returnToBase={true}
@@ -135,6 +141,10 @@ ClickHandler() {
             }}
             >
             <Events 
+=======
+          <DragDropContainer>
+            <Events
+>>>>>>> [user] - user can update their info... missing get userById:client/src/components/Search/Search.jsx
             id={venue.id}
             name={venue.venue.name}
             address={venue.venue.location.address}
