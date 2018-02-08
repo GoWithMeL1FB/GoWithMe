@@ -122,7 +122,7 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
-        
+
         {this.state.results.map(venue => {
           let price = venue.venue.price?venue.venue.price.message:null;
           return(
