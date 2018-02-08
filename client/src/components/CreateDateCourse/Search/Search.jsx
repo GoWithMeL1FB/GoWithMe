@@ -6,8 +6,8 @@ import Events from '../../global/Events/Events.jsx';
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { UpdateCity } from '../../ReduxActions/UpdateCity.js';
-import { UpdateState } from '../../ReduxActions/UpdateState.js';
+import { UpdateCity } from '../../../ReduxActions/UpdateCity.js';
+import { UpdateState } from '../../../ReduxActions/UpdateState.js';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
