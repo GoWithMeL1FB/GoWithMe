@@ -44,7 +44,7 @@ class LoginPage extends Component {
       console.log('Log in Failed err:', err);
     })
   }
-  
+
   render() {
     return (
       <Modal
