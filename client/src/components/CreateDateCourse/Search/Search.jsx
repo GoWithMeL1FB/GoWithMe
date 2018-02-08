@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Events from '../../global/Events/Events.jsx'
+
+import Events from '../../global/Events/Events.jsx';
 
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
@@ -28,7 +29,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
-    this.testt = this.testt.bind(this);
+
   }
 
   componentWillMount() {
@@ -87,10 +88,6 @@ ClickHandler() {
   .catch(err => {
     console.log('inside of catch', err)
   });
-}
-
-testt() {
-  console.log('hi')
 }
 
   render() {

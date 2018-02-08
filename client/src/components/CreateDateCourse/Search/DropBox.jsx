@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+
+import Events from '../../global/Events/Events.jsx';
+
 import { DropTarget } from 'react-drag-drop-container';
 import { Row, Col, Icon } from 'react-materialize';
 
@@ -12,7 +15,8 @@ class DropBox extends React.Component {
   }
 
   handleDrop = (e) => {
-    console.log(e);
+    this.state.dateCourse.push(e);
+    console.log(this.state);
   }
 
   render () {
