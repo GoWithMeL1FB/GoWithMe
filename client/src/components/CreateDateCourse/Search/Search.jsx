@@ -158,7 +158,9 @@ ClickHandler() {
 
 
 function mapStateToProps(state) {
-  return { location: state.location };
+  return {
+    location: state.location,
+  };
 }
 
 // connect action to this components state

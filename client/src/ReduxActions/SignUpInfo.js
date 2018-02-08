@@ -1,6 +1,6 @@
-export const SignUpInfo = text => {
+export const SignUpInfo = data => {
   return {
     type: 'SAVE_SIGNIN_INFO',
-    payload: text
+    payload: data
   };
 }
