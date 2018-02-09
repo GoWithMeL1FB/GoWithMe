@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Col } from 'react-materialize';
 
-import Featured from './featuredDateCourse/featuredDateCourse.js'
-import OtherDateCourse from './otherDateCourse/otherDateCourse.js';
+import Featured from './featuredDateCourse/featuredDateCourse.jsx'
+import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
 
 class HomeView extends Component {
   constructor() {
