@@ -5,7 +5,11 @@ import jwtDecode from 'jwt-decode';
 
 
 export const PrivateRoute = ({component: Component, ...rest}) => {
-  const { exp } = jwtDecode(sessionStorage.getItem('authentication'))
+  if(!sessionStorage.getItem('authentication')) {
+    var exp = 0;
+  } else {
+    var { exp } = jwtDecode(sessionStorage.getItem('authentication'))
+  }
   return(
     <Route  {...rest} render={props => (
         
