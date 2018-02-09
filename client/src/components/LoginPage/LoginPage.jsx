@@ -3,7 +3,7 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 
 import './button.css';
-import Home from '../Home/index.jsx'
+import Home from '../Home/Home.jsx'
 
 class LoginPage extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class LoginPage extends Component {
     const { username, password } = this.state;
     const payload = {
       username,
-      password
+      password,
     }
     axios.post('http://localhost:3030/api/auth/login', payload)
     .then((results) => {
@@ -46,7 +46,7 @@ class LoginPage extends Component {
       console.log('Log in Failed err:', err);
     })
   }
-  
+
   render() {
     return (
       <Modal

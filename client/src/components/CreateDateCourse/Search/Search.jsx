@@ -1,22 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-
 import Events from '../../global/Events/Events.jsx';
-
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { UpdateCity } from '../../../ReduxActions/UpdateCity.jsx';
-import { UpdateState } from '../../../ReduxActions/UpdateState.jsx';
+import { UpdateCity } from '../../../ReduxActions/UpdateCity.js';
+import { UpdateState } from '../../../ReduxActions/UpdateState.js';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
-
 const foursquare = require('react-foursquare')({
   clientID: id,
   clientSecret: secret
 });
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -24,42 +20,38 @@ class Search extends React.Component {
       city: null,
       state: null,
       query: "event",
-      results: []
+      results: [],
     };
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
-
   }
-
   componentWillMount() {
+
     this.UpdateByLocation();
   }
-
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value})
   }
-
   UpdateByLocation(){
     axios.get("http://ip-api.com/json")
     .then(res => {
        /*
         **Local state**
-       this.setState({ 
+       this.setState({
         city: res.data.city,
         state: res.data.region
        }); */
-
        //redux state
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
-      
+
     }).catch(err => {
       console.error('Get location err', err);
     })
   }
-  
+
 ClickHandler() {
   /*
   local state
@@ -70,7 +62,6 @@ ClickHandler() {
     venuePhotos: 1,
   }
   */
-
   //redux state
   let params = {
     near: `${this.props.location.city},${this.props.location.state}`,
@@ -78,7 +69,6 @@ ClickHandler() {
     limit: 25,
     venuePhotos: 1,
   }
-
   foursquare.venues.recommendations(params)
   .then(res => {
     console.log('Search response!!!', res)
@@ -88,7 +78,6 @@ ClickHandler() {
     console.log('inside of catch', err)
   });
 }
-
   render() {
     return (
       <div className="container">
@@ -109,9 +98,9 @@ ClickHandler() {
               placeholder={this.props.location.state}
               onChange={this.handleChange}
             />
-            
+
             <p>Activity</p>
-            
+
             <input
               type="text"
               id="query"
@@ -121,41 +110,44 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
-        
+
         {this.state.results.map(venue => {
           let price = venue.venue.price?venue.venue.price.message:null;
           return(
           <div key={venue.id}>
-          <DragDropContainer 
+          <DragDropContainer
             item={venue}
             returnToBase={true}
             dragData={{
               venue: venue
             }}
             >
-            <Events 
-            id={venue.id}
-            name={venue.venue.name}
-            address={venue.venue.location.address}
-            price={price}
-            category={venue.venue.categories[0].name}
-            prefix={venue.photo.prefix}
-            suffix={venue.photo.suffix}
+            <Events
+              id={venue.id}
+              title={venue.venue.name}
+              location={venue.venue.location.address}
+              price={price}
+              category='eat'
+              description={venue.venue.categories[0].name}
+              attendees='1-2'
+              prefix={venue.photo.prefix}
+              suffix={venue.photo.suffix}
             />
            </DragDropContainer>
            <button onClick={() => this.handleSave()}>Save</button>
+                attendees='1-2'
+                category='eat'
           </div>
       )})}
         </div>
     );
   }
 }
-
-
 function mapStateToProps(state) {
-  return { location: state.location };
+  return {
+    location: state.location,
+  };
 }
-
 // connect action to this components state
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
@@ -166,6 +158,4 @@ function matchDispatchToProps(dispatch) {
     dispatch
   );
 }
-
-
 export default connect(mapStateToProps, matchDispatchToProps)(Search);

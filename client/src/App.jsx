@@ -15,12 +15,12 @@ class App extends Component {
   render() {
     console.log('props for App', this.props)
     return (
-    
+
       <div className="container">
       <BrowserRouter>
         <Switch>
           <Route path='/Login' component={LoginPage}/>
-          <PrivateRoute path='/Home' component={Home} />
+          <Route path='/Home' component={Home} />
           <Route path='/' component={LandingPage} />
         </Switch>
       </BrowserRouter>
