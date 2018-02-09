@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './LandingPage.css';
 import Parallax from 'react-materialize';
 import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom';

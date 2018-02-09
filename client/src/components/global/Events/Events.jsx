@@ -7,43 +7,33 @@ class Events extends React.Component {
     this.state = {
       favorites: {}
     };
-  
     this.handleSave = this.handleSave.bind(this);
   }
 
-  handleSave() {
-    console.log("you clicked a button! )^.^(")
-    //save event to user favorites
-    // let event = {};
-    // event.id = this.props.id;
-    // event.name = this.props.name;
-    // event.address = this.props.address
-    // console.log(this.state.favorites);
-    // axios.post('http://localhost:3030/api/user/updateUser', payload)
-    // .then(
-    //   (res) => {
-    //     console.log('user favorite submitted', res)
-    //     this.props.history.push('/Home');
-    //   }
-    // )
-    // .catch(
-    //   (err) => {
-    //     console.log('user edit favorite failed', err);
-    //   }
-    // )
+  // DO NOT USE YET !!
+  // this function saves an event to db
+  async handleSave() {
+    console.log('8===D')
+    // try {
+    //   const payload = this.props;
+    //   const response = await axios.post('http://localhost:3031/api/events/createEvent', payload);
+    //   console.log('response from axios req', response);
+    // } catch(err) {
+    //   throw new Error('Could not save event', err);
+    // }
   }
 
   render() {
-    const photo = `${this.props.prefix}100x100${this.props.suffix}`
-    
+    const photo = `${this.props.prefix}180x120${this.props.suffix}`
+
     return (
       <div className="container" >
       <img  src={photo}/>
-        <p >{this.props.name}</p>
-       <p >{this.props.address}</p>
-       <p >Description: {this.props.price} {this.props.category} </p>
-       <button onClick={() => this.handleSave()}>Save</button>
-        </div>
+        <p>{this.props.title}</p>
+        <p>{this.props.location}</p>
+        <p>Description: {this.props.price} {this.props.description} </p>
+        <button onClick={() => this.handleSave()}>Save</button>
+      </div>
     )
   }
 }
