@@ -33,7 +33,6 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
-    
     this.UpdateByLocation();
   }
 
@@ -144,6 +143,7 @@ ClickHandler() {
             suffix={venue.photo.suffix}
             />
            </DragDropContainer>
+           <button onClick={() => this.handleSave()}>Save</button>
           </div>
       )})}
         </div>
