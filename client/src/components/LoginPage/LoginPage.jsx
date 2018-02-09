@@ -39,6 +39,8 @@ class LoginPage extends Component {
       console.log('Log in Successful! res:', results);
       // this.props.redirectToHome();
       //this.props redux bs setting edit login state to be true
+      sessionStorage.setItem('authentication', results.headers.authentication);
+      //console.log(sessionStorage.getItem('authentication'));
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
