@@ -38,12 +38,6 @@ class HomeView extends Component {
   }
 
   render() {
-    constructor() {
-      super()
-      this.state = {
-        events: [{title: 'first event', description: 'asldkgj'}];
-      }
-    }
     return (
       <div>
         <Featured />
