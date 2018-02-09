@@ -1,36 +1,29 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import { render } from 'react-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import LoginPage from './components/LoginPage/LoginPage.jsx';
+import jwtDecode from 'jwt-decode'
 
- function checkToken() {
-  
-  axios.post('http://localhost:3030/api/auth/verify')
-  .set('token', sessionStorage.getItem('authentication'))
-  .then((results) => {
-    console.log(results)
-    return results.value;
-  })
-  .catch((err) => {
-    console.log('user verification failed', err);
-  })
- }
-
-const PrivateRoute = ({component: Component, ...rest}) => (
-  <Route  {...rest} render={props => (
-    true ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to={{
-        pathname: '/Login',
-        state: {from: props.location}
-      }}/>
-    )
-  )}/>
-)
+const PrivateRoute = ({component: Component, ...rest}) => {
+  const { exp } = jwtDecode(sessionStorage.getItem('authentication'))
+  return(
+    <Route  {...rest} render={props => (
+        
+        exp < Math.floor(Date.now() / 1000) ? (
+          <Component {...props}/>
+        ) : (
+          <Redirect to={{
+            pathname: '/Login',
+            state: {from: props.location}
+          }}/>
+        )
+      )}/>
+  )
+}
 
 class App extends Component {
   constructor(props) {
