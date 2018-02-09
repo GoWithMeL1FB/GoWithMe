@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Card, Col } from 'react-materialize';
 
-import Featured from './featuredDateCourse/featuredDateCourse.jsx'
-import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
+import Featured from './featuredDateCourse/featuredDateCourse.js'
+import OtherDateCourse from './otherDateCourse/otherDateCourse.js';
 
 class HomeView extends Component {
   constructor() {
     super();
     this.state = {
-      events: [{title:'Event 1\'s Title', desc:'Descprition of event 1'},{title:'Event 2\'s Title', desc:'Desccription of event 2'}]
+      events: [],
     }
     this.onClickHandler = this.onClickHandler.bind(this);
   }

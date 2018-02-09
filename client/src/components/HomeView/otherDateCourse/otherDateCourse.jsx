@@ -6,7 +6,7 @@ class otherDateCourse extends Component {
     super(props);
   }
   render() {
-    const url = 'http://images.dailyhive.com/20160602153203/Vancouver-Shutterstock.jpg';
+    const url = ``;
     return (
       <Col s={6}>
         <Card className='small'

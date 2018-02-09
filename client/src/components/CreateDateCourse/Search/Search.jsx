@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
 import Events from '../../global/Events/Events.jsx';
-
 import { DragDropContainer } from 'react-drag-drop-container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,12 +9,10 @@ import { UpdateState } from '../../../ReduxActions/UpdateState.js';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
-
 const foursquare = require('react-foursquare')({
   clientID: id,
   clientSecret: secret
 });
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -24,23 +20,19 @@ class Search extends React.Component {
       city: null,
       state: null,
       query: "event",
-      results: []
+      results: [],
     };
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
-
   }
-
   componentWillMount() {
 
     this.UpdateByLocation();
   }
-
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value})
   }
-
   UpdateByLocation(){
     axios.get("http://ip-api.com/json")
     .then(res => {
@@ -50,7 +42,6 @@ class Search extends React.Component {
         city: res.data.city,
         state: res.data.region
        }); */
-
        //redux state
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
@@ -71,7 +62,6 @@ ClickHandler() {
     venuePhotos: 1,
   }
   */
-
   //redux state
   let params = {
     near: `${this.props.location.city},${this.props.location.state}`,
@@ -79,7 +69,6 @@ ClickHandler() {
     limit: 25,
     venuePhotos: 1,
   }
-
   foursquare.venues.recommendations(params)
   .then(res => {
     console.log('Search response!!!', res)
@@ -89,7 +78,6 @@ ClickHandler() {
     console.log('inside of catch', err)
   });
 }
-
   render() {
     return (
       <div className="container">
@@ -155,14 +143,11 @@ ClickHandler() {
     );
   }
 }
-
-
 function mapStateToProps(state) {
   return {
     location: state.location,
   };
 }
-
 // connect action to this components state
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
@@ -173,6 +158,4 @@ function matchDispatchToProps(dispatch) {
     dispatch
   );
 }
-
-
 export default connect(mapStateToProps, matchDispatchToProps)(Search);
