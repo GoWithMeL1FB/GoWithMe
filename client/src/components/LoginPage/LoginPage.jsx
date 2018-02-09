@@ -63,6 +63,7 @@ class LoginPage extends Component {
           />
           <Input
             s={6}
+            type="password"
             label="Password"
             name="password"
             onChange={this.onChangeHandler}
