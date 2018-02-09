@@ -7,12 +7,10 @@ class Events extends React.Component {
     this.state = {
       favorites: {}
     };
-  
-    this.handleSave = this.handleSave.bind(this);
   }
 
-  handleSave() {
-    console.log("you clicked a button! )^.^(")
+  // handleSave() {
+  //   console.log("you clicked a button! )^.^(")
     //save event to user favorites
     // let event = {};
     // event.id = this.props.id;
@@ -31,19 +29,18 @@ class Events extends React.Component {
     //     console.log('user edit favorite failed', err);
     //   }
     // )
-  }
+  // }
 
   render() {
     const photo = `${this.props.prefix}100x100${this.props.suffix}`
     
     return (
       <div className="container" >
-      <img  src={photo}/>
+        <img  src={photo}/>
         <p >{this.props.name}</p>
-       <p >{this.props.address}</p>
-       <p >Description: {this.props.price} {this.props.category} </p>
-       <button onClick={() => this.handleSave()}>Save</button>
-        </div>
+        <p >{this.props.address}</p>
+        <p >Description: {this.props.price} {this.props.category} </p>
+      </div>
     )
   }
 }
