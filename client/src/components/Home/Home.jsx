@@ -19,17 +19,19 @@ class Home extends Component {
       <div>
       <Nav />
         <Row>
-          <div class="container">
-            <Col s={12} m={12}>
-              <Switch>
-                <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
-                <Route path="/Home/EditProfile" component={EditProfile}/>
-                <Route path="/Home/HomeView" component={HomeView}/>
-                <Route path="/Home/searchEvents" component={SearchEvents} />
-                <Route exact path='/Home' component={HomeView}/>
-              </Switch>
-            </Col>
-          </div>
+        <Col s={3}>
+          <Sidebar />
+          </Col>
+
+          <Col s={12} m={12}>
+            <Switch>
+              <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
+              <Route path="/Home/EditProfile" component={EditProfile}/>
+              <Route path="/Home/HomeView" component={HomeView}/>
+              <Route exact path='/Home' component={HomeView}/>
+              <Route path="/Home/searchEvents" component={SearchEvents} />
+            </Switch>
+          </Col>
         </Row>
         <Footer />
       </div>

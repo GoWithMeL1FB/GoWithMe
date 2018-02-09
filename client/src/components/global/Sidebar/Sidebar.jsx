@@ -6,7 +6,7 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <Col s={3}>
+      
       <SideNav
         trigger={<Button>Account</Button>}
         options={{ closeOnClick: true }}
@@ -26,7 +26,7 @@ class Sidebar extends Component {
         <SideNavItem subheader>Subheader</SideNavItem>
         <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
       </SideNav>
-      </Col>
+     
     )
   }
 }
