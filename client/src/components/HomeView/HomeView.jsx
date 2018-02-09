@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Col } from 'react-materialize';
+import axios from 'axios';
 
 import Featured from './featuredDateCourse/featuredDateCourse.jsx'
 import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
@@ -8,18 +9,32 @@ class HomeView extends Component {
   constructor() {
     super();
     this.state = {
-      events: [],
+      itineraries: [],
     }
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.fetchItineraries = this.fetchItineraries.bind(this);
   }
 
   componentDidMount() {
-    // get all events
+    this.fetchItineraries();
   }
 
-  // onClick for getting more event information
+  async fetchItineraries() {
+    try {
+      const itineraries = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+      console.log('itin', itineraries);
+      itineraries.data.map(itinerary => {
+        this.state.itineraries.push(itinerary);
+      });
+    } catch(err) {
+      console.error('Failed to fetch all itineraries');
+      throw new Error(err);
+    }
+  }
+
+  // onClick for getting more itinerarie information
   onClickHandler() {
-    // do something...like show info? or re-router?
+    console.log('state', this.state);
   }
 
   render() {
@@ -33,9 +48,9 @@ class HomeView extends Component {
       <div>
         <Featured />
         {
-          this.state.events.map((event, index) => (
+          this.state.itineraries.map((itinerary, index) => (
             <OtherDateCourse
-              event={event}
+              itinerary={itinerary}
               key={index}
               onClick={this.onClickHandler}
             />
