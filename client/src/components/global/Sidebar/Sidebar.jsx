@@ -10,7 +10,7 @@ class Sidebar extends Component {
       <SideNav
         trigger={<Button>Account</Button>}
         options={{ closeOnClick: true }}
-        fixed='true'
+        className='side-nav fixed'
       >
         <SideNavItem userView
           user={{
