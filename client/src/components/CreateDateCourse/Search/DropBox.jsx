@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Events from '../../global/Events/Events.jsx';
 
@@ -10,12 +11,50 @@ class DropBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      dateCourse: []
+      dateCourse: [],
+      dateCourseID: ''
     };
+    this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
+    this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
   }
 
-  saveDateCourseEntry = () => {
-    
+  saveDateCourseEntry = async () => {
+    console.log(this.props.dateCourseInfo)
+    let payload = {
+      title: this.props.dateCourseInfo.title,
+      description: this.props.dateCourseInfo.description,
+      image: null,
+      owner: 'David'
+    }
+    try {
+
+      const dateCourseID = await axios.post('http://localhost:3031/api/itinerary/createItinerary', payload)
+      this.setState({
+        dateCourseID: dateCourseID.data._id
+      })
+    } catch (err){   
+      throw new Error(err);
+    }
+    this.state.dateCourse.forEach(event => {
+      console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
+      this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
+    })
+  }
+
+  addEventToDataCourse = async (eventId, itineraryId) => {
+    let payload = {
+      eventId,
+      itineraryId
+    }
+    axios.post('http://localhost:3031/api/itinerary/addEventToItinerary', payload)
+      .then(res => {
+        console.log("events added to the dataCourse", res);
+      })
+      .catch(err => {
+        console.log("events NOT added to the datacourse", err);
+      })
+      
+
   }
 
   handleDrop = (e) => {
@@ -26,8 +65,9 @@ class DropBox extends React.Component {
 
   render () {
     return(
+      
       <Row>
-        <Col s={12}>
+        <Col>
         {
         this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue.venue;
@@ -56,24 +96,33 @@ class DropBox extends React.Component {
           )
         })
         }
+        <center>
         <DropTarget 
           dropData={{
             venue: this.props.venue
           }}
           onHit={this.handleDrop}
           >
-          <Icon>add_circle_outline</Icon>
+          <Icon large>add_circle_outline</Icon>
         </DropTarget>
+        </center>
 
         </Col>
         <Col s={12}>
-          <Button>
+          <Button onClick={this.saveDateCourseEntry}>
             Save 
           </Button>
         </Col>
       </Row>
+      
     )
   }
 }
 
-export default DropBox; 
+function mapStateToProps(state) {
+  return {
+    dateCourseInfo: state.dateCourseInfo
+  }
+}
+
+export default connect(mapStateToProps)(DropBox); 
