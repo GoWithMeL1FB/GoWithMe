@@ -17,7 +17,6 @@ class EditProfile extends Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.showState = this.showState.bind(this);
   }
 
   componentDidMount() {
@@ -41,10 +40,6 @@ class EditProfile extends Component {
     })
   }
 
-  showState() {
-    console.log(this.state);
-  }
-
   render() {
     return (
       <div>
@@ -56,7 +51,6 @@ class EditProfile extends Component {
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
-          <Button waves='light' onClick={this.showState}>state</Button>
         </Row>
       </div>
     )

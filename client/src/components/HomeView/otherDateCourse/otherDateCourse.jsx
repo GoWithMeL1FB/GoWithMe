@@ -7,7 +7,6 @@ class otherDateCourse extends Component {
   }
   render() {
     const url = `https://i.imgur.com/2KoKbtz.gif`;
-    console.log('props', this.props)
     return (
       <Col s={6}>
         <Card className='small'

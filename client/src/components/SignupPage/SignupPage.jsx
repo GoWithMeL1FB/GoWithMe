@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setSignUpInfo } from '../../ReduxActions/setSignUpInfo.js'
 
 class SignupPage extends Component {
   constructor(props) {
@@ -16,6 +19,7 @@ class SignupPage extends Component {
     };
     this.createUser = this.createUser.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.createUserOnKeyUp = this.createUserOnKeyUp.bind(this);
   }
 
   onChangeHandler(e) {
@@ -43,16 +47,22 @@ class SignupPage extends Component {
       email,
       bio,
     };
-    console.log('payload:', payload);
-    axios
-      .post('http://localhost:3030/api/auth/signup', payload)
+
+    axios.post('http://localhost:3030/api/auth/signup', payload)
       .then(res => {
         console.log('user creationg info submitted', res);
+        this.props.setSignUpInfo(this.state.username)
         this.props.redirectToHome();
       })
       .catch(err => {
         console.log('user creation failed', err);
       });
+  }
+
+  createUserOnKeyUp(e) {
+    if (e.key == 'Enter') {
+      this.createUser();
+    }
   }
 
   render() {
@@ -99,6 +109,7 @@ class SignupPage extends Component {
             s={12}
             name="email"
             onChange={this.onChangeHandler}
+            onKeyUp={this.createUserOnKeyUp}
           />
         </Row>
         <Button onClick={this.createUser} className="modal-close">
@@ -109,4 +120,15 @@ class SignupPage extends Component {
   }
 }
 
-export default SignupPage;
+function mapStateToProps(state) {
+  return {
+    username: state.username,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setSignUpInfo: setSignUpInfo,
+  }, dispatch);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(SignupPage)

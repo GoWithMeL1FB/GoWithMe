@@ -7,7 +7,8 @@ import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 import Sidebar from '../global/Sidebar/Sidebar.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
-import CreateDateCourse from '../CreateDateCourse/CreateDateCourse.jsx'
+import CreateDateCourse from '../CreateDateCourse/CreateDateCourse.jsx';
+import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 
 import { Collection, CollectionItem, Col, Row } from 'react-materialize';
 
@@ -20,10 +21,11 @@ class Home extends Component {
         <Row>
           <Col s={12} m={12}>
             <Switch>
-              <Route path="/Home/CreateDateCourse" component={CreateDateCourse}></Route>
-              <Route path="/Home/EditProfile" component={EditProfile}></Route>
-              <Route path="/Home/HomeView" component={HomeView}></Route>
+              <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
+              <Route path="/Home/EditProfile" component={EditProfile}/>
+              <Route path="/Home/HomeView" component={HomeView}/>
               <Route exact path='/Home' component={HomeView}/>
+              <Route path="/Home/searchEvents" component={SearchEvents} />
             </Switch>
           </Col>
         </Row>
