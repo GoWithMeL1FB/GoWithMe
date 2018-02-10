@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Card, Col, Button } from 'react-materialize';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
-import Featured from './featuredDateCourse/featuredDateCourse.jsx'
+import Featured from './featuredDateCourse/featuredDateCourse.jsx';
 import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
 import Search from './Search.jsx';
 
@@ -36,7 +37,7 @@ class HomeView extends Component {
 
   // onClick for logging state
   onClickHandler() {
-    console.log('state', this.state);
+    console.log('state', this.props.username);
   }
 
   // takes data from search and passes to state
@@ -66,4 +67,10 @@ class HomeView extends Component {
   }
 }
 
-export default HomeView;
+function mapStateToProps(state) {
+  return {
+    username: state.username,
+  };
+}
+
+export default connect(mapStateToProps)(HomeView);

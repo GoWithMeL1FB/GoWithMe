@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, CardTitle, Toast } from 'react-materialize';
+import { Card, Col, CardTitle } from 'react-materialize';
 
 class featuredDateCourse extends Component {
   render() {
