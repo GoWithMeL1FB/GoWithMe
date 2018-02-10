@@ -7,4 +7,13 @@ body {
 main {
   flex: 1 0 auto;
 }
-    
+
+.LOGO {
+  margin: auto;
+  display: block;
+}
+
+.fatties {
+  margin: 0;
+  display: block;
+}
