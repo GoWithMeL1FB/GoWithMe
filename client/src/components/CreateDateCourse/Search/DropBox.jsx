@@ -15,7 +15,7 @@ class DropBox extends React.Component {
   }
 
   saveDateCourseEntry = () => {
-    
+    axios.post('http://localhost:3031/api/itinerary/createItinerary')
   }
 
   handleDrop = (e) => {
@@ -70,7 +70,7 @@ class DropBox extends React.Component {
 
         </Col>
         <Col s={12}>
-          <Button>
+          <Button onClick={this.saveDateCourseEntry}>
             Save 
           </Button>
         </Col>

@@ -27,7 +27,6 @@ class Search extends React.Component {
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
   }
   componentWillMount() {
-
     this.UpdateByLocation();
   }
   handleChange(event) {
@@ -134,9 +133,6 @@ ClickHandler() {
               suffix={venue.photo.suffix}
             />
            </DragDropContainer>
-           <button onClick={() => this.handleSave()}>Save</button>
-                attendees='1-2'
-                category='eat'
           </div>
       )})}
         </div>
