@@ -18,7 +18,6 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
-    // this.fetchItineraries();
   }
 
   // fetches all itineraries from the start

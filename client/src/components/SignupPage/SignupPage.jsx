@@ -16,6 +16,7 @@ class SignupPage extends Component {
     };
     this.createUser = this.createUser.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.createUserOnKeyUp = this.createUserOnKeyUp.bind(this);
   }
 
   onChangeHandler(e) {
@@ -43,9 +44,7 @@ class SignupPage extends Component {
       email,
       bio,
     };
-    console.log('payload:', payload);
-    axios
-      .post('http://localhost:3030/api/auth/signup', payload)
+    axios.post('http://localhost:3030/api/auth/signup', payload)
       .then(res => {
         console.log('user creationg info submitted', res);
         this.props.redirectToHome();
@@ -53,6 +52,12 @@ class SignupPage extends Component {
       .catch(err => {
         console.log('user creation failed', err);
       });
+  }
+
+  createUserOnKeyUp(e) {
+    if (e.key == 'Enter') {
+      this.createUser();
+    }
   }
 
   render() {
@@ -99,6 +104,7 @@ class SignupPage extends Component {
             s={12}
             name="email"
             onChange={this.onChangeHandler}
+            onKeyUp={this.createUserOnKeyUp}
           />
         </Row>
         <Button onClick={this.createUser} className="modal-close">

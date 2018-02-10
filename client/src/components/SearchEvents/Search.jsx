@@ -18,7 +18,7 @@ export default class Search extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get('http://localhost:3031/api/events/getAllEvents');
     if (data) {
       const config = {
         shouldSort: true,
@@ -55,7 +55,7 @@ export default class Search extends Component {
   }
 
   async fetchEvents() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get('http://localhost:3031/api/events/getAllEvents');
     this.setState({
       searched: data,
     });
@@ -66,7 +66,7 @@ export default class Search extends Component {
       [e.target.name]: e.target.value,
       searched: this.state.fuse.search(this.state.query),
     });
-    this.props.itinSetter(this.state.searched);
+    this.props.eventSetter(this.state.searched);
   }
 
   onKeyUp(e) {
@@ -83,7 +83,7 @@ export default class Search extends Component {
             s={12} m={12}
             type="text"
             name="query"
-            label="Search itineraries"
+            label="Search events"
             onChange={this.onChangeHandler}
             onKeyPress={this.onKeyUp}
 
