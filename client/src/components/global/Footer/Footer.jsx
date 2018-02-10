@@ -11,6 +11,7 @@ import redux from '../../../../../fakeDatas/redux.svg';
 import react from '../../../../../fakedatas/React.svg';
 import nginx from '../../../../../fakedatas/nginx.png';
 import redis from '../../../../../fakeDatas/redis.svg';
+import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
 
   render() {
