@@ -81,7 +81,7 @@ ClickHandler() {
   render() {
     return (
       <div className="container">
-        <p>Search</p>
+        <center>Search</center>
         <div className="row">
           <div className="col-25" />
           <div className="col-75">

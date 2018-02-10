@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { Row, Col } from 'react-materialize';
+
 import Search from './Search/Search.jsx';
 import DropBox from './Search/DropBox.jsx';
+import CourseInfo from './CourseInfo/CourseInfo.jsx';
 
 class CreateDateCourse extends Component {
   constructor(props) {
@@ -15,16 +17,17 @@ class CreateDateCourse extends Component {
 
   render () {
     return(
-      <center>
+      // <center>
       <Row>
         <Col s={8}>
+          <CourseInfo></CourseInfo>
           <Search></Search>
         </Col>
         <Col s={4}>
           <DropBox></DropBox>
         </Col>
       </Row>
-      </center>
+      // </center>
     )
   }
 }

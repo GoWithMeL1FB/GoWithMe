@@ -26,8 +26,9 @@ class DropBox extends React.Component {
 
   render () {
     return(
+      
       <Row>
-        <Col s={12}>
+        <Col>
         {
         this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue.venue;
@@ -56,14 +57,16 @@ class DropBox extends React.Component {
           )
         })
         }
+        <center>
         <DropTarget 
           dropData={{
             venue: this.props.venue
           }}
           onHit={this.handleDrop}
           >
-          <Icon>add_circle_outline</Icon>
+          <Icon large>add_circle_outline</Icon>
         </DropTarget>
+        </center>
 
         </Col>
         <Col s={12}>
@@ -72,6 +75,7 @@ class DropBox extends React.Component {
           </Button>
         </Col>
       </Row>
+      
     )
   }
 }
