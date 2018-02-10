@@ -18,8 +18,6 @@ class Home extends Component {
       <div>
         <Nav />
         <Row>
-          <Sidebar />
-
           <Col s={12} m={12}>
             <Switch>
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse}></Route>
