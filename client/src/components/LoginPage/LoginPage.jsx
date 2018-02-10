@@ -18,10 +18,6 @@ class LoginPage extends Component {
     this.logState = this.logState.bind(this);
   }
 
-  logState() {
-    console.log(this.state);
-  }
-
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value,

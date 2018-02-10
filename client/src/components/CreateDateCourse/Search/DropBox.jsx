@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Events from '../../global/Events/Events.jsx';
 
@@ -12,10 +13,25 @@ class DropBox extends React.Component {
     this.state = {
       dateCourse: []
     };
+    this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
   }
 
-  saveDateCourseEntry = () => {
-    axios.post('http://localhost:3031/api/itinerary/createItinerary')
+   saveDateCourseEntry = async () => {
+    console.log(this.props.dateCourseInfo)
+    let payload = {
+      title: this.props.dateCourseInfo.title,
+      description: this.props.dateCourseInfo.description,
+      image: null,
+      owner: 'David'
+    }
+    axios.post('http://localhost:3031/api/itinerary/createItinerary', payload)
+      .then(res => {
+        // console.log('saveDateCourseEntry returns:', res);
+        console.log(res.data._id);
+      })
+      .catch(err => {
+        console.log('saveDateCourseEntry failed', err)
+      })
   }
 
   handleDrop = (e) => {
@@ -80,4 +96,10 @@ class DropBox extends React.Component {
   }
 }
 
-export default DropBox; 
+function mapStateToProps(state) {
+  return {
+    dateCourseInfo: state.dateCourseInfo
+  }
+}
+
+export default connect(mapStateToProps)(DropBox); 
