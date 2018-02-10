@@ -11,12 +11,14 @@ class DropBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      dateCourse: []
+      dateCourse: [],
+      dateCourseID: ''
     };
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
+    this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
   }
 
-   saveDateCourseEntry = async () => {
+  saveDateCourseEntry = async () => {
     console.log(this.props.dateCourseInfo)
     let payload = {
       title: this.props.dateCourseInfo.title,
@@ -24,14 +26,35 @@ class DropBox extends React.Component {
       image: null,
       owner: 'David'
     }
-    axios.post('http://localhost:3031/api/itinerary/createItinerary', payload)
+    try {
+
+      const dateCourseID = await axios.post('http://localhost:3031/api/itinerary/createItinerary', payload)
+      this.setState({
+        dateCourseID: dateCourseID.data._id
+      })
+    } catch (err){   
+      throw new Error(err);
+    }
+    this.state.dateCourse.forEach(event => {
+      console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
+      this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
+    })
+  }
+
+  addEventToDataCourse = async (eventId, itineraryId) => {
+    let payload = {
+      eventId,
+      itineraryId
+    }
+    axios.post('http://localhost:3031/api/itinerary/addEventToItinerary', payload)
       .then(res => {
-        // console.log('saveDateCourseEntry returns:', res);
-        console.log(res.data._id);
+        console.log("events added to the dataCourse", res);
       })
       .catch(err => {
-        console.log('saveDateCourseEntry failed', err)
+        console.log("events NOT added to the datacourse", err);
       })
+      
+
   }
 
   handleDrop = (e) => {
