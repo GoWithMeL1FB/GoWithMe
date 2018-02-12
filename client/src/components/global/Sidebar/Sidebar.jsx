@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { SideNav, SideNavItem, Button, Col } from 'react-materialize';
-
+import { Row, Col } from 'react-materialize';
+import './Sidebar.css'
 class Sidebar extends Component {
 
   render() {
     return (
-      
-      <SideNav
-        trigger={<Button>Account</Button>}
-        options={{ closeOnClick: true }}
-        className='side-nav fixed'
-      >
-        <SideNavItem userView
-          user={{
-            background: '../../temp/download.jpeg',
-            image: '../../../../../fakeDatas/davidprof.jpg',
-            name: 'David Chung',
-            email: 'david@david.com'
-          }}
-        />
-        <SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
-        <SideNavItem href='#!second'>Second Link</SideNavItem>
-        <SideNavItem divider />
-        <SideNavItem subheader>Subheader</SideNavItem>
-        <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
-      </SideNav>
-     
+      <div className="User">
+      <Row className="User">
+        <Col s={3} m={3}>
+        <div>
+        <img src="assets/images/prof.jpg"/>
+        </div>
+       
+        <p>David Chung</p>
+        <p>david@david.com</p>
+          
+        </Col>
+      </Row>
+  
+     </div>
     )
   }
 }

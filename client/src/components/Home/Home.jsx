@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import '../../../public/css/materialize.css'
 import { Route, Switch } from 'react-router-dom';
-
+import './Home.css'
 import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
@@ -17,13 +17,14 @@ class Home extends Component {
   render() {
     return (
       <div>
-      <Nav />
-        <Row>
-        <Col s={3}>
+        <Nav />
+        
+        <Row> 
+          <Col s={3} m={3}>      
           <Sidebar />
           </Col>
-
-          <Col s={12} m={12}>
+          <Col offset='m3' s={9} m={9} >
+          
             <Switch>
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
               <Route path="/Home/EditProfile" component={EditProfile}/>
@@ -31,8 +32,10 @@ class Home extends Component {
               <Route exact path='/Home' component={HomeView}/>
               <Route path="/Home/searchEvents" component={SearchEvents} />
             </Switch>
+            
           </Col>
         </Row>
+        
         <Footer />
       </div>
     )
