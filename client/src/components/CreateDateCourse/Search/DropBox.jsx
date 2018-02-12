@@ -35,16 +35,17 @@ class DropBox extends React.Component {
     } catch (err){   
       throw new Error(err);
     }
+    
     this.state.dateCourse.forEach(event => {
       console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
-      this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
+      this.addEventToDataCourse(this.state.dateCourseID, event)
     })
   }
 
-  addEventToDataCourse = async (eventId, itineraryId) => {
+  addEventToDataCourse = async (eID, itiID) => {
     let payload = {
-      eventId,
-      itineraryId
+      eventId: eID,
+      itineraryId: itiID
     }
     axios.post('http://localhost:3031/api/itinerary/addEventToItinerary', payload)
       .then(res => {
