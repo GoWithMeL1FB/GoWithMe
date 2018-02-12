@@ -15,7 +15,6 @@ class LoginPage extends Component {
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.loginUser = this.loginUser.bind(this);
-    this.logState = this.logState.bind(this);
   }
 
   onChangeHandler(e) {
