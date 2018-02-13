@@ -71,7 +71,8 @@ class DropBox extends React.Component {
         <Col>
         {
         this.state.dateCourse.map((v) => {
-          let venue = v.dragData.venue.venue;
+          console.log(v);
+          let venue = v.dragData.venue;
           let pObj = v.dragData.venue;
           
           return (
@@ -86,11 +87,11 @@ class DropBox extends React.Component {
             <Events 
               id={venue.id}
               name={venue.name}
-              address={venue.location.address}
+              address={venue.location}
 
-              category={venue.categories[0].name}
-              prefix={pObj.photo.prefix}
-              suffix={pObj.photo.suffix}
+              category={venue.description}
+              prefix={venue.prefix}
+              suffix={venue.suffix}
             />
           </DragDropContainer>
           </div>

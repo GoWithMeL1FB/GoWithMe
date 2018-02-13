@@ -30,10 +30,9 @@ class CourseInfo extends Component {
   render () {
     return(
       <Row>
-        <center>Date Course Name</center>
+        <div>Date Course Name</div>
         <Input 
           s={12}
-          label="Taco Trip"
           name="title"
           onChange={this.titleOnChangeHandler}
         />
@@ -41,7 +40,6 @@ class CourseInfo extends Component {
         <Input
           s={12}
           name="description"
-          label="About Taco Trip"
           onChange={this.desOnChangeHandler}
           />
       </Row>

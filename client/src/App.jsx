@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    console.log('props for App', this.props)
     return (
 
       <div className="container">
