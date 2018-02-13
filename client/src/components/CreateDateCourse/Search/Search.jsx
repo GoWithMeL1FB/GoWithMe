@@ -140,6 +140,7 @@ ClickHandler() {
 
         {
           this.state.results.map(result => {
+            // console.log(result.photo)
             if (!!result.venue) {
               let payload = {
                 id: result.id,
@@ -147,9 +148,15 @@ ClickHandler() {
                 location: result.venue.location.address,
                 price: result.price?price:null,
                 description: result.venue.categories[0].name,
-                prefix: (!!result.photo && !!result.photo.prefix)?result.photo.prefix:result.photo.prefix=null,
-                suffix: (!!result.photo && !!result.photo.suffix)?result.photo.suffix:result.photo.prefix=null
+                prefix: null,
+                suffix: null
               }
+              // console.log('before', payload)
+              if (result.photo) {
+                payload.prefix = result.photo.prefix;
+                payload.suffix = result.photo.suffix;
+              }
+              // console.log('after', payload)
               return <EventRender venue={payload}/>
             } else {
               //return result could not be found
