@@ -161,7 +161,7 @@ ClickHandler() {
             } else {
               //return result could not be found
               return <div>
-                       <Icon large>sad_mood</Icon>
+                       <Icon large>sentiment_very_dissatisfied</Icon>
                        <h1>Could not find the result</h1>
                      </div>
             }
