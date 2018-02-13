@@ -89,8 +89,8 @@ class DropBox extends React.Component {
               address={venue.location.address}
 
               category={venue.categories[0].name}
-              prefix={pObj.photo.prefix}
-              suffix={pObj.photo.suffix}
+              prefix={pObj.photo.prefix?venue.prefix=venue.prefix:venue.prefix=null}
+              suffix={pObj.photo.suffix?venue.suffix=venue.suffix:venue.suffix=null}
             />
           </DragDropContainer>
           </div>

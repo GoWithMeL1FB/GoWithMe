@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import Events from '../../global/Events/Events.jsx';
-import { DragDropContainer } from 'react-drag-drop-container';
+import { Icon } from 'react-materialize';
+
+import EventRender from '../Search/EventRender.jsx';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { UpdateCity } from '../../../ReduxActions/UpdateCity.js';
 import { UpdateState } from '../../../ReduxActions/UpdateState.js';
+import { ErrorBoundary } from 'react-error-boundaries';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';
@@ -13,7 +16,7 @@ const foursquare = require('react-foursquare')({
   clientID: id,
   clientSecret: secret
 });
-class Search extends React.Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,17 +24,26 @@ class Search extends React.Component {
       state: null,
       query: "event",
       results: [],
+      resultChecker: false
     };
     this.handleChange = this.handleChange.bind(this)
     this.ClickHandler = this.ClickHandler.bind(this);
     this.UpdateByLocation = this.UpdateByLocation.bind(this);
+    this.sendNoResult = this.sendNoResult.bind(this);
   }
+
+  sendNoResult() {
+    this.setState({resultChecker: true});
+  }
+
   componentWillMount() {
     this.UpdateByLocation();
   }
+
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value})
   }
+
   UpdateByLocation(){
     axios.get("http://ip-api.com/json")
     .then(res => {
@@ -45,7 +57,6 @@ class Search extends React.Component {
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
       console.log(this.props.location.city);
-
     }).catch(err => {
       console.error('Get location err', err);
     })
@@ -71,13 +82,30 @@ ClickHandler() {
   foursquare.venues.recommendations(params)
   .then(res => {
     console.log('Search response!!!', res)
-    this.setState({results: res.response.group.results})
+    if (res.response.group.totalResults >= 1) {
+      this.setState({results: res.response.group.results})
+    } else {
+      console.log('it faileddddd') //render cannot find <>
+      this.sendNoResult();
+    }
   })
   .catch(err => {
     console.log('inside of catch', err)
   });
 }
   render() {
+    
+    let noResult = null;
+    if (this.state.resultChecker) {
+      noResult = 
+      <div>
+        <Icon large>mood</Icon>
+        <h1>No result</h1>
+      </div>;
+    } else {
+      noResult = null
+    }
+
     return (
       <div className="container">
         <center>Search</center>
@@ -110,31 +138,31 @@ ClickHandler() {
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
 
-        {this.state.results.map(venue => {
-          let price = venue.venue.price?venue.venue.price.message:null;
-          return(
-          <div key={venue.id}>
-          <DragDropContainer
-            item={venue}
-            returnToBase={true}
-            dragData={{
-              venue: venue
-            }}
-            >
-            <Events
-              id={venue.id}
-              title={venue.venue.name}
-              location={venue.venue.location.address}
-              price={price}
-              category='eat'
-              description={venue.venue.categories[0].name}
-              attendees='1-2'
-              prefix={venue.photo.prefix}
-              suffix={venue.photo.suffix}
-            />
-           </DragDropContainer>
-          </div>
-      )})}
+        {
+          this.state.results.map(result => {
+            if (!!result.venue) {
+              let payload = {
+                id: result.id,
+                name: result.venue.name,
+                location: result.venue.location.address,
+                price: result.price?price:null,
+                description: result.venue.categories[0].name,
+                prefix: (!!result.photo && !!result.photo.prefix)?result.photo.prefix:result.photo.prefix=null,
+                suffix: (!!result.photo && !!result.photo.suffix)?result.photo.suffix:result.photo.prefix=null
+              }
+              return <EventRender venue={payload}/>
+            } else {
+              //return result could not be found
+              return <div>
+                       <Icon large>sad_mood</Icon>
+                       <h1>Could not find the result</h1>
+                     </div>
+            }
+          })
+        }
+
+        {noResult}
+
         </div>
     );
   }
