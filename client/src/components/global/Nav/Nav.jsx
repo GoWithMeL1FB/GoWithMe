@@ -14,6 +14,7 @@ class Nav extends Component {
           <li><Link to="/Home"><Icon>turned_in</Icon>Courses</Link></li>
           <li><Link to="/Home/editProfile"><Icon>account_circle</Icon>Account</Link></li>
         </Navbar>
+
       </div>
     )
   }

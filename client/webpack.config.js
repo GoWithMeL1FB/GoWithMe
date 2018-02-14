@@ -10,7 +10,6 @@ module.exports = {
   watch: true,
   module: {
     loaders: [
-      
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -25,9 +24,10 @@ module.exports = {
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
     {
+
       test: /\.(png|svg|jpg|jpeg|gif)$/,
       use: [
-        'file-loader'
+        'file-loader',
       ]
     },
     {
@@ -37,7 +37,7 @@ module.exports = {
       ]
     }
     ]}
-    
+
 };
 
 //try to fix the path to get the react page to Rende

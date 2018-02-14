@@ -53,6 +53,7 @@ class SignupPage extends Component {
         console.log('user creationg info submitted', res);
         this.props.setSignUpInfo(this.state.username)
         this.props.redirectToHome();
+        this.props.history.push('/Home');
       })
       .catch(err => {
         console.log('user creation failed', err);
@@ -68,8 +69,9 @@ class SignupPage extends Component {
   render() {
     return (
       <Modal
+        
         header="Registration"
-        trigger={<Button waves="light">Signup</Button>}
+        trigger={<Button large waves="light">Get Started</Button>}
       >
         <Row>
           <Input

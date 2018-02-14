@@ -38,7 +38,7 @@ class DropBox extends React.Component {
     
     this.state.dateCourse.forEach(event => {
       console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
-      this.addEventToDataCourse(this.state.dateCourseID, event)
+      this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
     })
   }
 
@@ -47,6 +47,7 @@ class DropBox extends React.Component {
       eventId: eID,
       itineraryId: itiID
     }
+    console.log(payload)
     axios.post('http://localhost:3031/api/itinerary/addEventToItinerary', payload)
       .then(res => {
         console.log("events added to the dataCourse", res);
@@ -88,7 +89,6 @@ class DropBox extends React.Component {
               id={venue.id}
               name={venue.name}
               address={venue.location}
-
               category={venue.description}
               prefix={venue.prefix}
               suffix={venue.suffix}

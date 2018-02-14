@@ -64,7 +64,7 @@ class LoginPage extends Component {
             name="password"
             onChange={this.onChangeHandler}
           />
-          <Button onClick={this.loginUser}>Submit</Button>
+          <Button onClick={this.loginUser}>Log in</Button>
           <button>
             <a href="#" className="fa fa-facebook"></a>
           </button>

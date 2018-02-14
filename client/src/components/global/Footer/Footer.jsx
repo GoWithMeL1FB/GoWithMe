@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import './Footer.css';
-import mongo from '../../../../../fakeDatas/mongodb.svg';
-import js from '../../../../../fakeDatas/js.svg';
-import docker from '../../../../../fakeDatas/docker.svg';
-import aws from '../../../../../fakeDatas/aws.svg'
-import mysql from '../../../../../fakeDatas/mysql.svg';
-import node from '../../../../../fakeDatas/Node.svg';
-import redux from '../../../../../fakeDatas/redux.svg';
-import react from '../../../../../fakedatas/React.svg';
-import nginx from '../../../../../fakedatas/nginx.png';
-import redis from '../../../../../fakeDatas/redis.svg';
+import mongo from '../../../../public/mongo.svg';
+import js from '../../../../public/nodejs.svg';
+import docker from '../../../../public/docker.svg';
+import aws from '../../../../public/aws.svg'
+import mysql from '../../../../public/mysql.svg';
+import node from '../../../../public/nodejs.svg';
+import redux from '../../../../public/redux.svg';
+import react from '../../../../public/react.svg';
+import nginx from '../../../../public/ngnix.png';
+import redis from '../../../../public/redis.svg';
 // import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
 
   render() {
     return (
-        <footer className="page-footer brown lighten-1">
+        <footer className="page-footer blue-grey darken-3">
             <div className="container">
                 <div className="row">
                     <div className="col l12 s12">
-                        <h5 className="white-text">go with me</h5>
+                        <h5 className="white-text">Tech Stacks</h5>
                         <p className="grey-text text-lighten-4"></p>
                         <div>
                             <Row>

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Row, Input, Button, Toast } from 'react-materialize';
+import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materialize';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 //const imageshack = require('imageshack');
+
+import david from '../temp/prof.jpg';
+import bg from '../temp/download.jpeg';
 
 class EditProfile extends Component {
   constructor(props) {
