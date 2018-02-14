@@ -24,10 +24,10 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-    console.log('props username', this.props.username);
-    setState({
-      username: this.props.username,
-    })
+    console.log('props username', this.props);
+    this.setState({
+      username: this.props.UN,
+    });
   }
 
   // send an update to the database
@@ -63,4 +63,10 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+function mapStateToProps(state) {
+  return {
+    UN: state.UN,
+  };
+}
+
+export default connect(mapStateToProps)(EditProfile);
