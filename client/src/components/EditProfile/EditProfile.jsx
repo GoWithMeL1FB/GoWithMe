@@ -63,6 +63,20 @@ class EditProfile extends Component {
       <div>
         <span>Edit Profile</span>
         <Row>
+        <Dropzone 
+                accept="image/jpeg, image/jpg, image/png"
+                multiple={false}
+                onDropAccepted={ this._onDrop.bind(this) } maxSize={ 2000000 }
+                onDragLeave= {this._onDrop.bind(this) } maxSize={ 2000000 }
+              >
+                <div>
+                  Click or drag photo here! Limit 2mb.
+                    {!this.state.imagePrev ? null : <div>Preview: <br/><img style={{maxHeight: '120px'}} src={this.state.imagePrev} /></div> }
+                </div>
+              </Dropzone>
+
+          </Row>
+        <Row>
           <Input s={6} name="firstname" label="First Name" onChange={this.onChangeHandler}/>
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
