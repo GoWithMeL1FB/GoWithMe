@@ -11,6 +11,7 @@ import HomeView from '../HomeView/HomeView.jsx';
 // import Sidebar from '../Sidebar/Sidebar.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
+import Favorites from '../Favorites/favorites.jsx';
 
 
 class Home extends Component {
@@ -27,11 +28,12 @@ class Home extends Component {
           <Col offset='m3' s={9} m={9} >
           
             <Switch>
-              <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
-              <Route path="/Home/EditProfile" component={EditProfile}/>
-              <Route path="/Home/HomeView" component={HomeView}/>
-              <Route exact path='/Home' component={HomeView}/>
+              <Route path="/Home/favorites" component={Favorites} />
+              <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
+              <Route path="/Home/EditProfile" component={EditProfile} />
+              <Route path="/Home/HomeView" component={HomeView} />
               <Route path="/Home/searchEvents" component={SearchEvents} />
+              <Route path='/Home' component={HomeView} />
             </Switch>
             
           </Col>
