@@ -8,7 +8,7 @@ import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
-// import Sidebar from '../Sidebar/Sidebar.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 import Favorites from '../Favorites/favorites.jsx';
@@ -22,8 +22,10 @@ class Home extends Component {
         <Nav />
 
         <Row>
-          <Col s={12} m={12} >
-
+          <Col s={3} m={3}>
+            <Sidebar />
+          </Col>
+          <Col s={9} m={9} >
             <Switch>
               <Route path="/Home/favorites" component={Favorites} />
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
