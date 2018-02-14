@@ -3,6 +3,8 @@ import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materiali
 import { connect } from 'react-redux';
 import axios from 'axios';
 import url from '../../../config';
+import Dropzone from 'react-dropzone';
+//const imageshack = require('imageshack');
 
 import david from '../temp/prof.jpg';
 import bg from '../temp/download.jpeg';
@@ -18,9 +20,12 @@ class EditProfile extends Component {
       bio: 'is tired most of the time',
       birthday: 1992,
       username: '',
+      profileimage: null,
+
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +51,13 @@ class EditProfile extends Component {
     })
   }
 
+  onDrop (files) {
+    let file = files[0];
+    console.log('file dropped!', file)
+    this.setState({image: file})
+
+  }
+
   render() {
     return (
       <div>
@@ -55,6 +67,7 @@ class EditProfile extends Component {
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
+          <Input s={6} name="profileImage" label="Image" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
         </Row>
