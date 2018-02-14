@@ -18,7 +18,7 @@ export default class Search extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
     if (data) {
       const config = {
         shouldSort: true,
@@ -55,7 +55,7 @@ export default class Search extends Component {
   }
 
   async fetchEvents() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
     this.setState({
       searched: data,
     });
