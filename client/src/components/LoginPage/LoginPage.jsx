@@ -35,8 +35,9 @@ class LoginPage extends Component {
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
 
-      this.props.redirectToHome();
+      // this.props.redirectToHome();
       console.log('Log in Successful! res:', results);
+      window.location.replace(window.location.href+'/Home');
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
@@ -63,7 +64,7 @@ class LoginPage extends Component {
             name="password"
             onChange={this.onChangeHandler}
           />
-          <Button onClick={this.loginUser}>Submit</Button>
+          <Button onClick={this.loginUser}>Log in</Button>
           <button>
             <a href="#" className="fa fa-facebook"></a>
           </button>

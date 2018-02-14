@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import './Footer.css';
-import mongo from 'mongo.svg';
-import js from 'nodejs.svg';
-import docker from 'docker.svg';
-import aws from 'aws.svg'
-import mysql from 'mysql.svg';
-import node from 'nodejs.svg';
-import redux from 'redux.svg';
-import react from 'react.svg';
-import nginx from 'nginx.png';
-import redis from 'redis.svg';
+import mongo from '../../../../public/mongo.svg';
+import js from '../../../../public/nodejs.svg';
+import docker from '../../../../public/docker.svg';
+import aws from '../../../../public/aws.svg'
+import mysql from '../../../../public/mysql.svg';
+import node from '../../../../public/nodejs.svg';
+import redux from '../../../../public/redux.svg';
+import react from '../../../../public/react.svg';
+import nginx from '../../../../public/react.svg';
+import redis from '../../../../public/redis.svg';
 // import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
 
@@ -20,7 +20,7 @@ class Footer extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col l12 s12">
-                        <h5 className="white-text">go with me</h5>
+                        <h5 className="white-text">Tech Stacks</h5>
                         <p className="grey-text text-lighten-4"></p>
                         <div>
                             <Row>
