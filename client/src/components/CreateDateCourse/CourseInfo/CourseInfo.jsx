@@ -31,7 +31,7 @@ class CourseInfo extends Component {
     return(
       <Row>
         <div>Date Course Name</div>
-        <Input 
+        <Input
           s={12}
           name="title"
           onChange={this.titleOnChangeHandler}
