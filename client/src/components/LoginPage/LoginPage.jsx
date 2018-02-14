@@ -35,9 +35,8 @@ class LoginPage extends Component {
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
 
-      // this.props.redirectToHome();
+      this.props.redirectToHome();
       console.log('Log in Successful! res:', results);
-      window.location.replace(window.location.href+'/Home');
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
