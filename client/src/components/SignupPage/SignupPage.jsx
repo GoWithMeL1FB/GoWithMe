@@ -125,7 +125,7 @@ class SignupPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    username: state.username,
+    signupUsername: state.setSignupUsername,
   };
 }
 

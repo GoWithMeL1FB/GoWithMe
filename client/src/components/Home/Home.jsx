@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-// import '../../../public/css/materialize.css'
+import { Collection, CollectionItem, Col, Row } from 'react-materialize';
 import { Route, Switch } from 'react-router-dom';
+
+// import '../../../public/css/materialize.css'
 import './Home.css'
 import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
+// import Sidebar from '../Sidebar/Sidebar.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 
-import { Collection, CollectionItem, Col, Row } from 'react-materialize';
 
 class Home extends Component {
 

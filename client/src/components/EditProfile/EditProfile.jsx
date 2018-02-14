@@ -27,7 +27,7 @@ class EditProfile extends Component {
   componentDidMount() {
     console.log('props username', this.props);
     this.setState({
-      username: this.props.UN,
+      username: this.props.loginUsername,
     });
   }
 
@@ -77,7 +77,6 @@ class EditProfile extends Component {
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
-          <Input s={6} name="profileImage" label="Image" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
         </Row>
@@ -88,7 +87,7 @@ class EditProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    UN: state.UN,
+    loginUsername: state.setloginUsername,
   };
 }
 
