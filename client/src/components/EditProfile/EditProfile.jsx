@@ -22,7 +22,6 @@ class EditProfile extends Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onDrop = this.onDrop.bind(this);
     this.logState = this.logState.bind(this);
   }
 
@@ -64,12 +63,6 @@ class EditProfile extends Component {
     })
   }
 
-  onDrop (files) {
-    let file = files[0];
-    console.log('file dropped!', file)
-    this.setState({image: file})
-  }
-
   logState() {
     console.log(this.state);
   }
@@ -78,20 +71,6 @@ class EditProfile extends Component {
     return (
       <div>
         <span>Edit Profile</span>
-        <Row>
-        <Dropzone 
-                accept="image/jpeg, image/jpg, image/png"
-                multiple={false}
-                onDropAccepted={ this._onDrop.bind(this) } maxSize={ 2000000 }
-                onDragLeave= {this._onDrop.bind(this) } maxSize={ 2000000 }
-              >
-                <div>
-                  Click or drag photo here! Limit 2mb.
-                    {!this.state.imagePrev ? null : <div>Preview: <br/><img style={{maxHeight: '120px'}} src={this.state.imagePrev} /></div> }
-                </div>
-              </Dropzone>
-
-          </Row>
         <Row>
           <Input s={6} name="firstname" label="First Name" onChange={this.onChangeHandler}/>
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>

@@ -8,7 +8,7 @@ import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
-// import Sidebar from '../Sidebar/Sidebar.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 import Favorites from '../Favorites/favorites.jsx';
