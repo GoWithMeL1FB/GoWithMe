@@ -9,7 +9,7 @@ import mysql from '../../../../public/mysql.svg';
 import node from '../../../../public/nodejs.svg';
 import redux from '../../../../public/redux.svg';
 import react from '../../../../public/react.svg';
-import nginx from '../../../../public/react.svg';
+import nginx from '../../../../public/ngnix.png';
 import redis from '../../../../public/redis.svg';
 // import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
