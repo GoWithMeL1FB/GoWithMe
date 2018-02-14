@@ -68,8 +68,9 @@ class SignupPage extends Component {
   render() {
     return (
       <Modal
+        
         header="Registration"
-        trigger={<Button waves="light">Signup</Button>}
+        trigger={<Button large waves="light">Get Started</Button>}
       >
         <Row>
           <Input

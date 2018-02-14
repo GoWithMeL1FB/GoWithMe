@@ -88,7 +88,6 @@ class DropBox extends React.Component {
               id={venue.id}
               name={venue.name}
               address={venue.location}
-
               category={venue.description}
               prefix={venue.prefix}
               suffix={venue.suffix}
