@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Icon } from 'react-materialize';
 import axios from 'axios';
 import fuse from 'fuse.js';
+import url from '../../../config';
 
 export default class Search extends Component {
   constructor(props) {

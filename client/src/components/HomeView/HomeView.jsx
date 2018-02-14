@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Featured from './featuredDateCourse/featuredDateCourse.jsx';
 import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
 import Search from './Search.jsx';
+import url from '../../../config';
 
 class HomeView extends Component {
   constructor() {

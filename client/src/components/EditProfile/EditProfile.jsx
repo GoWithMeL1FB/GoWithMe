@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materialize';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Dropzone from 'react-dropzone';
-//const imageshack = require('imageshack');
+import url from '../../../config';
 
 import david from '../temp/prof.jpg';
 import bg from '../temp/download.jpeg';
@@ -12,15 +11,13 @@ class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '5',
       firstname: 'kevin',
       lastname: 'vo',
       username: 'kevinvoduy',
       email: 'kevin123@apple.com',
       bio: 'is tired most of the time',
       birthday: 1992,
-      profileimage: null,
-      
+      username: '',
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -28,7 +25,10 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-
+    console.log('props username', this.props.username);
+    setState({
+      username: this.props.username,
+    })
   }
 
   // send an update to the database
@@ -36,7 +36,6 @@ class EditProfile extends Component {
     try {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
-      console.log(data.data);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
