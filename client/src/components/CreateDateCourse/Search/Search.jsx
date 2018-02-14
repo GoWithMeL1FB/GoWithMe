@@ -99,7 +99,7 @@ ClickHandler() {
     if (this.state.resultChecker) {
       noResult = 
       <div>
-        <Icon large>mood</Icon>
+        <Icon large>sentiment_very_dissatisfied</Icon>
         <h1>No result</h1>
       </div>;
     } else {
