@@ -49,11 +49,11 @@ class SignupPage extends Component {
       bio,
     };
 
-    axios.post(`${url.restServer}/api/auth/signup`, payload)
+    axios.post(`http://localhost:3030/api/auth/test`, payload)
       .then(res => {
         console.log('user creationg info submitted', res);
         this.props.setSignUpInfo(this.state.username)
-        this.props.redirectToHome();
+        // this.props.redirectToHome();
         this.props.history.push('/Home');
       })
       .catch(err => {

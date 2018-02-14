@@ -42,8 +42,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'DEV_REST_SERVER_URL': JSON.stringify(process.env.DEV_REST_SERVER_URL),
+        'DEV_EVENT_SERVER_URL': JSON.stringify(process.env.DEV_EVENT_SERVER_URL),
         'REST_SERVER_URL': JSON.stringify(process.env.REST_SERVER_URL),
-        'EVENT_SERVER_URL': JSON.stringify(process.env.SOCKET_SERVER_URL),
+        'EVENT_SERVER_URL': JSON.stringify(process.env.EVENT_SERVER_URL),
       }
     }),
   ]

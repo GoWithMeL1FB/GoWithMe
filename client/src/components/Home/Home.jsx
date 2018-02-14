@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 import EditProfile from '../EditProfile/EditProfile.jsx';
 import Nav from '../global/Nav/Nav.jsx';
 import Footer from '../global/Footer/Footer.jsx';
-import Sidebar from '../global/Sidebar/Sidebar.jsx';
 import HomeView from '../HomeView/HomeView.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';

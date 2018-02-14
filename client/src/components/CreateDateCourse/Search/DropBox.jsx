@@ -6,6 +6,7 @@ import Events from '../../global/Events/Events.jsx';
 
 import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
 import { Row, Col, Icon, Button } from 'react-materialize';
+import url from '../../../../config';
 
 class DropBox extends React.Component {
   constructor(props){

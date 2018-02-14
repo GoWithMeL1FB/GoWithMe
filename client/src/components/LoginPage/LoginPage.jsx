@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
+import url from '../../../config';
 
-import './button.css';
 import Home from '../Home/Home.jsx'
+import './button.css';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class LoginPage extends Component {
 
       this.props.redirectToHome();
       console.log('Log in Successful! res:', results);
+      window.location.replace(window.location.href+'Home');
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
