@@ -16,7 +16,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div class="container">
         <Nav />
         <Row>
           <Col s={12} m={12}>
