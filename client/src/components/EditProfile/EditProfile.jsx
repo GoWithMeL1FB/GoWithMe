@@ -11,24 +11,40 @@ class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: 'kevin',
-      lastname: 'vo',
-      username: 'kevinvoduy',
-      email: 'kevin123@apple.com',
-      bio: 'is tired most of the time',
-      birthday: 1992,
+      firstname: '',
+      lastname: '',
       username: '',
+      email: '',
+      bio: '',
+      birthday: 0,
+      profileimage: null,
+
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onDrop = this.onDrop.bind(this);
+    this.logState = this.logState.bind(this);
   }
 
   componentDidMount() {
-    console.log('props username', this.props);
     this.setState({
-      username: this.props.loginUsername,
+      username: this.props.loginUsername.username,
     });
+    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.loginUsername.username}`)
+      .then((data) => {
+        const { firstname, lastname, email, bio, birthday } = data.data[0];
+        console.log(data.data[0], this.props.loginUsername.username);
+        this.setState({
+          firstname,
+          lastname,
+          email,
+          bio,
+          birthday,
+        });
+      })
+      .catch((err) => {
+        console.log('edit profile - failed to fetch user data', err.message);
+      });
   }
 
   // send an update to the database
@@ -36,6 +52,7 @@ class EditProfile extends Component {
     try {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
+      console.log(data);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
@@ -51,7 +68,10 @@ class EditProfile extends Component {
     let file = files[0];
     console.log('file dropped!', file)
     this.setState({image: file})
+  }
 
+  logState() {
+    console.log(this.state);
   }
 
   render() {
@@ -79,6 +99,7 @@ class EditProfile extends Component {
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
+          <Button waves='light' onClick={this.logState}>state</Button>
         </Row>
       </div>
     )
