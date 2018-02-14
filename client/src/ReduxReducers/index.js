@@ -7,9 +7,9 @@ import LoginReducer from './LoginReducer';
 
 const allreducers = combineReducers({
   location: LocationReducer,
-  signUpData: SignUpReducer,
+  setSignupUsername: SignUpReducer,
   dateCourseInfo: dateCourseInfo,
-  loginData: LoginReducer,
+  setloginUsername: LoginReducer,
 });
 
 export default allreducers;
