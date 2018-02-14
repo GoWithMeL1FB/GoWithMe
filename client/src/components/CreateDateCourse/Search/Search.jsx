@@ -94,10 +94,10 @@ ClickHandler() {
   });
 }
   render() {
-    
+
     let noResult = null;
     if (this.state.resultChecker) {
-      noResult = 
+      noResult =
       <div>
         <Icon large>sentiment_very_dissatisfied</Icon>
         <h1>No result</h1>
@@ -177,6 +177,7 @@ ClickHandler() {
 function mapStateToProps(state) {
   return {
     location: state.location,
+    username: state.setSignupinfo,
   };
 }
 // connect action to this components state

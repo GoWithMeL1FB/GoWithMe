@@ -11,7 +11,7 @@ class Nav extends Component {
           <li><Link to="/Home/HomeView"><Icon>home</Icon>Home</Link></li>
           <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon>Create!</Link></li>
           <li><Link to="/Home/searchEvents"><Icon>search</Icon>Search</Link></li>
-          <li><Link to="/Home"><Icon>turned_in</Icon>Courses</Link></li>
+          <li><Link to="/Home/favorites"><Icon>turned_in</Icon>Favorites</Link></li>
           <li><Link to="/Home/editProfile"><Icon>account_circle</Icon>Account</Link></li>
         </Navbar>
 

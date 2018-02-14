@@ -3,36 +3,47 @@ import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materiali
 import { connect } from 'react-redux';
 import axios from 'axios';
 import url from '../../../config';
-import Dropzone from 'react-dropzone';
-//const imageshack = require('imageshack');
 
-import david from '../temp/prof.jpg';
-import bg from '../temp/download.jpeg';
+// import david from '../temp/prof.jpg';
+// import bg from '../temp/download.jpeg';
 
 class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: 'kevin',
-      lastname: 'vo',
-      username: 'kevinvoduy',
-      email: 'kevin123@apple.com',
-      bio: 'is tired most of the time',
-      birthday: 1992,
+      firstname: '',
+      lastname: '',
       username: '',
+      email: '',
+      bio: '',
+      birthday: 0,
       profileimage: null,
 
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onDrop = this.onDrop.bind(this);
+    this.logState = this.logState.bind(this);
   }
 
   componentDidMount() {
-    console.log('props username', this.props);
     this.setState({
-      username: this.props.UN,
+      username: this.props.loginUsername.username,
     });
+    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.loginUsername.username}`)
+      .then((data) => {
+        const { firstname, lastname, email, bio, birthday } = data.data[0];
+        console.log(data.data[0], this.props.loginUsername.username);
+        this.setState({
+          firstname,
+          lastname,
+          email,
+          bio,
+          birthday,
+        });
+      })
+      .catch((err) => {
+        console.log('edit profile - failed to fetch user data', err.message);
+      });
   }
 
   // send an update to the database
@@ -40,6 +51,7 @@ class EditProfile extends Component {
     try {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
+      console.log(data);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
@@ -51,11 +63,8 @@ class EditProfile extends Component {
     })
   }
 
-  onDrop (files) {
-    let file = files[0];
-    console.log('file dropped!', file)
-    this.setState({image: file})
-
+  logState() {
+    console.log(this.state);
   }
 
   render() {
@@ -63,25 +72,10 @@ class EditProfile extends Component {
       <div>
         <span>Edit Profile</span>
         <Row>
-        <Dropzone 
-                accept="image/jpeg, image/jpg, image/png"
-                multiple={false}
-                onDropAccepted={ this._onDrop.bind(this) } maxSize={ 2000000 }
-                onDragLeave= {this._onDrop.bind(this) } maxSize={ 2000000 }
-              >
-                <div>
-                  Click or drag photo here! Limit 2mb.
-                    {!this.state.imagePrev ? null : <div>Preview: <br/><img style={{maxHeight: '120px'}} src={this.state.imagePrev} /></div> }
-                </div>
-              </Dropzone>
-
-          </Row>
-        <Row>
           <Input s={6} name="firstname" label="First Name" onChange={this.onChangeHandler}/>
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
-          <Input s={6} name="profileImage" label="Image" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
         </Row>
@@ -92,7 +86,7 @@ class EditProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    UN: state.UN,
+    loginUsername: state.setloginUsername,
   };
 }
 
