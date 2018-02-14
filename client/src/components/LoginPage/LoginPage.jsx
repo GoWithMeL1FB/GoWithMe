@@ -36,7 +36,6 @@ class LoginPage extends Component {
     axios.post(`${url.restServer}/api/auth/login`, payload)
     .then((results) => {
       this.props.setLoginInfo(this.state.username);
-      console.log('state', this.props.loginUsername);
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
       sessionStorage.setItem('id', results.data.id);
