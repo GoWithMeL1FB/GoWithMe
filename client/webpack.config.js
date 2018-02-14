@@ -35,7 +35,8 @@ module.exports = {
         'file-loader'
       ]
     }
-  ]}
+    ]}
+
 };
 
 //try to fix the path to get the react page to Rende
