@@ -3,11 +3,11 @@ import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materiali
 import { connect } from 'react-redux';
 import axios from 'axios';
 import url from '../../../config';
-import Dropzone from 'react-dropzone';
+// import Dropzone from 'react-dropzone';
 //const imageshack = require('imageshack');
 
-import david from '../temp/prof.jpg';
-import bg from '../temp/download.jpeg';
+// import david from '../temp/prof.jpg';
+// import bg from '../temp/download.jpeg';
 
 class EditProfile extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class EditProfile extends Component {
       email: 'kevin123@apple.com',
       bio: 'is tired most of the time',
       birthday: 1992,
-      username: '',
       profileimage: null,
 
     }

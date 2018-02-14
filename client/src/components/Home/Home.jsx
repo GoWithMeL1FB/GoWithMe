@@ -9,7 +9,7 @@ import HomeView from '../HomeView/HomeView.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 
-import { Collection, CollectionItem, Col, Row } from 'react-materialize';
+import { Collection, CollectionItem, Col, Row, Sidebar } from 'react-materialize';
 
 class Home extends Component {
 
@@ -17,13 +17,13 @@ class Home extends Component {
     return (
       <div class="container">
         <Nav />
-        
-        <Row> 
-          <Col s={3} m={3}>      
+
+        <Row>
+          <Col s={3} m={3}>
           <Sidebar />
           </Col>
           <Col offset='m3' s={9} m={9} >
-          
+
             <Switch>
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
               <Route path="/Home/EditProfile" component={EditProfile}/>
@@ -31,10 +31,10 @@ class Home extends Component {
               <Route path="/Home/searchEvents" component={SearchEvents} />
               <Route exact path='/Home' component={HomeView}/>
             </Switch>
-            
+
           </Col>
         </Row>
-        
+
         <Footer />
       </div>
     )
