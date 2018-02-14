@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Search from './Search.jsx';
 import Event from './Event.jsx';
+import url from '../../../config';
 
 export default class SearchEvents extends Component {
   constructor() {
@@ -19,7 +20,7 @@ export default class SearchEvents extends Component {
 
   async fetchEvents() {
     try {
-      const events = await axios.get('http://localhost:3031/api/events/getAllEvents');
+      const events = await axios.get(`${url.eventServer}/api/events/getAllEvents`);
       this.setState({
         events: events.data,
       })

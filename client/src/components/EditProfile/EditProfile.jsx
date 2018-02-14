@@ -30,7 +30,7 @@ class EditProfile extends Component {
   async submitUpdate() {
     try {
       const payload = this.state;
-      const data = await axios.put('http://localhost:3030/api/user/updateUser', payload);
+      const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
       console.log(data.data);
     } catch(err) {
       console.log('Failed to update user info', err);
