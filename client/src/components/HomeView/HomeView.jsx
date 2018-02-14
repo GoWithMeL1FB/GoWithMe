@@ -24,7 +24,7 @@ class HomeView extends Component {
   // fetches all itineraries from the start
   async fetchItineraries() {
     try {
-      const itineraries = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+      const itineraries = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
       console.log('itin', itineraries);
       itineraries.data.map(itinerary => {
         this.state.itineraries.push(itinerary);
