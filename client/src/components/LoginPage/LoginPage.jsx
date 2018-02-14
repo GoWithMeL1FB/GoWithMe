@@ -29,7 +29,7 @@ class LoginPage extends Component {
       username,
       password,
     }
-    axios.post('http://localhost:3030/api/auth/login', payload)
+    axios.post(`${url.restServer}/api/auth/login`, payload)
     .then((results) => {
 
       //console.log(sessionStorage.getItem('authentication'));
