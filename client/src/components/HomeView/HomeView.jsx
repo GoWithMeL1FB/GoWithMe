@@ -51,7 +51,6 @@ class HomeView extends Component {
   render() {
     return (
       <div>
-       <Button onClick={this.onClickHandler}>state</Button>
         <Search
           itinSetter={this.passUpItin}
         />
