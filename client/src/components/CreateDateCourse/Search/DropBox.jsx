@@ -6,6 +6,7 @@ import Events from '../../global/Events/Events.jsx';
 
 import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
 import { Row, Col, Icon, Button } from 'react-materialize';
+import url from '../../../../config';
 
 class DropBox extends React.Component {
   constructor(props){
@@ -28,14 +29,14 @@ class DropBox extends React.Component {
     }
     try {
 
-      const dateCourseID = await axios.post('http://localhost:3031/api/itinerary/createItinerary', payload)
+      const dateCourseID = await axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
       this.setState({
         dateCourseID: dateCourseID.data._id
       })
-    } catch (err){   
+    } catch (err){
       throw new Error(err);
     }
-    
+
     this.state.dateCourse.forEach(event => {
       console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
       this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
@@ -47,15 +48,15 @@ class DropBox extends React.Component {
       eventId: eID,
       itineraryId: itiID
     }
-    console.log(payload)
-    axios.post('http://localhost:3031/api/itinerary/addEventToItinerary', payload)
+
+    axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, payload)
       .then(res => {
         console.log("events added to the dataCourse", res);
       })
       .catch(err => {
         console.log("events NOT added to the datacourse", err);
       })
-      
+
 
   }
 
@@ -67,7 +68,7 @@ class DropBox extends React.Component {
 
   render () {
     return(
-      
+
       <Row>
         <Col>
         {
@@ -75,17 +76,17 @@ class DropBox extends React.Component {
           console.log(v);
           let venue = v.dragData.venue;
           let pObj = v.dragData.venue;
-          
+
           return (
           <div key={venue.id}>
-          <DragDropContainer 
+          <DragDropContainer
             item={venue}
             returnToBase={true}
             dragData={{
               venue: venue
             }}
             >
-            <Events 
+            <Events
               id={venue.id}
               name={venue.name}
               address={venue.location}
@@ -99,7 +100,7 @@ class DropBox extends React.Component {
         })
         }
         <center>
-        <DropTarget 
+        <DropTarget
           dropData={{
             venue: this.props.venue
           }}
@@ -112,11 +113,11 @@ class DropBox extends React.Component {
         </Col>
         <Col s={12}>
           <Button onClick={this.saveDateCourseEntry}>
-            Save 
+            Save
           </Button>
         </Col>
       </Row>
-      
+
     )
   }
 }
@@ -127,4 +128,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(DropBox); 
+export default connect(mapStateToProps)(DropBox);

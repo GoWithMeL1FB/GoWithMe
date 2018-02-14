@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Button, Toast, SideNav, SideNavItem } from 'react-materialize';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import url from '../../../config';
 import Dropzone from 'react-dropzone';
 //const imageshack = require('imageshack');
 
@@ -12,15 +13,15 @@ class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '5',
       firstname: 'kevin',
       lastname: 'vo',
       username: 'kevinvoduy',
       email: 'kevin123@apple.com',
       bio: 'is tired most of the time',
       birthday: 1992,
+      username: '',
       profileimage: null,
-      
+
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -28,15 +29,17 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-
+    console.log('props username', this.props);
+    this.setState({
+      username: this.props.UN,
+    });
   }
 
   // send an update to the database
   async submitUpdate() {
     try {
       const payload = this.state;
-      const data = await axios.put('http://localhost:3030/api/user/updateUser', payload);
-      console.log(data.data);
+      const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
@@ -73,4 +76,10 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+function mapStateToProps(state) {
+  return {
+    UN: state.UN,
+  };
+}
+
+export default connect(mapStateToProps)(EditProfile);

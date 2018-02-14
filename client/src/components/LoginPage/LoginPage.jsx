@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setLoginInfo } from '../../ReduxActions/setLoginInfo';
+import url from '../../../config';
 
-import './button.css';
 import Home from '../Home/Home.jsx'
+import './button.css';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -20,7 +24,7 @@ class LoginPage extends Component {
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value,
-    })
+    });
   }
 
   loginUser() {
@@ -29,9 +33,9 @@ class LoginPage extends Component {
       username,
       password,
     }
-    axios.post('http://localhost:3030/api/auth/login', payload)
+    axios.post(`${url.restServer}/api/auth/login`, payload)
     .then((results) => {
-
+      this.props.setLoginInfo(this.state.username)
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
       sessionStorage.setItem('id', results.data.id);
@@ -77,4 +81,15 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+function mapStateToProps(state) {
+  return {
+    username: state.username,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setLoginInfo: setLoginInfo,
+  }, dispatch);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(LoginPage)

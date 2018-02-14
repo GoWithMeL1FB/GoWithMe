@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Icon } from 'react-materialize';
 import axios from 'axios';
 import fuse from 'fuse.js';
+import url from '../../../config';
 
 export default class Search extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class Search extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
     if (data) {
       const config = {
         shouldSort: true,
@@ -55,7 +56,7 @@ export default class Search extends Component {
   }
 
   async fetchEvents() {
-    const { data } = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+    const { data } = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
     this.setState({
       searched: data,
     });
