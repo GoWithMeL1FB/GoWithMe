@@ -25,12 +25,12 @@ class LandingPage extends Component {
         <div class="nav-wrapper container">
           <a id="logo-container" href="#" class="brand-logo">go with me</a>
           <ul class="right hide-on-med-and-down">
-            <Login></Login>
+            <Login redirectToHome={this.redirectToHome}></Login>
             {/* <li><a href="#">Log In</a></li> */}
           </ul>
     
           <ul id="nav-mobile" class="side-nav">
-            <Login></Login>
+            <Login redirectToHome={this.redirectToHome}></Login>
             {/* <li><a href="#">Log In</a></li> */}
           </ul>
           <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -111,11 +111,11 @@ class LandingPage extends Component {
           <div class="col s12 center">
             <h3><i class="mdi-content-send brown-text"></i></h3>
             <h4>Contact Us</h4>
-            <p className="center-align">
+            <div className="center-align">
               <p className="bold">Product Manager/Software Engineer - David Chung</p>
               <p className="bold">Software Engineer - Karolee Ann Carlson</p> 
               <p className="bold">Software Engineer - Kevin Vo</p>
-            </p>
+            </div>
           </div>
         </div>
   

@@ -24,8 +24,8 @@ class Home extends Component {
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse}/>
               <Route path="/Home/EditProfile" component={EditProfile}/>
               <Route path="/Home/HomeView" component={HomeView}/>
-              <Route exact path='/Home' component={HomeView}/>
               <Route path="/Home/searchEvents" component={SearchEvents} />
+              <Route exact path='/Home' component={HomeView}/>
             </Switch>
           </Col>
         </Row>

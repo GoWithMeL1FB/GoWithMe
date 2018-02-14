@@ -20,7 +20,7 @@ class Footer extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col l12 s12">
-                        <h5 className="white-text">go with me</h5>
+                        <h5 className="white-text">Tech Stacks</h5>
                         <p className="grey-text text-lighten-4"></p>
                         <div>
                             <Row>
