@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Featured from './featuredDateCourse/featuredDateCourse.jsx';
 import OtherDateCourse from './otherDateCourse/otherDateCourse.jsx';
 import Search from './Search.jsx';
+import url from '../../../config';
 
 class HomeView extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class HomeView extends Component {
   // fetches all itineraries from the start
   async fetchItineraries() {
     try {
-      const itineraries = await axios.get('http://localhost:3031/api/itinerary/allItineraries');
+      const itineraries = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
       console.log('itin', itineraries);
       itineraries.data.map(itinerary => {
         this.state.itineraries.push(itinerary);

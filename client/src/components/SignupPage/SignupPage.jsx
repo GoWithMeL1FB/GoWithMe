@@ -4,6 +4,7 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setSignUpInfo } from '../../ReduxActions/setSignUpInfo.js'
+import url from '../../../config';
 
 class SignupPage extends Component {
   constructor(props) {
@@ -48,11 +49,11 @@ class SignupPage extends Component {
       bio,
     };
 
-    axios.post('http://localhost:3030/api/auth/signup', payload)
+    axios.post(`${url.restServer}/api/auth/signup`, payload)
       .then(res => {
         console.log('user creationg info submitted', res);
         this.props.setSignUpInfo(this.state.username)
-        this.props.redirectToHome();
+        // this.props.redirectToHome();
         this.props.history.push('/Home');
       })
       .catch(err => {
@@ -69,7 +70,7 @@ class SignupPage extends Component {
   render() {
     return (
       <Modal
-        
+
         header="Registration"
         trigger={<Button large waves="light">Get Started</Button>}
       >
