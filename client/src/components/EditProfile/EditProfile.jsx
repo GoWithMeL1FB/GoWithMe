@@ -99,7 +99,6 @@ class EditProfile extends Component {
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
-          <Button waves='light' onClick={this.logState}>state</Button>
         </Row>
       </div>
     )

@@ -13,10 +13,13 @@ class CourseInfo extends Component {
     super(props);
     this.state = {
       title: '',
-      description: ''
+      description: '',
     }
     this.titleOnChangeHandler = this.titleOnChangeHandler.bind(this);
     this.desOnChangeHandler = this.desOnChangeHandler.bind(this);
+  }
+
+  componentWillMount() {
   }
 
   titleOnChangeHandler(e) {
@@ -49,7 +52,9 @@ class CourseInfo extends Component {
 
 function mapStateToProps(state) {
   return{
-    dateCourseInfo: state.dateCourseInfo
+    dateCourseInfo: state.dateCourseInfo,
+    signupUsername: state.setSignupUsername,
+    loginUsername: state.setloginUsername,
   }
 }
 
