@@ -48,6 +48,7 @@ class DropBox extends React.Component {
       itineraryId: itiID
     }
     axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, payload)
+
       .then(res => {
         console.log("events added to the dataCourse", res);
       })
