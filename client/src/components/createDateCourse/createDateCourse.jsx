@@ -19,11 +19,11 @@ class CreateDateCourse extends Component {
     return(
       // <center>
       <Row>
-        <Col s={8}>
+        <Col s={9}>
           <CourseInfo></CourseInfo>
           <Search></Search>
         </Col>
-        <Col s={4}>
+        <Col s={3}>
           <DropBox></DropBox>
         </Col>
       </Row>
