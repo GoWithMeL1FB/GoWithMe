@@ -24,9 +24,9 @@ module.exports = {
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
     {
-      test: /\.(png|svg|jpg|gif)$/,
+      test: /\.(png|svg|jpe?g|gif)$/,
       use: [
-        'file-loader'
+        'file-loader',
       ]
     },
     {
@@ -35,7 +35,8 @@ module.exports = {
         'file-loader'
       ]
     }
-  ]}  
+    ]}
+
 };
 
 //try to fix the path to get the react page to Rende

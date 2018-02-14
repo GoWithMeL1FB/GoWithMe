@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import './Footer.css';
-import mongo from '../../../../../fakeDatas/mongodb.svg';
-import js from '../../../../../fakeDatas/js.svg';
-import docker from '../../../../../fakeDatas/docker.svg';
-import aws from '../../../../../fakeDatas/aws.svg'
-import mysql from '../../../../../fakeDatas/mysql.svg';
-import node from '../../../../../fakeDatas/Node.svg';
-import redux from '../../../../../fakeDatas/redux.svg';
-import react from '../../../../../fakedatas/React.svg';
-import nginx from '../../../../../fakedatas/nginx.png';
-import redis from '../../../../../fakeDatas/redis.svg';
+import mongo from 'mongo.svg';
+import js from 'nodejs.svg';
+import docker from 'docker.svg';
+import aws from 'aws.svg'
+import mysql from 'mysql.svg';
+import node from 'nodejs.svg';
+import redux from 'redux.svg';
+import react from 'react.svg';
+import nginx from 'nginx.png';
+import redis from 'redis.svg';
 // import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
 
