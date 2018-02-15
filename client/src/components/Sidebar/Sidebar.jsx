@@ -12,7 +12,11 @@ class Sidebar extends Component {
       email: null,
       username: null,
       birthday: null,
-      bio: null
+      bio: null,
+      dCCount: 0,
+      mostLikedDC: 'Unavailable',
+      mostSharedDC: 'Unavailable'
+
     }
   }
 
@@ -21,13 +25,21 @@ class Sidebar extends Component {
     console.log("Id is now", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
       .then( result => {
-      console.log('this is the result', result.data[0]);
+      console.log('----this is the result', result.data);
       this.setState({
         email: result.data[0].email,
         username: result.data[0].username,
         birthday: result.data[0].birthday,
-        bio: result.data[0].bio
+        bio: result.data[0].bio,
       })
+      if(result.data[1]){
+        this.setState({
+          dCCount: result.data[1].dateCourseCount,
+          mostLikedDC: result.data[1].mostLikedDC,
+          mostSharedDC: result.data[1].mostSharedDC
+        })
+      }
+
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
@@ -46,7 +58,10 @@ class Sidebar extends Component {
 
         <p>{this.state.username}</p>
         <p>{this.state.email}</p>
-        <p>{this.state.bio}</p>
+        <p>Bio: {this.state.bio}</p>
+        <p>Number of Date Courses made: {this.state.dCCount}</p>
+        <p>Most Likes: {this.state.mostLikedDC}</p>
+        <p>Most Shares: {this.state.mostSharedDC}</p>
         </Col>
       </Row>
 
