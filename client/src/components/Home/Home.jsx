@@ -18,6 +18,7 @@ class Home extends Component {
 
   render() {
     return (
+
       <div>
         <Nav />
         
@@ -26,7 +27,7 @@ class Home extends Component {
           <Sidebar />
           </Col>
           <Col offset='m3' s={9} m={9} >
-          
+
             <Switch>
               <Route path="/Home/favorites" component={Favorites} />
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
@@ -35,10 +36,11 @@ class Home extends Component {
               <Route path="/Home/searchEvents" component={SearchEvents} />
               <Route path='/Home' component={HomeView} />
             </Switch>
-            
+
           </Col>
         </Row>
         
+
         <Footer />
       </div>
     )
