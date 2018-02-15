@@ -39,27 +39,24 @@ class CourseInfo extends Component {
   render () {
     return(
       <div>
-        <Row>
+        <Card>
           <h4>Create Itinerary</h4>
-          <Input
-            s={12}
+          <p>title</p>
+          <input
             name="title"
-            label="Itinerary Name"
             onChange={this.titleChange}
           />
-          <Input
-            s={12}
+          <p>description</p>
+          <input
             name="description"
-            label="Description"
             onChange={this.descriptionChange}
             />
-          <Input
-            s={12}
+          <p>upload image</p>
+          <input
             name="image"
-            label="Image URL"
             onChange={this.imageChange}
           />
-        </Row>
+        </Card>
       </div>
     )
   }

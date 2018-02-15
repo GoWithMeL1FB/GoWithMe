@@ -8,6 +8,8 @@ import Login from '../LoginPage/LoginPage.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 
 import icon from "../../../public/landingPageImage/pic/logos/gwmlogowhite.png";
+import mainLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage.jpg";
+import bottomLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage (1).jpg";
 import './LandingPage.css';
 
 class LandingPage extends Component {
@@ -60,7 +62,7 @@ class LandingPage extends Component {
 
             </div>
           </div>
-          <div class="parallax"><img src="/landingPageImage/background1.jpg" alt="Unsplashed background img 1"/></div>
+          <div class="parallax"><img src={mainLanding} alt="Unsplashed background img 1"/></div>
         </div>
 
     <div class="container">
@@ -90,7 +92,6 @@ class LandingPage extends Component {
             <div class="icon-block">
               <h2 class="center brown-text"><i class="material-icons">public</i></h2>
               <h5 class="center">Share and Rate</h5>
-
               <p class="light">It wouldn't be right to keep the best day for yourself. Share your ideas and see what other people think about your date course. Share the love.</p>
             </div>
           </div>
@@ -138,7 +139,7 @@ class LandingPage extends Component {
               </div>
             </div>
           </div>
-          <div class="parallax"><img src="/landingPageImage/background3.jpg" alt="Unsplashed background img 3"/></div>
+          <div class="parallax"><img src={bottomLanding} alt="Unsplashed background img 3"/></div>
         </div>
         <Footer></Footer>
       </div>

@@ -1,6 +1,10 @@
-#icon {
+#airplane {
   border-radius: 100%;
   margin-top: .3em;
   height: 5%;
   width: 5%;
+}
+
+#brandlogo {
+  height: 64px;
 }

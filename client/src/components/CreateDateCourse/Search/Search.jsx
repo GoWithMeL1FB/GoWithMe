@@ -107,7 +107,7 @@ ClickHandler() {
     }
 
     return (
-      <div className="container">
+      <div>
         <Card>
         <center>Search</center>
         <div className="row">
