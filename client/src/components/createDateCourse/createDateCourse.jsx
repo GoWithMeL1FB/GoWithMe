@@ -10,9 +10,6 @@ import CourseInfo from './CourseInfo/CourseInfo.jsx';
 class CreateDateCourse extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      query: ''
-    };
   }
 
   render () {

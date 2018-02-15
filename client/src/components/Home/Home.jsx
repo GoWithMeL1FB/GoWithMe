@@ -21,25 +21,26 @@ class Home extends Component {
 
       <div>
         <Nav />
-        
-        <Row> 
-          <Col s={3} m={3}>      
-          <Sidebar />
-          </Col>
-          <Col offset='m3' s={9} m={9} >
+        <Row>
+          <div className="container" id="contents">
+            <Col s={3} m={3}>
+              <Sidebar />
+            </Col>
+            <Col s={9} m={9} >
+              <Switch>
+                <Route path="/Home/favorites" component={Favorites} />
+                <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
+                <Route path="/Home/EditProfile" component={EditProfile} />
+                <Route path="/Home/HomeView" component={HomeView} />
+                <Route path="/Home/searchEvents" component={SearchEvents} />
+                <Route path='/Home' component={HomeView} />
+              </Switch>
 
-            <Switch>
-              <Route path="/Home/favorites" component={Favorites} />
-              <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
-              <Route path="/Home/EditProfile" component={EditProfile} />
-              <Route path="/Home/HomeView" component={HomeView} />
-              <Route path="/Home/searchEvents" component={SearchEvents} />
-              <Route path='/Home' component={HomeView} />
-            </Switch>
+            </Col>
 
-          </Col>
+          </div>
         </Row>
-        
+
 
         <Footer />
       </div>

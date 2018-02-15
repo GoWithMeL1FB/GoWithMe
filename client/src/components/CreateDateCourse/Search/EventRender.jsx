@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Events from '../../global/Events/Events.jsx';
 import { DragDropContainer } from 'react-drag-drop-container';
+import { Col } from 'react-materialize';
 
 class EventRender extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class EventRender extends Component {
   // test() {
   //   console.log(this.props)
   // }
- 
+
   render() {
     return(
       <div key={this.props.venue.id}>
@@ -24,7 +25,7 @@ class EventRender extends Component {
           returnToBase={true}
           dragData={{
             venue: this.props.venue
-           }}
+          }}
         >
         <Events
           id={this.props.venue.id}

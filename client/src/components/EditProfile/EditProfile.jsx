@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import url from '../../../config';
 
-// import david from '../temp/prof.jpg';
-// import bg from '../temp/download.jpeg';
-
 class EditProfile extends Component {
   constructor(props) {
     super(props);
@@ -22,17 +19,15 @@ class EditProfile extends Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.logState = this.logState.bind(this);
   }
 
   componentDidMount() {
     this.setState({
-      username: this.props.loginUsername.username,
+      username: this.props.authUsername.username,
     });
-    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.loginUsername.username}`)
+    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.authUsername.username}`)
       .then((data) => {
         const { firstname, lastname, email, bio, birthday } = data.data[0];
-        console.log(data.data[0], this.props.loginUsername.username);
         this.setState({
           firstname,
           lastname,
@@ -51,7 +46,7 @@ class EditProfile extends Component {
     try {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
-      console.log(data);
+      // console.log(data);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
@@ -64,13 +59,13 @@ class EditProfile extends Component {
   }
 
   logState() {
-    console.log(this.state);
+    console.log('edit profile - state:', this.state);
   }
 
   render() {
     return (
       <div>
-        <span>Edit Profile</span>
+        <h3>Edit Profile</h3>
         <Row>
           <Input s={6} name="firstname" label="First Name" onChange={this.onChangeHandler}/>
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
@@ -86,7 +81,7 @@ class EditProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    loginUsername: state.setloginUsername,
+    authUsername: state.username,
   };
 }
 

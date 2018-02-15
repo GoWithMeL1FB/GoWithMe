@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 import Signup from '../SignupPage/SignupPage.jsx';
 import Login from '../LoginPage/LoginPage.jsx';
 import Footer from '../global/Footer/Footer.jsx';
-// import './LandingPage.css';
+
+import icon from "../../../public/landingPageImage/pic/logos/gwmlogowhite.png";
+import mainLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage.jpg";
+import bottomLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage (1).jpg";
+import './LandingPage.css';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -46,7 +50,7 @@ class LandingPage extends Component {
           <div class="section no-pad-bot">
             <div class="container">
               <br/><br/>
-              <h1 class="header center teal-text text-lighten-2">Go With Me</h1>
+              <h1 class="header center"><img id="icon" src={icon}></img></h1>
               <div class="row center">
                 <h5 className="header col s12 mate white-text light">We Plan. You Play.</h5>
               </div>
@@ -58,7 +62,7 @@ class LandingPage extends Component {
 
             </div>
           </div>
-          <div class="parallax"><img src="/landingPageImage/background1.jpg" alt="Unsplashed background img 1"/></div>
+          <div class="parallax"><img src={mainLanding} alt="Unsplashed background img 1"/></div>
         </div>
 
     <div class="container">
@@ -88,12 +92,10 @@ class LandingPage extends Component {
             <div class="icon-block">
               <h2 class="center brown-text"><i class="material-icons">public</i></h2>
               <h5 class="center">Share and Rate</h5>
-
               <p class="light">It wouldn't be right to keep the best day for yourself. Share your ideas and see what other people think about your date course. Share the love.</p>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -106,7 +108,7 @@ class LandingPage extends Component {
           </div>
         </div>
       </div>
-      <div class="parallax"><img src="/landingPageImage/background2.jpg" alt="Unsplashed background img 2"/></div>
+      <div class="parallax"><img src="/landingPageImage/pic/compressed/gwmlandingcover-min.jpg" alt="Unsplashed background img 2"/></div>
     </div>
 
     <div class="container">
@@ -137,7 +139,7 @@ class LandingPage extends Component {
               </div>
             </div>
           </div>
-          <div class="parallax"><img src="/landingPageImage/background3.jpg" alt="Unsplashed background img 3"/></div>
+          <div class="parallax"><img src={bottomLanding} alt="Unsplashed background img 3"/></div>
         </div>
         <Footer></Footer>
       </div>

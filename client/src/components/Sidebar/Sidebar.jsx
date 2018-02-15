@@ -22,7 +22,7 @@ class Sidebar extends Component {
 
   async componentWillMount() {
     await this.setState( {id: sessionStorage.getItem('id')})
-    console.log("Id is now", this.state.id)
+    console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
       .then( result => {
       console.log('----this is the result', result.data);
@@ -50,11 +50,12 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="User">
-      <Row className="User">
-        <Col s={3} m={3}>
-        <div>
-        <img src="assets/images/prof.jpg"/>
-        </div>
+        <Row className="User">
+          <Col s={3} m={3}>
+          <div>
+          <img src="assets/images/prof.jpg"/>
+          </div>
+
 
         <p>{this.state.username}</p>
         <p>{this.state.email}</p>
@@ -65,7 +66,7 @@ class Sidebar extends Component {
         </Col>
       </Row>
 
-     </div>
+      </div>
     )
   }
 }
