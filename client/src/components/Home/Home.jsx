@@ -23,7 +23,7 @@ class Home extends Component {
         <Nav />
         
         <Row> 
-          <div className="container">
+          <div className="container" id="contents">
           <Col s={3} m={3}>      
           <Sidebar />
           </Col>
