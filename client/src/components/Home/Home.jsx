@@ -23,9 +23,9 @@ class Home extends Component {
       <div>
         <Nav />
         <Row>
-            <Col s={3} m={3}>
-              <Sidebar />
-            </Col>
+          <Col s={3} m={3}>
+            <Sidebar />
+          </Col>
           <div className="container" id="contents">
             <Col s={9} m={9} >
               <Switch>
