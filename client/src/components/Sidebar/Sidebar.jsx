@@ -55,19 +55,4 @@ class Sidebar extends Component {
   }
 }
 
-
-{/* // <div className="User">
-//       <Row className="User">
-//         <Col s={3} m={3}>
-//         <div>
-//         <img src="assets/images/prof.jpg"/>
-//         </div>
-
-//         <p>{this.state.username}</p>
-//         <p>{this.state.email}</p>
-//         <p>{this.state.bio}</p>
-//         </Col>
-//       </Row>
-
-//      </div> */}
 export default Sidebar;
