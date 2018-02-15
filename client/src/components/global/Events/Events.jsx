@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Col } from 'react-materialize';
+import { Col, Card, CardTitle } from 'react-materialize';
 
 class Events extends React.Component {
   constructor(props) {
@@ -16,12 +16,12 @@ class Events extends React.Component {
 
     return (
 
-      <div>
-      <img  src={photo}/>
-        <p>{this.props.title}</p>
-        <p>{this.props.location}</p>
-        <p>Description: {this.props.price} {this.props.description} </p>
-      </div>
+      <Card className='small'
+        header={<CardTitle image={photo}>{this.props.title}</CardTitle>}
+      >
+        <p>Location:{this.props.location}</p>
+        <p>Description:{this.props.price} {this.props.description} </p>
+      </Card>
     )
   }
 }
