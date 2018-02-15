@@ -35,13 +35,10 @@ class Home extends Component {
                 <Route path="/Home/searchEvents" component={SearchEvents} />
                 <Route path='/Home' component={HomeView} />
               </Switch>
-
             </Col>
 
           </div>
         </Row>
-
-
         <Footer />
       </div>
     )
