@@ -28,7 +28,7 @@ class EditProfile extends Component {
     axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.authUsername.username}`)
       .then((data) => {
         const { firstname, lastname, email, bio, birthday } = data.data[0];
-        // console.log('edit profile - fetched:', data.data[0]);
+        console.log('edit profile - fetched:', data.data[0]);
         this.setState({
           firstname,
           lastname,
