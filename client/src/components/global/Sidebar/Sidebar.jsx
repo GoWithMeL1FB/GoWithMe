@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
-import './Sidebar.css'
+// import './Sidebar.css'
 //hi kevin
 class Sidebar extends Component {
 
