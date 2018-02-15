@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import url from '../../../config';
 
-import david from '../temp/prof.jpg';
-import bg from '../temp/download.jpeg';
+// import david from '../temp/prof.jpg';
+// import bg from '../temp/download.jpeg';
 
 class EditProfile extends Component {
   constructor(props) {

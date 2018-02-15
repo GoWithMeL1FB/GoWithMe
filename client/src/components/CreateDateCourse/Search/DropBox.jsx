@@ -17,28 +17,33 @@ class DropBox extends React.Component {
     };
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
   }
 
-  saveDateCourseEntry = async () => {
-    console.log(this.props.dateCourseInfo)
+  saveDateCourseEntry = () => {
     let payload = {
       title: this.props.dateCourseInfo.title,
       description: this.props.dateCourseInfo.description,
       image: null,
       owner: 'David'
     }
-    try {
-
-      const dateCourseID = await axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
-      this.setState({
-        dateCourseID: dateCourseID.data._id
+    
+    
+      // console.log('payload for making dateCourse,' payload);
+    axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
+      .then((data) => {
+        let dataCourseID = data;
+        console.log('dataCourse', dataCourseID)
+        this.setState({
+          dateCourseID: dateCourseID.data._id
+        })
       })
-    } catch (err){
-      throw new Error(err);
-    }
+      .catch ((err) => {
+       console.log('err:', err);
+      })
 
     this.state.dateCourse.forEach(event => {
-      console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
+      // console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
       this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
     })
   }
@@ -55,14 +60,12 @@ class DropBox extends React.Component {
       })
       .catch(err => {
         console.log("events NOT added to the datacourse", err);
-      })
-
-
+    })
   }
 
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
-    console.log('state from handle drop', this.state)
+    // console.log('state from handle drop', this.state)
     this.setState({dateCourse: this.state.dateCourse});
   }
 
@@ -73,7 +76,7 @@ class DropBox extends React.Component {
         <Col>
         {
         this.state.dateCourse.map((v) => {
-          console.log(v);
+          // console.log(v);
           let venue = v.dragData.venue;
           let pObj = v.dragData.venue;
 

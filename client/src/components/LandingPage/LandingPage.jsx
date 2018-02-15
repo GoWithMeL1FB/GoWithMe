@@ -14,6 +14,11 @@ class LandingPage extends Component {
     this.redirectToHome = this.redirectToHome.bind(this);
   }
 
+  componentDidMount() {
+    $('.button-collapse').sideNav();
+    $('.parallax').parallax();
+  }
+
   redirectToHome () {
       this.props.history.push('/Home');
   }
