@@ -116,7 +116,7 @@ class DropBox extends React.Component {
             onHit={this.handleDrop}
             >
             <Icon large>add_to_photos</Icon>
-          </DropTarget>
+
         </center>
         </Col>
 

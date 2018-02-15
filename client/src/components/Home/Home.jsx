@@ -21,7 +21,6 @@ class Home extends Component {
 
       <div>
         <Nav />
-
         <Row>
           <div className="container" id="contents">
             <Col s={3} m={3}>
@@ -38,6 +37,7 @@ class Home extends Component {
               </Switch>
 
             </Col>
+
           </div>
         </Row>
 
