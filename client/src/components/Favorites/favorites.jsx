@@ -11,10 +11,8 @@ class Favorites extends Component {
       itineraries: [],
       events: [],
     };
-    // this.logState = this.logState.bind(this);
   }
 
-  // change endpoint to ${this.props.signupUsername}
   async componentWillMount() {
     await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/kevinvoduy`)
       .then((itineraries) => {
@@ -35,13 +33,6 @@ class Favorites extends Component {
       .catch((err) => {
         console.log('failed to fetch users itineraries', err.message);
       });
-
-
-    // this.state.itineraries.forEach((itinerary) => {
-    //   const event = axios.get(`${url.eventServer}/api/events/getEventsByItin/${this.state.itineraries._id}`);
-    //   this.state.events.push(event)
-    // });
-    // console.log('events', this.state.events);
   }
 
   render() {
@@ -54,31 +45,28 @@ class Favorites extends Component {
             <Collapsible accordion popout>
               {
                 this.state.itineraries.map((itinerary, index) => (
-                  <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{itinerary.title}</span>)} icon="assignment" key={index}>
-                  <span>{itinerary.description}{' stars - '}{itinerary.meta.likes.length}{' likes'}</span>
-                  {console.log('state events', this.state.events)}
-                  <Collapsible>
-                    {
-                      this.state.events[index].map((itin, otherindex) => {
-                        console.log('iitin', itin)
-                        return (<CollapsibleItem header={itin.name} key={index} >
-                          <strong>{itin.description}</strong>
-                        </CollapsibleItem>)
-                      })
-                    }
-                  </Collapsible>
 
+                  <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{itinerary.title}</span>)} icon="assignment" key={index}>
+                    <h5>{itinerary.description}</h5>
+                    <Collapsible>
+                      {
+                        this.state.events[index].map((itin, otherindex) => {
+                          return (<CollapsibleItem header={itin.name} key={otherindex} >
+                            <strong>{itin.description}</strong><span className="new badge" data-badge-caption="likes">{itin.meta.likes.length}</span>
+                          </CollapsibleItem>)
+                        })
+                      }
+                    </Collapsible>
                   </CollapsibleItem>
                 ))
               }
-
             </Collapsible>
           </div>
         </div>
       )
     } else {
     return (
-      <div>working..</div>
+      <h3>Working...</h3>
     )
   }
 }
