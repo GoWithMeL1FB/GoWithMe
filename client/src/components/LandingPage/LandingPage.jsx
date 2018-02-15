@@ -33,16 +33,11 @@ class LandingPage extends Component {
         <nav className="blue-grey darken-3" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="#" class="brand-logo">go with me</a>
-          <ul class="right hide-on-med-and-down">
+          <ul class="right">
             <Login redirectToHome={this.redirectToHome}></Login>
             {/* <li><a href="#">Log In</a></li> */}
           </ul>
 
-          <ul id="nav-mobile" class="side-nav">
-            <Login redirectToHome={this.redirectToHome}></Login>
-            {/* <li><a href="#">Log In</a></li> */}
-          </ul>
-          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
         </nav>
 
