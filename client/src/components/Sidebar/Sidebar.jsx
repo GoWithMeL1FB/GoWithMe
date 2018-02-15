@@ -21,14 +21,16 @@ class Sidebar extends Component {
   }
 
   async componentWillMount() {
-    await this.setState( {id: sessionStorage.getItem('id')})
+    await this.setState( {
+      id: sessionStorage.getItem('id'),
+      username: sessionStorage.getItem('username')
+  })
     console.log("sidebar - id:", this.state.id)
-    axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
+    axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.username)
       .then( result => {
       console.log('----this is the result', result.data);
       this.setState({
         email: result.data[0].email,
-        username: result.data[0].username,
         birthday: result.data[0].birthday,
         bio: result.data[0].bio,
       })
@@ -55,7 +57,6 @@ class Sidebar extends Component {
           <div>
           <img src="assets/images/prof.jpg"/>
           </div>
-
 
         <p>{this.state.username}</p>
         <p>{this.state.email}</p>

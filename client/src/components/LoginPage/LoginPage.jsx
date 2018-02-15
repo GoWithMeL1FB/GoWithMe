@@ -38,7 +38,7 @@ class LoginPage extends Component {
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
       sessionStorage.setItem('id', results.data.id);
-
+      sessionStorage.setItem('username', results.data.username);
       this.props.redirectToHome();
       console.log('Log in Successful! res:', results);
     })
