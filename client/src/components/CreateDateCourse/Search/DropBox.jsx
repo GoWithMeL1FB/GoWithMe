@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import Events from '../../global/Events/Events.jsx';
 
 import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
-import { Row, Col, Icon, Button } from 'react-materialize';
+import { Row, Col, Icon, Button, Card } from 'react-materialize';
 import url from '../../../../config';
+
+import './DropBox.css';
 
 class DropBox extends React.Component {
   constructor(props){
@@ -33,7 +35,7 @@ class DropBox extends React.Component {
     axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
       .then((data) => {
         let dataCourseID = data;
-        console.log('dataCourse', dataCourseID)
+        // console.log('dataCourse', dataCourseID)
         this.setState({
           dateCourseID: dateCourseID.data._id
         })
@@ -61,7 +63,7 @@ class DropBox extends React.Component {
       .catch(err => {
         console.log("events NOT added to the datacourse", err);
     })
-  }``
+  }
 
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
@@ -71,9 +73,11 @@ class DropBox extends React.Component {
 
   render () {
     return(
-
+      <div id="fixedElement">
+      <Card>
       <Row>
         <Col>
+        <div id="scroll">
         {
         this.state.dateCourse.map((v) => {
           // console.log(v);
@@ -102,6 +106,7 @@ class DropBox extends React.Component {
           )
         })
         }
+        </div>
         <center>
         <DropTarget
           dropData={{
@@ -120,7 +125,8 @@ class DropBox extends React.Component {
           </Button>
         </Col>
       </Row>
-
+    </Card>
+    </div>
     )
   }
 }

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { description } from '../../../ReduxActions/Description';
 import { title } from '../../../ReduxActions/TitleInfo';
 
-import { Row, Col, Input } from 'react-materialize';
+import { Card, Col, Input, CardTitle } from 'react-materialize';
 
 class CourseInfo extends Component {
   constructor(props) {
@@ -32,20 +32,21 @@ class CourseInfo extends Component {
 
   render () {
     return(
-      <Row>
-        <div>Date Course Name</div>
-        <Input
-          s={12}
-          name="title"
-          onChange={this.titleOnChangeHandler}
-        />
-        <div>Description</div>
-        <Input
-          s={12}
-          name="description"
-          onChange={this.desOnChangeHandler}
+      <div className="container">
+        <Card header={<CardTitle>Create Date Course</CardTitle>}
+        >
+          <div>Date Course Name</div>
+          <input
+            type="text"
+            onChange={this.titleOnChangeHandler}
           />
-      </Row>
+          <div>Description</div>
+          <input
+            type="text"
+            onChange={this.desOnChangeHandler}
+          />
+        </Card>
+      </div>
     )
   }
 }
