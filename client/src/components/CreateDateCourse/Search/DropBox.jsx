@@ -74,9 +74,9 @@ class DropBox extends React.Component {
   render () {
     return(
       <div id="fixedElement">
-      <Card>
-      <Row>
-        <Col>
+      <Card className="grey lighten-3">
+      <Row className="container">
+        <Col s={12}>
         <div id="scroll">
         {
         this.state.dateCourse.map((v) => {
@@ -114,7 +114,7 @@ class DropBox extends React.Component {
           }}
           onHit={this.handleDrop}
           >
-          <Icon large>add_circle_outline</Icon>
+          <Icon large>add_to_photos</Icon>
         </DropTarget>
         </center>
 

@@ -93,7 +93,6 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -106,7 +105,7 @@ class LandingPage extends Component {
           </div>
         </div>
       </div>
-      <div class="parallax"><img src="/landingPageImage/background2.jpg" alt="Unsplashed background img 2"/></div>
+      <div class="parallax"><img src="/client/src/components/temp/pic/compressed/gwmlandingcover-min.jpg" alt="Unsplashed background img 2"/></div>
     </div>
 
     <div class="container">

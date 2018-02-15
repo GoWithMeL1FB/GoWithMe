@@ -24,3 +24,9 @@
   text-align: center;
   font-size: 100px;
 }
+
+img {
+  border-radius: 50%;
+  height: 450%;
+  width: 450%;
+}
