@@ -15,7 +15,7 @@ import Favorites from '../Favorites/favorites.jsx';
 
 
 class Home extends Component {
-
+  
   render() {
     return (
 
