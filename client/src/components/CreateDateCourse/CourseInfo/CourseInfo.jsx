@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { description } from '../../../ReduxActions/Description';
 import { title } from '../../../ReduxActions/TitleInfo';
 
-import { Card, Col, Input, CardTitle } from 'react-materialize';
+import { Card, Col, Input, CardTitle, Row } from 'react-materialize';
 import { setUsername } from '../../../ReduxActions/setUsername';
 import { image } from '../../../ReduxActions/ImageURL';
 
