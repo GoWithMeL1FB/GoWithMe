@@ -15,10 +15,10 @@ class Events extends React.Component {
     const photo = `${this.props.prefix}180x120${this.props.suffix}`
 
     return (
-
-      <Card className='small'
-        header={<CardTitle image={photo}>{this.props.title}</CardTitle>}
+      <Card className='small hoverable'
+        header={<CardTitle image={photo}></CardTitle>}
       >
+        <p>{this.props.title}</p>
         <p>Location:{this.props.location}</p>
         <p>Description:{this.props.price} {this.props.description} </p>
       </Card>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Icon, Row } from 'react-materialize';
+import { Icon, Row, Card } from 'react-materialize';
 
 import EventRender from '../Search/EventRender.jsx';
 
@@ -108,6 +108,7 @@ ClickHandler() {
 
     return (
       <div className="container">
+        <Card>
         <center>Search</center>
         <div className="row">
           <div className="col-25" />
@@ -135,7 +136,9 @@ ClickHandler() {
               onChange={this.handleChange}
             />
           </div>
+          
         </div>
+        </Card>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
         <Row>
         {

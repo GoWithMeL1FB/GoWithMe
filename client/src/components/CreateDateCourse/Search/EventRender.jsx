@@ -19,7 +19,7 @@ class EventRender extends Component {
  
   render() {
     return(
-      <Col s={4}>
+      <Col s={6}>
         <div key={this.props.venue.id}>
           <DragDropContainer
             item={this.props.venue}

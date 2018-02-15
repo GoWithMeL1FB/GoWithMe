@@ -69,12 +69,6 @@ class LoginPage extends Component {
             onChange={this.onChangeHandler}
           />
           <Button onClick={this.loginUser}>Log in</Button>
-          <button>
-            <a href="#" className="fa fa-facebook"></a>
-          </button>
-          <button>
-            <a href="#" className="fa fa-google"></a>
-          </button>
         </Row>
       </Modal>
     );
