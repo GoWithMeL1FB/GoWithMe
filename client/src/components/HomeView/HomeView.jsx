@@ -27,7 +27,6 @@ class HomeView extends Component {
   async fetchItineraries() {
     try {
       const itineraries = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
-      console.log('itin', itineraries);
       itineraries.data.map(itinerary => {
         this.state.itineraries.push(itinerary);
       });
@@ -52,7 +51,6 @@ class HomeView extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.onClickHandler}></Button>
         <Search
           itinSetter={this.passUpItin}
         />
