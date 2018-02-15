@@ -33,13 +33,6 @@ class Favorites extends Component {
       .catch((err) => {
         console.log('failed to fetch users itineraries', err.message);
       });
-
-
-    // this.state.itineraries.forEach((itinerary) => {
-    //   const event = axios.get(`${url.eventServer}/api/events/getEventsByItin/${this.state.itineraries._id}`);
-    //   this.state.events.push(event)
-    // });
-    // console.log('events', this.state.events);
   }
 
   render() {
