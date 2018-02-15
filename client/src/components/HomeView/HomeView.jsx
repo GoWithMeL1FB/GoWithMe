@@ -20,6 +20,7 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
+    // require('../../../')
   }
 
   // fetches all itineraries from the start

@@ -49,7 +49,6 @@ class SignupPage extends Component {
       bio,
     };
 
-
     axios.post(`${url.restServer}/api/auth/signup`, payload)
 
       .then(res => {
@@ -58,7 +57,7 @@ class SignupPage extends Component {
         this.props.redirectToHome();
         // this.props.history.push('/Home');
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('user creation failed', err);
       });
   }
