@@ -3,7 +3,7 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setSignUpInfo } from '../../ReduxActions/setSignUpInfo.js'
+import { setUsername } from '../../ReduxActions/setUsername.js'
 import url from '../../../config';
 
 class SignupPage extends Component {
@@ -54,7 +54,7 @@ class SignupPage extends Component {
 
       .then(res => {
         console.log('user creationg info submitted', res);
-        this.props.setSignUpInfo(this.state.username)
+        this.props.setUsername(this.state.username)
         this.props.redirectToHome();
         // this.props.history.push('/Home');
       })
@@ -127,13 +127,13 @@ class SignupPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    signupUsername: state.setSignupUsername,
+    authUsername: state.username,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    setSignUpInfo: setSignUpInfo,
+    setUsername: setUsername,
   }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignupPage)
