@@ -20,10 +20,10 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: null,
-      state: null,
+      city: '',
+      state: '',
       query: "event",
-      results: [],
+      queudEvents: [],
       resultChecker: false
     };
     this.handleChange = this.handleChange.bind(this)
@@ -83,7 +83,7 @@ ClickHandler() {
   .then(res => {
     // console.log('Search response!!!', res)
     if (res.response.group.totalResults >= 1) {
-      this.setState({results: res.response.group.results})
+      this.setState({queudEvents: res.response.group.results})
     } else {
       // console.log('it faileddddd') //render cannot find <>
       this.sendNoResult();
@@ -141,7 +141,7 @@ ClickHandler() {
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
         <Row>
         {
-          this.state.results.map(result => {
+          this.state.queudEvents.map(result => {
             // console.log(result.photo)
             if (!!result.venue) {
               let payload = {
@@ -162,10 +162,12 @@ ClickHandler() {
               return <EventRender venue={payload}/>
             } else {
               //return result could not be found
-              return <div>
-                       <Icon large>sentiment_very_dissatisfied</Icon>
-                       <h1>Could not find the result</h1>
-                     </div>
+              return (
+                <div>
+                  <Icon large>sentiment_very_dissatisfied</Icon>
+                  <h1>Could not find the result</h1>
+                </div>
+              )
             }
           })
         }
