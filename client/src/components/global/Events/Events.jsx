@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Col } from 'react-materialize';
+
 class Events extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,8 @@ class Events extends React.Component {
     const photo = `${this.props.prefix}180x120${this.props.suffix}`
 
     return (
-      <div className="container" >
+
+      <div>
       <img  src={photo}/>
         <p>{this.props.title}</p>
         <p>{this.props.location}</p>

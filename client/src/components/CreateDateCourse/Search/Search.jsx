@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Icon } from 'react-materialize';
+import { Icon, Row } from 'react-materialize';
 
 import EventRender from '../Search/EventRender.jsx';
 
@@ -56,7 +56,7 @@ class Search extends Component {
        //redux state
        this.props.UpdateCity(res.data.city)
        this.props.UpdateState(res.data.region)
-      console.log(this.props.location.city);
+      // console.log(this.props.location.city);
     }).catch(err => {
       console.error('Get location err', err);
     })
@@ -81,11 +81,11 @@ ClickHandler() {
   }
   foursquare.venues.recommendations(params)
   .then(res => {
-    console.log('Search response!!!', res)
+    // console.log('Search response!!!', res)
     if (res.response.group.totalResults >= 1) {
       this.setState({results: res.response.group.results})
     } else {
-      console.log('it faileddddd') //render cannot find <>
+      // console.log('it faileddddd') //render cannot find <>
       this.sendNoResult();
     }
   })
@@ -137,7 +137,7 @@ ClickHandler() {
           </div>
         </div>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>
-
+        <Row>
         {
           this.state.results.map(result => {
             // console.log(result.photo)
@@ -167,7 +167,7 @@ ClickHandler() {
             }
           })
         }
-
+        </Row>
         {noResult}
 
         </div>

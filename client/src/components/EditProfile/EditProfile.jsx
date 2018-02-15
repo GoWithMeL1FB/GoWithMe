@@ -22,7 +22,6 @@ class EditProfile extends Component {
     }
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.logState = this.logState.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +31,7 @@ class EditProfile extends Component {
     axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.loginUsername.username}`)
       .then((data) => {
         const { firstname, lastname, email, bio, birthday } = data.data[0];
-        console.log(data.data[0], this.props.loginUsername.username);
+        // console.log(data.data[0], this.props.loginUsername.username);
         this.setState({
           firstname,
           lastname,
@@ -51,7 +50,7 @@ class EditProfile extends Component {
     try {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
-      console.log(data);
+      // console.log(data);
     } catch(err) {
       console.log('Failed to update user info', err);
     }
@@ -61,10 +60,6 @@ class EditProfile extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-  }
-
-  logState() {
-    console.log(this.state);
   }
 
   render() {

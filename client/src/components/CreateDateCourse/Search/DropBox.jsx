@@ -33,7 +33,7 @@ class DropBox extends React.Component {
     axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
       .then((data) => {
         let dataCourseID = data;
-        console.log('dataCourse', dataCourseID)
+        // console.log('dataCourse', dataCourseID)
         this.setState({
           dateCourseID: dateCourseID.data._id
         })
@@ -61,7 +61,7 @@ class DropBox extends React.Component {
       .catch(err => {
         console.log("events NOT added to the datacourse", err);
     })
-  }``
+  }
 
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
