@@ -23,6 +23,7 @@ class Home extends Component {
         <Nav />
         
         <Row> 
+          <div className="container">
           <Col s={3} m={3}>      
           <Sidebar />
           </Col>
@@ -38,6 +39,7 @@ class Home extends Component {
             </Switch>
 
           </Col>
+          </div>
         </Row>
         
 
