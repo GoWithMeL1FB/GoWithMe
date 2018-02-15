@@ -136,7 +136,6 @@ ClickHandler() {
               onChange={this.handleChange}
             />
           </div>
-
         </div>
         </Card>
         <button onClick={() =>{ this.ClickHandler()} } > Submit </button>

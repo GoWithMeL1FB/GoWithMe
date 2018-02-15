@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import Signup from '../SignupPage/SignupPage.jsx';
 import Login from '../LoginPage/LoginPage.jsx';
 import Footer from '../global/Footer/Footer.jsx';
-// import './LandingPage.css';
+
+import icon from "../../../public/landingPageImage/pic/logos/gwmlogowhite.png";
+import './LandingPage.css';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -46,7 +48,7 @@ class LandingPage extends Component {
           <div class="section no-pad-bot">
             <div class="container">
               <br/><br/>
-              <h1 class="header center teal-text text-lighten-2">Go With Me</h1>
+              <h1 class="header center"><img id="icon" src={icon}></img></h1>
               <div class="row center">
                 <h5 className="header col s12 mate white-text light">We Plan. You Play.</h5>
               </div>
@@ -105,7 +107,7 @@ class LandingPage extends Component {
           </div>
         </div>
       </div>
-      <div class="parallax"><img src="/client/src/components/temp/pic/compressed/gwmlandingcover-min.jpg" alt="Unsplashed background img 2"/></div>
+      <div class="parallax"><img src="/landingPageImage/pic/compressed/gwmlandingcover-min.jpg" alt="Unsplashed background img 2"/></div>
     </div>
 
     <div class="container">
