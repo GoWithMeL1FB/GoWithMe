@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
-import './Sidebar.css'
+// import './Sidebar.css'
 //hi kevin
 class Sidebar extends Component {
 
@@ -18,7 +18,7 @@ class Sidebar extends Component {
 
   async componentWillMount() {
     await this.setState( {id: sessionStorage.getItem('id')})
-    console.log("Id is now", this.state.id)
+    console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
       .then( result => {
       console.log('this is the result', result.data[0]);
@@ -43,13 +43,13 @@ class Sidebar extends Component {
         <div>
         <img src="assets/images/prof.jpg"/>
         </div>
-       
+
         <p>{this.state.username}</p>
         <p>{this.state.email}</p>
         <p>{this.state.bio}</p>
         </Col>
       </Row>
-  
+
      </div>
     )
   }

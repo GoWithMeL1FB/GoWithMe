@@ -16,33 +16,31 @@ class EventRender extends Component {
   // test() {
   //   console.log(this.props)
   // }
- 
+
   render() {
     return(
-      <Col s={6}>
-        <div key={this.props.venue.id}>
-          <DragDropContainer
-            item={this.props.venue}
-            returnToBase={true}
-            dragData={{
-              venue: this.props.venue
-            }}
-          >
-          <Events
-            id={this.props.venue.id}
-            title={this.props.venue.name}
-            location={this.props.venue.location}
-            price={this.props.venue.price}
-            category='eat'
-            description={this.props.venue.description}
-            attendees='1-2'
-            prefix={this.props.venue.prefix}
-            suffix={this.props.venue.suffix}
-          />
-          </DragDropContainer>
-          {/* <button onClick = {this.test}>props checker</button> */}
-        </div>
-      </Col>
+      <div key={this.props.venue.id}>
+        <DragDropContainer
+          item={this.props.venue}
+          returnToBase={true}
+          dragData={{
+            venue: this.props.venue
+          }}
+        >
+        <Events
+          id={this.props.venue.id}
+          title={this.props.venue.name}
+          location={this.props.venue.location}
+          price={this.props.venue.price}
+          category='eat'
+          description={this.props.venue.description}
+          attendees='1-2'
+          prefix={this.props.venue.prefix}
+          suffix={this.props.venue.suffix}
+        />
+        </DragDropContainer>
+        {/* <button onClick = {this.test}>props checker</button> */}
+      </div>
     )
   }
 }

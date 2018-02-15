@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux';
 import { description } from '../../../ReduxActions/Description';
 import { title } from '../../../ReduxActions/TitleInfo';
 
-import { Card, Col, Input, CardTitle } from 'react-materialize';
+import { Card, Col, Input, CardTitle, Row } from 'react-materialize';
+import { setUsername } from '../../../ReduxActions/setUsername';
+import { image } from '../../../ReduxActions/ImageURL';
 
 class CourseInfo extends Component {
   constructor(props) {
@@ -14,38 +16,50 @@ class CourseInfo extends Component {
     this.state = {
       title: '',
       description: '',
+      image: '',
     }
-    this.titleOnChangeHandler = this.titleOnChangeHandler.bind(this);
-    this.desOnChangeHandler = this.desOnChangeHandler.bind(this);
+
+    this.titleChange = this.titleChange.bind(this);
+    this.descriptionChange = this.descriptionChange.bind(this);
+    this.imageChange = this.imageChange.bind(this);
   }
 
-  componentWillMount() {
-  }
-
-  titleOnChangeHandler(e) {
+  titleChange(e) {
     this.props.title(e.target.value);
   }
 
-  desOnChangeHandler(e) {
+  descriptionChange(e) {
     this.props.description(e.target.value);
+  }
+
+  imageChange(e) {
+    this.props.image(e.target.value);
   }
 
   render () {
     return(
-      <div className="container">
-        <Card header={<CardTitle>Create Date Course</CardTitle>}
-        >
-          <div>Date Course Name</div>
-          <input
-            type="text"
-            onChange={this.titleOnChangeHandler}
+      <div>
+        <Row>
+          <h4>Create Itinerary</h4>
+          <Input
+            s={12}
+            name="title"
+            label="Itinerary Name"
+            onChange={this.titleChange}
           />
-          <div>Description</div>
-          <input
-            type="text"
-            onChange={this.desOnChangeHandler}
+          <Input
+            s={12}
+            name="description"
+            label="Description"
+            onChange={this.descriptionChange}
+            />
+          <Input
+            s={12}
+            name="image"
+            label="Image URL"
+            onChange={this.imageChange}
           />
-        </Card>
+        </Row>
       </div>
     )
   }
@@ -54,8 +68,7 @@ class CourseInfo extends Component {
 function mapStateToProps(state) {
   return{
     dateCourseInfo: state.dateCourseInfo,
-    signupUsername: state.setSignupUsername,
-    loginUsername: state.setloginUsername,
+    authUsername: state.username,
   }
 }
 
@@ -63,7 +76,9 @@ function matchDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       title,
-      description
+      description,
+      image,
+      setUsername,
     },
     dispatch
   );

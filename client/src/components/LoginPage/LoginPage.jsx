@@ -3,11 +3,10 @@ import { Row, Input, Button, Icon, Modal } from 'react-materialize';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setLoginInfo } from '../../ReduxActions/setLoginInfo';
+import { setUsername } from '../../ReduxActions/setUsername.js';
 import url from '../../../config';
 
-import Home from '../Home/Home.jsx'
-import './button.css';
+import Home from '../Home/Home.jsx';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class LoginPage extends Component {
     }
     axios.post(`${url.restServer}/api/auth/login`, payload)
     .then((results) => {
-      this.props.setLoginInfo(this.state.username);
+      this.props.setUsername(this.state.username);
       //console.log(sessionStorage.getItem('authentication'));
       sessionStorage.setItem('authentication', results.headers.authentication);
       sessionStorage.setItem('id', results.data.id);
@@ -77,13 +76,13 @@ class LoginPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    loginUsername: state.setloginUsername,
+    authUsername: state.username,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    setLoginInfo: setLoginInfo,
+    setUsername: setUsername,
   }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(LoginPage)

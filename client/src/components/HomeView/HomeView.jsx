@@ -20,14 +20,12 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
-    // require('../../../')
   }
 
   // fetches all itineraries from the start
   async fetchItineraries() {
     try {
       const itineraries = await axios.get(`${url.eventServer}/api/itinerary/allItineraries`);
-      console.log('itin', itineraries);
       itineraries.data.map(itinerary => {
         this.state.itineraries.push(itinerary);
       });
@@ -39,7 +37,7 @@ class HomeView extends Component {
 
   // onClick for logging state
   onClickHandler() {
-    console.log('state', this.props.signupUsername);
+    console.log('state', this.props.authUsername);
   }
 
   // takes data from search and passes to state
@@ -52,6 +50,7 @@ class HomeView extends Component {
   render() {
     return (
       <div>
+        <Button onClick={this.onClickHandler}></Button>
         <Search
           itinSetter={this.passUpItin}
         />
@@ -71,7 +70,7 @@ class HomeView extends Component {
 
 function mapStateToProps(state) {
   return {
-    signupUsername: state.setSignupUsername,
+    authUsername: state.username,
   };
 }
 
