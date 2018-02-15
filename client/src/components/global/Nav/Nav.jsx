@@ -7,13 +7,19 @@ class Nav extends Component {
   render() {
     return (
       <div>
-        <Navbar brand='GO WITH ME' right href='http://localhost:3050/Home'>
-          <li><Link to="/Home/HomeView"><Icon>home</Icon>Home</Link></li>
-          <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon>Create!</Link></li>
-          <li><Link to="/Home/searchEvents"><Icon>search</Icon>Search</Link></li>
-          <li><Link to="/Home/favorites"><Icon>turned_in</Icon>Favorites</Link></li>
-          <li><Link to="/Home/editProfile"><Icon>account_circle</Icon>Account</Link></li>
-        </Navbar>
+
+        <nav className="blue-grey darken-3" role="navigation">
+          <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">go with me</a>
+            <ul class="right">
+              <li><Link to="/Home/HomeView"><Icon>home</Icon></Link></li>
+              <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon></Link></li>
+              <li><Link to="/Home/searchEvents"><Icon>search</Icon></Link></li>
+              <li><Link to="/Home"><Icon>turned_in</Icon></Link></li>
+              <li><Link to="/Home/editProfile"><Icon>account_circle</Icon></Link></li>
+            </ul>
+          </div>
+        </nav>
 
       </div>
     )
