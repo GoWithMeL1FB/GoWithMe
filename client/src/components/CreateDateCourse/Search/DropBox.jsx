@@ -15,60 +15,62 @@ class DropBox extends React.Component {
     super(props);
     this.state = {
       dateCourse: [],
-      dateCourseID: ''
+      dateCourseID: '',
+      events: [],
+      eventIDs: [],
     };
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
-    this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
+    // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
+    this.logState = this.logState.bind(this);
   }
 
-  saveDateCourseEntry = () => {
+  async saveDateCourseEntry() {
     let payload = {
       title: this.props.dateCourseInfo.title,
       description: this.props.dateCourseInfo.description,
-      image: null,
-      owner: 'David'
+      image: this.props.dateCourseInfo.image,
+      owner: this.props.authUsername.username
     }
-    
-    
-      // console.log('payload for making dateCourse,' payload);
+
+    // creates itinerary with username and returns its ID
     axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
-      .then((data) => {
-        let dataCourseID = data;
-        // console.log('dataCourse', dataCourseID)
+      .then((itin) => {
         this.setState({
-          dateCourseID: dateCourseID.data._id
+          dateCourseID: itin.data._id
         })
-      })
-      .catch ((err) => {
-       console.log('err:', err);
-      })
+          this.state.dateCourse.forEach(async(item) => {
+          const { name, description, location, prefix, suffix, } = item.dragData.venue;
+          const data = { name, description, location: 'west covina', prefix, suffix, itineraryId: this.state.dateCourseID};
 
-    this.state.dateCourse.forEach(event => {
-      // console.log('dataId:', this.state.dateCourseID, 'event:', event.dragData.venue.id)
-      this.addEventToDataCourse(this.state.dateCourseID, event.dragData.venue.id)
+          axios.post(`${url.eventServer}/api/events/createEvent`, data)
+            .then((event) => {
+              console.log('event please', event);
+              axios.post(`http://localhost:3031/api/itinerary/addEventToItinerary`, { eventId: event.data._id, itineraryId: this.state.dateCourseID, })
+            })
+            .catch((err) => {
+              console.log('faeiled to save event to itin', err.message);
+            })
+        })
     })
+
+
+    // loops through queued events, saves, and returns ids
+
+    // saves event to itinerary
+    // for (let j = 0; j < this.state.eventIDs; j++) {
+    //   axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, { eventId: this.state.eventIDs[j].data._id, itineraryId: this.state.itineraryId, });
+    //   console.log('hit');
+    // }
+
   }
-
-  addEventToDataCourse = async (eID, itiID) => {
-    let payload = {
-      eventId: eID,
-      itineraryId: itiID
-    }
-
-    axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, payload)
-      .then(res => {
-        console.log("events added to the dataCourse", res);
-      })
-      .catch(err => {
-        console.log("events NOT added to the datacourse", err);
-    })
-  }
-
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
-    // console.log('state from handle drop', this.state)
     this.setState({dateCourse: this.state.dateCourse});
+  }
+
+  logState() {
+    console.log('create itin - event ids:', this.state);
   }
 
   render () {
@@ -79,50 +81,48 @@ class DropBox extends React.Component {
         <Col>
         <div id="scroll">
         {
-        this.state.dateCourse.map((v) => {
-          // console.log(v);
+          this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue;
           let pObj = v.dragData.venue;
 
           return (
-          <div key={venue.id}>
-          <DragDropContainer
-            item={venue}
-            returnToBase={true}
-            dragData={{
-              venue: venue
-            }}
-            >
-            <Events
-              id={venue.id}
-              name={venue.name}
-              address={venue.location}
-              category={venue.description}
-              prefix={venue.prefix}
-              suffix={venue.suffix}
-            />
-          </DragDropContainer>
-          </div>
-          )
-        })
+            <div key={venue.id}>
+              <DragDropContainer
+                item={venue}
+                returnToBase={true}
+                dragData={{
+                  venue: venue
+                }}
+                >
+                <Events
+                  id={venue.id}
+                  name={venue.name}
+                  address={venue.location}
+                  category={venue.description}
+                  prefix={venue.prefix}
+                  suffix={venue.suffix}
+                />
+              </DragDropContainer>
+            </div>
+            )
+          })
         }
         </div>
         <center>
-        <DropTarget
-          dropData={{
-            venue: this.props.venue
-          }}
-          onHit={this.handleDrop}
-          >
-          <Icon large>add_circle_outline</Icon>
-        </DropTarget>
+          <DropTarget
+            dropData={{
+              venue: this.props.venue
+            }}
+            onHit={this.handleDrop}
+            >
+            <Icon large>add_circle_outline</Icon>
+          </DropTarget>
         </center>
-
         </Col>
+
         <Col s={12}>
-          <Button onClick={this.saveDateCourseEntry}>
-            Save
-          </Button>
+          <Button onClick={this.saveDateCourseEntry}>Save</Button>
+          <Button onClick={this.logState}>Clear</Button>
         </Col>
       </Row>
     </Card>
@@ -133,7 +133,8 @@ class DropBox extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    dateCourseInfo: state.dateCourseInfo
+    dateCourseInfo: state.dateCourseInfo,
+    authUsername: state.username,
   }
 }
 

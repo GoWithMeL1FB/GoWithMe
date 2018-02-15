@@ -31,7 +31,6 @@ class Favorites extends Component {
   }
 
   render() {
-    console.log('favorites - state.itin:', this.state.itineraries);
     return (
       <div>
         <h3>Favorites</h3>

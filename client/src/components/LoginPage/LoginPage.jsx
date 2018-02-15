@@ -6,8 +6,7 @@ import { bindActionCreators } from 'redux';
 import { setUsername } from '../../ReduxActions/setUsername.js';
 import url from '../../../config';
 
-import Home from '../Home/Home.jsx'
-import './button.css';
+import Home from '../Home/Home.jsx';
 
 class LoginPage extends Component {
   constructor(props) {
