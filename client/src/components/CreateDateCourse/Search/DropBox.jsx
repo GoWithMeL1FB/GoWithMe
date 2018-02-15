@@ -61,7 +61,7 @@ class DropBox extends React.Component {
       .catch(err => {
         console.log("events NOT added to the datacourse", err);
     })
-  }
+  }``
 
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
