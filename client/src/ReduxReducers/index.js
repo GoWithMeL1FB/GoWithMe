@@ -1,15 +1,13 @@
 import { combineReducers } from 'redux';
 import LocationReducer from './LocationReducer.js';
-import SignUpReducer from './SignUpReducer';
+import usernameReducer from './usernameReducer.js';
 import dateCourseInfo from './CourseInfoReducer';
-import LoginReducer from './LoginReducer';
 //import an combine reducers here!!
 
 const allreducers = combineReducers({
   location: LocationReducer,
-  setSignupUsername: SignUpReducer,
+  username: usernameReducer,
   dateCourseInfo: dateCourseInfo,
-  setloginUsername: LoginReducer,
 });
 
 export default allreducers;

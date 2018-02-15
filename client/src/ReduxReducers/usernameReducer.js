@@ -1,11 +1,12 @@
 export default function(state=null, action) {
   switch(action.type) {
-    case 'SAVE_LOGIN_INFO':
+    case 'SET_USERNAME':
       return Object.assign({}, state, {
         username: action.payload,
       });
       break;
-      default:
-        return state;
+
+    default:
+      return state;
   }
 };

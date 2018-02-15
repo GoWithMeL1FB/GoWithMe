@@ -18,7 +18,7 @@ class Sidebar extends Component {
 
   async componentWillMount() {
     await this.setState( {id: sessionStorage.getItem('id')})
-    console.log("Id is now", this.state.id)
+    console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
       .then( result => {
       console.log('this is the result', result.data[0]);

@@ -39,7 +39,7 @@ class HomeView extends Component {
 
   // onClick for logging state
   onClickHandler() {
-    console.log('state', this.props.signupUsername);
+    console.log('state', this.props.authUsername);
   }
 
   // takes data from search and passes to state
@@ -52,6 +52,7 @@ class HomeView extends Component {
   render() {
     return (
       <div>
+        <Button onClick={this.onClickHandler}></Button>
         <Search
           itinSetter={this.passUpItin}
         />
@@ -71,7 +72,7 @@ class HomeView extends Component {
 
 function mapStateToProps(state) {
   return {
-    signupUsername: state.setSignupUsername,
+    authUsername: state.username,
   };
 }
 
