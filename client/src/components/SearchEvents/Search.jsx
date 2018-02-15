@@ -79,6 +79,7 @@ export default class Search extends Component {
   render() {
     return (
       <div>
+      <h4>Search Events</h4>
         <Row>
           <Input
             s={12} m={12}
