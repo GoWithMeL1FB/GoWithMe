@@ -15,19 +15,18 @@ import Favorites from '../Favorites/favorites.jsx';
 
 
 class Home extends Component {
-  
+
   render() {
     return (
 
       <div>
         <Nav />
-        
-        <Row> 
-          <Col s={3} m={3}>      
+
+        <Row>
+          <Col s={3} m={3}>
           <Sidebar />
           </Col>
           <Col s={9} m={9} >
-          
             <Switch>
               <Route path="/Home/favorites" component={Favorites} />
               <Route path="/Home/CreateDateCourse" component={CreateDateCourse} />
@@ -39,7 +38,7 @@ class Home extends Component {
 
           </Col>
         </Row>
-        
+
 
         <Footer />
       </div>
