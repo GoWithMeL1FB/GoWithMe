@@ -10,5 +10,12 @@
 }
 
 #contents{
-  min-height: 800px
+  min-height: 800px;
+}
+
+.sidebar {
+  padding-left: 100px;
+  float: left;
+  box-sizing: border-box;
+  min-height: 1px;
 }

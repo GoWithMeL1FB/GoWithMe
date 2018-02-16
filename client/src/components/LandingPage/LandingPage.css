@@ -3,4 +3,17 @@
 #icon {
   height: 40%;
   width: 40%;
+  top: -80px;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}
+
+.slogan{
+  top: -115px;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
 }

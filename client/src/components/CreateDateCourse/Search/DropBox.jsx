@@ -185,7 +185,6 @@ class DropBox extends React.Component {
 
         <Col s={12}>
           <Button onClick={this.saveDateCourseEntry}>Save</Button>
-          <Button onClick={this.logState}>Clear</Button>
         </Col>
       </Row>
     </Card>

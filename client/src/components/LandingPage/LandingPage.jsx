@@ -46,10 +46,10 @@ class LandingPage extends Component {
             <div className="container">
               <br/><br/>
               <h1 className="header center"><img id="icon" src={icon}></img></h1>
-              <div className="row center">
+              <div className="slogan row center">
                 <h5 className="header col s12 mate white-text light">We Plan. You Play.</h5>
               </div>
-              <div className="row center">
+              <div className="slogan row center">
                 {/* <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> */}
                 <Signup redirectToHome={this.redirectToHome}></Signup>
               </div>
