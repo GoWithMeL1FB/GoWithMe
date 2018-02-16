@@ -48,6 +48,7 @@
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "semantic-ui-react": "^0.77.2",
+    "sweetalert": "^2.1.0",
     "webpack": "^3.10.0"
   },
   "devDependencies": {
