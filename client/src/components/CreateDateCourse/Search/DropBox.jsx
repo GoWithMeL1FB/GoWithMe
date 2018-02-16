@@ -77,7 +77,7 @@ class DropBox extends React.Component {
     return(
       <div id="fixedElement">
         <Card className="grey lighten-3">
- +      <Row>
+        <Row>
         <Col s={12}>
         <div id="scroll">
         {
