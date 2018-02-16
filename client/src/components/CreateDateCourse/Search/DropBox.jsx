@@ -125,8 +125,9 @@ class DropBox extends React.Component {
         {
           this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue;
+          console.log('WHAT EACH VENUE LOOKS LIKE', venue)
           this.state.distanceCounter += 1;
-          console.log('why isnt the state being changed?', this.state.distanceCounter);
+          // console.log('why isnt the state being changed?', this.state.distanceCounter);
           return (
             <div key={venue.id}>
               {/* <DistanceDisplay
