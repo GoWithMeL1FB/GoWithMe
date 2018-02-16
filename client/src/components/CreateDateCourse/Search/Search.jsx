@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Icon, Row, Card } from 'react-materialize';
-
-import EventRender from '../Search/EventRender.jsx';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ErrorBoundary } from 'react-error-boundaries';
+import EventRender from '../Search/EventRender.jsx';
 import { UpdateCity } from '../../../ReduxActions/UpdateCity.js';
 import { UpdateState } from '../../../ReduxActions/UpdateState.js';
-import { ErrorBoundary } from 'react-error-boundaries';
 
 const id = '1PIVDVZVWKOFS0A3OC0QHKTM552JUIXL5EG4KIFCIZHN5VUG';
 const secret = 'XXIT0PRT4KPGEBA05W1K4G50VHN3YBRCSV1ECJEW31VKVA50';

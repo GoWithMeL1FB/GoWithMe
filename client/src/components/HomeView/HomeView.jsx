@@ -14,7 +14,6 @@ class HomeView extends Component {
     this.state = {
       itineraries: [],
     }
-    this.onClickHandler = this.onClickHandler.bind(this);
     this.fetchItineraries = this.fetchItineraries.bind(this);
     this.passUpItin = this.passUpItin.bind(this);
   }
@@ -33,11 +32,6 @@ class HomeView extends Component {
       console.error('Failed to fetch all itineraries');
       throw new Error(err);
     }
-  }
-
-  // onClick for logging state
-  onClickHandler() {
-    console.log('state', this.props.authUsername);
   }
 
   // takes data from search and passes to state

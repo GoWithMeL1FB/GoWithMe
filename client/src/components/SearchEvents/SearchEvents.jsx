@@ -15,7 +15,6 @@ export default class SearchEvents extends Component {
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.passUpEvents = this.passUpEvents.bind(this);
-    this.showState = this.showState.bind(this);
   };
 
   async fetchEvents() {
@@ -32,10 +31,6 @@ export default class SearchEvents extends Component {
 
   onChangeHandler() {
   };
-
-  showState() {
-    console.log(this.state);
-  }
 
   passUpEvents(events) {
     this.setState({

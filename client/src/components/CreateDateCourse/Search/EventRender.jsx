@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
-import Events from '../../global/Events/Events.jsx';
 import { DragDropContainer } from 'react-drag-drop-container';
 import { Col } from 'react-materialize';
+import Events from '../../global/Events/Events.jsx';
 
 class EventRender extends Component {
   constructor(props) {

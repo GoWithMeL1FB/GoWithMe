@@ -52,7 +52,6 @@ class SignupPage extends Component {
     axios.post(`${url.restServer}/api/auth/signup`, payload)
 
       .then(res => {
-        console.log('user creationg info submitted', res);
         this.props.setUsername(this.state.username)
         this.props.redirectToHome();
         // this.props.history.push('/Home');

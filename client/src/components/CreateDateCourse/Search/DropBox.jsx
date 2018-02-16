@@ -1,12 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
-import Events from '../../global/Events/Events.jsx';
-import DistanceDisplay from './DistanceDisplay.jsx';
-
 import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
 import { Row, Col, Icon, Button, Card } from 'react-materialize';
+import Events from '../../global/Events/Events.jsx';
+import DistanceDisplay from './DistanceDisplay.jsx';
 import url from '../../../../config';
 
 import './DropBox.css';
@@ -27,7 +25,6 @@ class DropBox extends React.Component {
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
-    this.logState = this.logState.bind(this);
     this.getDistancesOfEvents = this.getDistancesOfEvents.bind(this);
   }
 
