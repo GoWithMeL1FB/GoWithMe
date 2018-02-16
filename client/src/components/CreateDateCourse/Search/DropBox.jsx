@@ -78,7 +78,7 @@ class DropBox extends React.Component {
     const eventTwo = this.state.dateCourse[this.state.eventCounter + 1];
     console.log('eventOne', eventOne, 'eventTwo', eventTwo)
     this.state.eventCounter += 1;
-    
+
     // console.log('eventOne:', eventOne.dragData.venue.coordinates);
     // console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
     axios.get('http://localhost:3031/api/google/getDistance', {
@@ -94,7 +94,7 @@ class DropBox extends React.Component {
       console.log('dataaa', data)
       this.state.distanceData.push([data.data.rows[0].elements[0].distance.text, data.data.rows[0].elements[0].duration.text]);
       // console.log('the state of the distanceData', this.state.distanceData);
-      Materialize.toast(`${data.data.rows[0].elements[0].distance.text}, ${data.data.rows[0].elements[0].duration.text}`);
+      Materialize.toast(`${data.data.rows[0].elements[0].distance.text}, ${data.data.rows[0].elements[0].duration.text}`, 10000, 'rounded');
       this.setState({distanceCounter: this.state.distanceCounter});
     })
     .catch(err => {
@@ -156,7 +156,7 @@ class DropBox extends React.Component {
               </DragDropContainer>
             </div>
           )
-          
+
           })
         }
 
@@ -165,7 +165,7 @@ class DropBox extends React.Component {
             return (
               <DistanceDisplay
                 time={time}
-              >  
+              >
               </DistanceDisplay>
             )
           })

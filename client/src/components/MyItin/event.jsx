@@ -29,10 +29,11 @@ class Event extends Component {
   }
 
   render() {
-    return (
-      <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{this.state.itinInfo.title}</span>)} icon="assignment">
+    if (this.state.itinInfo.meta) {
+      return (
+        <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{this.state.itinInfo.title}</span>)} icon="assignment">
         <strong>{this.state.itinInfo.description}</strong>
-        <span className="new badge" data-badge-caption="likes">56</span>
+        <span className="new badge" data-badge-caption="likes">{this.state.itinInfo.meta.likes.length}</span>
         <Collapsible>
         {
           this.state.events.map((event, index) => {
@@ -46,7 +47,27 @@ class Event extends Component {
         }
         </Collapsible>
       </CollapsibleItem>
-    )
+      )
+    } else {
+      return (
+        <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{this.state.itinInfo.title}</span>)} icon="assignment">
+          <strong>{this.state.itinInfo.description}</strong>
+          <span className="new badge" data-badge-caption="likes">loading..</span>
+          <Collapsible>
+          {
+            this.state.events.map((event, index) => {
+              return (
+                <CollapsibleItem header={event.name} key={index}>
+                  <strong>{event.description}</strong>
+                  <span className="new badge" data-badge-caption="likes">{event.meta.likes.length}</span>
+                </CollapsibleItem>
+              )
+            })
+          }
+          </Collapsible>
+        </CollapsibleItem>
+      )
+    }
   }
 }
 

@@ -7,20 +7,32 @@ import url from '../../../../config';
 class otherDateCourse extends Component {
   constructor(props){
     super(props);
-    this.onClick = this.onClick.bind(this);
+    this.onLike = this.onLike.bind(this);
+    this.onFavorite = this.onFavorite.bind(this);
   }
 
-  onClick() {
+  onLike() {
     const payload = {
       username: this.props.authUsername.username,
       type: 'itinerary',
       itineraryID: this.props.itinerary._id,
     }
     axios.put(`${url.eventServer}/api/stats/likes`, payload)
+      .then(() => {
+        Materialize.toast('Liked!', 3000, 'rounded');
+      });
+  }
+
+  onFavorite() {
+    const payload = {
+      owner: this.props.authUsername.username,
+      type: 'itinerary',
+      id: this.props.itinerary._id,
+    }
+    axios.post(`${url.eventServer}/api/favorites/faveSomething`, payload)
       .then((res) => {
-        console.log('other date - result of like:', res)
-        console.log('otherdate - payload', payload);
-      })
+        Materialize.toast('Favorited!', 3000, 'rounded');
+      });
   }
   render() {
     const url = `https://i.imgur.com/2KoKbtz.gif`;
@@ -28,7 +40,7 @@ class otherDateCourse extends Component {
       <Col s={6}>
         <Card className='small'
           header={<CardTitle image={this.props.itinerary.image || url}>{this.props.itinerary.title}</CardTitle>}
-          actions={[<a href="#">More Info</a>, <a onClick={this.onClick}>Like</a>]}>
+          actions={[<a onClick={this.onFavorite}>Favorite</a>, <a onClick={this.onLike}>Like</a>]}>
           {this.props.itinerary.owner}
         </Card>
       </Col>

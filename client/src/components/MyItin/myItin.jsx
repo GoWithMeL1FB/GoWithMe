@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
 import Event from './event.jsx';
+import EventONLY from './eventONLY.jsx';
 import url from '../../../config';
 
 class MyItin extends Component {
@@ -15,7 +16,7 @@ class MyItin extends Component {
   }
 
   async componentWillMount() {
-    await axios.get(`${url.eventServer}/api/favorites/getFavs/kevinvoduy`)
+    await axios.get(`${url.eventServer}/api/favorites/getFavs/${this.props.authUsername.username}`)
       .then((faves) => {
         this.setState({
           itineraries: faves.data[0].itinerary,
@@ -44,20 +45,17 @@ class MyItin extends Component {
             <Collapsible accordion popout id="events">
               {
                 this.state.events.map((event, index) => (
-                  <CollapsibleItem header={(<span><strong>Event</strong></span>)} icon="event" key={index}>
-                    <span><strong>title</strong>{' 4.5'}{'stars'}</span>
-                    <p>description</p>
-                  </CollapsibleItem>
+                  <EventONLY eventID={event} />
                 ))
               }
             </Collapsible>
           </div>
         </div>
       )
-    } else if (this.state.events.length === 0 || this.state.itineraries.length >= 1) {
+    } else if (this.state.events.length === 0 || this.state.itineraries.length === 0) {
       return (
           <div>
-            <h3>Favorites</h3>
+            <h4>Favorites</h4>
             <h5>There are currently 0 items... Go like something!</h5>
           </div>
         )
