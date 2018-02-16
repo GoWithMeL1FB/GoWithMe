@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import { Card, Col, CardTitle, Badge } from 'react-materialize';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import url from '../../../config';
 
-export default class Event extends Component {
+class Event extends Component {
   constructor(props){
     super(props);
+    this.onFavorite = this.onFavorite.bind(this);
+  }
+
+  onFavorite() {
+    const payload = {
+      owner: this.props.authUsername.username,
+      id: this.props.event._id,
+      type: 'event',
+    }
+    axios.post(`${url.eventServer}/api/favorites/faveSomething`, payload)
+      .then((res) => {
+        console.log('fave searched event:', res);
+      })
   }
   render() {
     const url = `https://marriedbiography.com/wp-content/uploads/2017/07/Levy-Tran.jpg`;
@@ -12,7 +28,7 @@ export default class Event extends Component {
       <Col s={4}>
         <Card className='small'
           header={<CardTitle image={ photo || url }>{this.props.event.title}</CardTitle>}
-          actions={[<a href="#">More Info</a>, <span className="new badge blue" data-badge-caption="Featured"></span>]}>
+          actions={[<a onClick={this.onFavorite}>Favorite</a>, <span className="new badge blue" data-badge-caption="Featured"></span>]}>
           <strong>{this.props.event.description}</strong><br/>
           {this.props.event.location}
         </Card>
@@ -20,3 +36,11 @@ export default class Event extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    authUsername: state.username,
+  };
+}
+
+export default connect(mapStateToProps)(Event);

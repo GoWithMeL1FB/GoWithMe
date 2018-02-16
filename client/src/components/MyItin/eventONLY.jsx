@@ -24,7 +24,6 @@ class EventONLY extends Component {
   }
 
   render() {
-    console.log('eventonly:', this.state);
     return (
       <CollapsibleItem header={(<span><strong>Event</strong>{' '}{this.state.events.name}</span>)} icon="assignment">
         <strong>{this.state.events.description}</strong>{' '}
