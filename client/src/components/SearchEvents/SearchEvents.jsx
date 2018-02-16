@@ -44,6 +44,7 @@ export default class SearchEvents extends Component {
   };
 
   render() {
+    console.log('search events - state:', this.state);
     return (
       <div>
         <Search
