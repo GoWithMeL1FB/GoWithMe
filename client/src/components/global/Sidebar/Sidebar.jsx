@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col, Card, CardTitle } from 'react-materialize';
+import url from '../../../../config'
 // import './Sidebar.css'
 //hi kevin
 class Sidebar extends Component {
@@ -19,7 +20,7 @@ class Sidebar extends Component {
   async componentWillMount() {
     await this.setState( {id: sessionStorage.getItem('id')})
     // console.log("sidebar - id:", this.state.id)
-    axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
+    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.state.id}`)
       .then( result => {
       this.setState({
         email: result.data[0].email,

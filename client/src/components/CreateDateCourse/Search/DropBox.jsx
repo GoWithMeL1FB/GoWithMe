@@ -81,7 +81,7 @@ class DropBox extends React.Component {
 
     // console.log('eventOne:', eventOne.dragData.venue.coordinates);
     // console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
-    axios.get('http://localhost:3031/api/google/getDistance', {
+    axios.get(`${url.eventServer}/api/google/getDistance`, {
       params: {
         origin: [eventOne.dragData.venue.coordinates],
         destination: [eventTwo.dragData.venue.coordinates],
