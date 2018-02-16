@@ -31,9 +31,9 @@ class LandingPage extends Component {
     return (
       <div>
         <nav className="blue-grey darken-3" role="navigation">
-        <div class="nav-wrapper container">
-          <a id="logo-container" href="#" class="brand-logo">go with me</a>
-          <ul class="right">
+        <div className="nav-wrapper container">
+          <a id="logo-container" href="#" className="brand-logo">go with me</a>
+          <ul className="right hide-on-med-and-down">
             <Login redirectToHome={this.redirectToHome}></Login>
             {/* <li><a href="#">Log In</a></li> */}
           </ul>
