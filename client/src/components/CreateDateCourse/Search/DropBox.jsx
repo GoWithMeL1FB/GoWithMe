@@ -114,11 +114,6 @@ class DropBox extends React.Component {
       // this.state.eventCounter =+ 1;
     }
   }
-
-  logState() {
-    console.log('create itin - event ids:', this.state);
-  }
-
   render () {
     console.log(this.state);
     return(
@@ -185,7 +180,6 @@ class DropBox extends React.Component {
 
         <Col s={12}>
           <Button onClick={this.saveDateCourseEntry}>Save</Button>
-          <Button onClick={this.logState}>Clear</Button>
         </Col>
       </Row>
     </Card>

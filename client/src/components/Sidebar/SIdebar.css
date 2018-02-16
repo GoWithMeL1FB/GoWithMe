@@ -3,9 +3,10 @@
 }
 
 .UpperUser {
-  background: url('../temp/michael-carnevale-435126-1.jpg');
+  background: url('/assets/images/background.jpg');
   background-size: cover;
   padding: 7%;
+  height: 370px;
 }
  
 .UpperUser img {
