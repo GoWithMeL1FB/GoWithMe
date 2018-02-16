@@ -12,7 +12,7 @@ class Nav extends Component {
       <div>
         <nav className="blue-grey darken-3" role="navigation">
           <div className="nav-wrapper container">
-            <a id="logo-container" href="/" className="brand-logo">GoWithMe</a>
+            <a id="logo-container" href="#" className="brand-logo"><img id='brandlogo' src={logo}></img></a>            
             <ul className="right">
               <li><Link to="/Home/HomeView"><Icon>home</Icon></Link></li>
               <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon></Link></li>

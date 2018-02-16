@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import Events from '../../global/Events/Events.jsx';
+import DistanceDisplay from './DistanceDisplay.jsx';
 
 import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
 import { Row, Col, Icon, Button, Card } from 'react-materialize';
@@ -21,7 +22,7 @@ class DropBox extends React.Component {
       eventCounter: 0,
       arrayLengthCounter: 0,
       distanceData: [],
-      distanceCounter: -1
+      distanceCounter: 0
     };
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
@@ -74,8 +75,11 @@ class DropBox extends React.Component {
     // console.log('the state of the events', this.state.dateCourse, 'first dateCourse', this.state.dateCourse[0])
     const eventOne = this.state.dateCourse[this.state.eventCounter];
     const eventTwo = this.state.dateCourse[this.state.eventCounter + 1];
+    console.log('eventOne', eventOne, 'eventTwo', eventTwo)
+    this.state.eventCounter += 1;
+    
     // console.log('eventOne:', eventOne.dragData.venue.coordinates);
-    console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
+    // console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
     axios.get('http://localhost:3031/api/google/getDistance', {
       params: {
         origin: [eventOne.dragData.venue.coordinates],
@@ -83,10 +87,14 @@ class DropBox extends React.Component {
       }
     })
     .then(data => {
-      this.state.eventCounter =+ 1;
+      console.log('are the eventCounters going up?', this.state.eventCounter);
+      // console.log('this is the datacourse,' this.state.dataCourse);
       console.log('when two dateCourse are added:', this.state.dateCourse);
-      this.state.distanceData.push({distance: data.data.rows[0].elements[0].distance.text, duration: data.data.rows[0].elements[0].duration.text});
-      console.log('the state of the distanceData', this.state.distanceData);
+      console.log('dataaa', data)
+      this.state.distanceData.push([data.data.rows[0].elements[0].distance.text, data.data.rows[0].elements[0].duration.text]);
+      // console.log('the state of the distanceData', this.state.distanceData);
+      Materialize.toast(`${data.data.rows[0].elements[0].distance.text}, ${data.data.rows[0].elements[0].duration.text}`);
+      this.setState({distanceCounter: this.state.distanceCounter});
     })
     .catch(err => {
       console.log('getDistancesOfEventsNotWorking', err)
@@ -102,6 +110,7 @@ class DropBox extends React.Component {
     if ( this.state.arrayLengthCounter > 1 ) {
       // console.log('is this hitting?')
       this.getDistancesOfEvents()
+      // this.state.eventCounter =+ 1;
     }
   }
 
@@ -124,6 +133,9 @@ class DropBox extends React.Component {
           console.log('why isnt the state being changed?', this.state.distanceCounter);
           return (
             <div key={venue.id}>
+              {/* <DistanceDisplay
+                coord={this.state.distanceData[this.state.distanceCounter]}
+              ></DistanceDisplay> */}
               <DragDropContainer
                 item={venue}
                 returnToBase={true}
@@ -146,6 +158,17 @@ class DropBox extends React.Component {
           
           })
         }
+
+        {/* {
+          this.state.distanceData.map((time) => {
+            return (
+              <DistanceDisplay
+                time={time}
+              >  
+              </DistanceDisplay>
+            )
+          })
+        } */}
         </div>
         <center>
           <DropTarget
