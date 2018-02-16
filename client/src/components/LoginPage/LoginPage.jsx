@@ -40,7 +40,7 @@ class LoginPage extends Component {
       localStorage.setItem('id', results.data.id);
       localStorage.setItem('username', results.data.username);
       this.props.redirectToHome();
-      console.log('Log in Successful! res:', results);
+      console.log('Log in Successful!');
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);

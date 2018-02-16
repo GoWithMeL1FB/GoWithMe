@@ -29,7 +29,6 @@ class Event extends Component {
   }
 
   render() {
-    console.log('state', this.state, this.props.itinID);
     return (
       <CollapsibleItem header={(<span><strong>Itinerary</strong></span>)} icon="assignment">
         <strong>{this.state.itinInfo.title}</strong>

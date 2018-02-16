@@ -28,7 +28,6 @@ class MyItin extends Component {
   }
 
   render() {
-    console.log('my itin - state', this.state);
     return (
       <div>
         <h4>My Faves</h4>

@@ -21,7 +21,6 @@ class Sidebar extends Component {
     // console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.id)
       .then( result => {
-      // console.log('this is the result', result.data[0]);
       this.setState({
         email: result.data[0].email,
         username: result.data[0].username,
