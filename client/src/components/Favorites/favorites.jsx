@@ -92,7 +92,6 @@ class Favorites extends Component {
     }
   }
 }
-}
 
 // change setlogingUsername to setSignupUsername
 function mapStateToProps(state) {

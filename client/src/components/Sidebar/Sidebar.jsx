@@ -57,20 +57,20 @@ class Sidebar extends Component {
       <ul >
         <li className="UpperUser">
           <div >
-          <p> <img class="circle" src={this.state.img}/></p>
-          <p class="white-text name">{this.state.username}</p>
-          <p class="white-text email">{this.state.email}</p>
+          <p> <img className="circle" src={this.state.img}/></p>
+          <p className="white-text name">{this.state.username}</p>
+          <p className="white-text email">{this.state.email}</p>
           </div>
         </li>
         <li className="User">Bio: {this.state.bio}</li>
-        <li><div class="divider"></div></li>
+        <li><div className="divider"></div></li>
         <li className="User">Number of Date Courses made: {this.state.dCCount}</li>
-        <li><div class="divider"></div></li>
-        <li class="subheader User">Most Likes: {this.state.mostLikedDC}</li>
-        <li><div class="divider"></div></li>
-        <li class="subheader User">Most Shares: {this.state.mostSharedDC}</li>
+        <li><div className="divider"></div></li>
+        <li className="subheader User">Most Likes: {this.state.mostLikedDC}</li>
+        <li><div className="divider"></div></li>
+        <li className="subheader User">Most Shares: {this.state.mostSharedDC}</li>
         </ul>
-        
+
       </div>
     )
   }

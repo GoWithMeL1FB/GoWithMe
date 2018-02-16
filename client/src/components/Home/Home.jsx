@@ -27,9 +27,6 @@ class Home extends Component {
             <Sidebar />
           </Col>
           <div className="container" id="contents">
-            <Col s={3} m={3}>
-              <Sidebar />
-            </Col>
             <Col s={9} m={9} >
               <Switch>
                 <Route path="/Home/favorites" component={Favorites} />
