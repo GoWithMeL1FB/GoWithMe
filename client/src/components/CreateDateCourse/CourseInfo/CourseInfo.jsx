@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Card, Col, Input, CardTitle, Row } from 'react-materialize';
 
 import { description } from '../../../ReduxActions/Description';
 import { title } from '../../../ReduxActions/TitleInfo';
-
-import { Card, Col, Input, CardTitle, Row } from 'react-materialize';
 import { setUsername } from '../../../ReduxActions/setUsername';
 import { image } from '../../../ReduxActions/ImageURL';
 
