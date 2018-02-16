@@ -14,7 +14,7 @@ class EditProfile extends Component {
       email: '',
       bio: '',
       birthday: 0,
-      profileImage: null,
+      image: '',
 
     }
     this.submitUpdate = this.submitUpdate.bind(this);
@@ -31,13 +31,14 @@ class EditProfile extends Component {
     // console.log(this.state.username);
     axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.authUsername.username}`)
       .then((data) => {
-        const { firstname, lastname, email, bio, birthday } = data.data[0];
+        const { firstname, lastname, email, bio, birthday, image } = data.data[0];
         this.setState({
           firstname,
           lastname,
           email,
           bio,
           birthday,
+          image
         });
       })
       .catch((err) => {
@@ -73,7 +74,7 @@ class EditProfile extends Component {
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
-          <Input s={12} name="profileImage" label="profile Image" onChange={this.onChangeHandler}/>
+          <Input s={12} name="image" label="Profile Image" onChange={this.onChangeHandler}/>
           <div className="center-align"><Button waves='light' onClick={this.submitUpdate}>submit</Button></div>
         </Row>
       </div>
