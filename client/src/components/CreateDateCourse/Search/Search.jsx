@@ -143,6 +143,7 @@ ClickHandler() {
         {
           this.state.queudEvents.map(result => {
             // console.log(result.photo)
+            // console.log('what i need', result);
             if (!!result.venue) {
               let payload = {
                 id: result.id,
@@ -151,7 +152,8 @@ ClickHandler() {
                 price: result.price?price:null,
                 description: result.venue.categories[0].name,
                 prefix: null,
-                suffix: null
+                suffix: null,
+                coordinates: `${result.venue.location.lat},${result.venue.location.lng}`
               }
               // console.log('before', payload)
               if (result.photo) {
