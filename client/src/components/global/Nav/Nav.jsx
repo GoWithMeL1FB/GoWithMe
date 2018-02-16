@@ -11,9 +11,9 @@ class Nav extends Component {
     return (
       <div>
         <nav className="blue-grey darken-3" role="navigation">
-          <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo"><img id='brandlogo' src={logo}></img></a>            
-            <ul class="right">
+          <div className="nav-wrapper container">
+            <a id="logo-container" href="#" className="brand-logo"><img id='brandlogo' src={logo}></img></a>            
+            <ul className="right">
               <li><Link to="/Home/HomeView"><Icon>home</Icon></Link></li>
               <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon></Link></li>
               <li><Link to="/Home/searchEvents"><Icon>search</Icon></Link></li>
