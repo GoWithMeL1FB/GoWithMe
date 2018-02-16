@@ -34,7 +34,7 @@ class Favorites extends Component {
     console.log('favorites - state.itin:', this.state.itineraries);
     return (
       <div>
-        <h3>Favorites</h3>
+        <h4>Favorites</h4>
         <div>
           <Collapsible accordion popout>
             {
@@ -73,7 +73,7 @@ class Favorites extends Component {
 // change setlogingUsername to setSignupUsername
 function mapStateToProps(state) {
   return {
-    signupUsername: state.setloginUsername,
+    authUsername: state.username,
   }
 }
 export default connect(mapStateToProps)(Favorites);
