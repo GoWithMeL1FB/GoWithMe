@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Collapsible, CollapsibleItem } from 'react-materialize';
+import { Collapsible, CollapsibleItem, Button } from 'react-materialize';
 import url from '../../../config';
 
 class Favorites extends Component {
@@ -11,12 +11,12 @@ class Favorites extends Component {
       itineraries: [],
       events: [],
     };
+    this.showstate = this.showstate.bind(this);
   }
 
   async componentWillMount() {
     await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/${this.props.authUsername.username}`)
       .then((itineraries) => {
-        console.log('faves - itin', itineraries)
         this.setState({
           itineraries: itineraries.data,
         });
@@ -24,20 +24,25 @@ class Favorites extends Component {
       .then(async()=> {
         for (let j = 0; j < this.state.itineraries.length; j++) {
           const event = await axios.get(`${url.eventServer}/api/events/getEventsByItin/${this.state.itineraries[j]._id}`);
+          console.log('three:', event)
           this.state.events.push(event.data);
         }
         this.setState({
-          events: this.state.events
+          events: this.state
         })
-
       })
       .catch((err) => {
         console.log('failed to fetch users itineraries', err.message);
       });
   }
 
+  showstate() {
+    console.log('button', this.state);
+  }
+
   render() {
-    if (this.state.events.length) {
+    console.log('first', this.state);
+    if (this.state.events.events) {
       return (
         <div>
           <h4>My Itineraries</h4>
@@ -57,8 +62,9 @@ class Favorites extends Component {
                     </span>
 
                     <Collapsible>
+                      {/* this mother fucker causes so many issues*/}
                       {
-                        this.state.events[index].map((itin, otherindex) => {
+                        this.state.events.events[index].map((itin, otherindex) => {
                           return(
                               <CollapsibleItem header={itin.name} key={otherindex}>
                                 <strong>{itin.description}</strong>
@@ -80,11 +86,14 @@ class Favorites extends Component {
         </div>
       )
     } else {
-    return (
-      <h3>Working...</h3>
-    )
+      return (
+        <div>
+          <h4>Favorites</h4>
+          <h5>You do not have any items saved!</h5>
+        </div>
+      )
+    }
   }
-}
 }
 
 // change setlogingUsername to setSignupUsername

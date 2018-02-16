@@ -20,6 +20,7 @@ export default class Search extends Component {
 
   async componentDidMount() {
     const { data } = await axios.get(`${url.eventServer}/api/events/getAllEvents`);
+    console.log('fuze data:', data)
     if (data) {
       const config = {
         shouldSort: true,
