@@ -4,7 +4,7 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import swal from 'sweetalert';
 
 import './Nav.css';
-import logo from "../../../../public/landingPageImage/pic/logos/gwmfavwhite.png";
+// import logo from "../../../../public/assets/logos/gwmfavwhite.png";
 
 class Nav extends Component {
   constructor(props) {
@@ -39,7 +39,11 @@ class Nav extends Component {
       <div>
         <nav className="blue-grey darken-3" role="navigation">
           <div className="nav-wrapper container">
+<<<<<<< HEAD
             <a id="logo-container" href="#" className="brand-logo"><img id='brandlogo' src={logo}></img></a>
+=======
+            <a id="logo-container" href="#" className="brand-logo"><img id='brandlogo' src='/assets/logos/gwmfavwhite.png'></img></a>            
+>>>>>>> [fix] image render does not break upon refresh
             <ul className="right">
               <li><Link to="/Home/HomeView"><Icon>home</Icon></Link></li>
               <li><Link to="/Home/createDateCourse"><Icon>event_note</Icon></Link></li>

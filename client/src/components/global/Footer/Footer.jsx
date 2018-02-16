@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import './Footer.css';
-import mongo from '../../../../public/mongo.svg';
-import js from '../../../../public/nodejs.svg';
-import docker from '../../../../public/docker.svg';
-import aws from '../../../../public/aws.svg'
-import mysql from '../../../../public/mysql.svg';
-import node from '../../../../public/nodejs.svg';
-import redux from '../../../../public/redux.svg';
-import react from '../../../../public/react.svg';
-import nginx from '../../../../public/ngnix.png';
-import redis from '../../../../public/redis.svg';
+const mongo = '/assets/techLogos/mongo.svg';
+const js = '/assets/techLogos/nodejs.svg';
+const docker = '/assets/techLogos/docker.svg';
+const aws = '/assets/techLogos/aws.svg';
+const mysql = '/assets/techLogos/mysql.svg';
+const node = '/assets/techLogos/nodejs.svg';
+const redux = '/assets/techLogos/redux.svg';
+const react = '/assets/techLogos/react.svg';
+const nginx = '/assets/techLogos/ngnix.png';
+const redis = '/assets/techLogos/redis.svg';
 // import redhat from '../../../../../fakeDatas/redhat.svg';
 class Footer extends Component {
 
