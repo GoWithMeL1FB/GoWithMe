@@ -7,7 +7,7 @@ import Signup from '../SignupPage/SignupPage.jsx';
 import Login from '../LoginPage/LoginPage.jsx';
 import Footer from '../global/Footer/Footer.jsx';
 
-import icon from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage.jpg";
+import icon from "../../../public/landingPageImage/pic/logos/gwmlogowhite.png";
 import mainLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage.jpg";
 import bottomLanding from "../../../public/landingPageImage/pic/compressed/Webp.net-resizeimage (1).jpg";
 import './LandingPage.css';
