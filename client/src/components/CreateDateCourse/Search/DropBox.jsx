@@ -27,7 +27,6 @@ class DropBox extends React.Component {
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
-    this.logState = this.logState.bind(this);
     this.getDistancesOfEvents = this.getDistancesOfEvents.bind(this);
   }
 

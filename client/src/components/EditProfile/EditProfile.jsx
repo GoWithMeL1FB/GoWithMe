@@ -28,7 +28,7 @@ class EditProfile extends Component {
 
   componentDidMount() {
     //this.props.authUsername.username,
-    console.log(this.state.username);
+    // console.log(this.state.username);
     axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.authUsername.username}`)
       .then((data) => {
         const { firstname, lastname, email, bio, birthday } = data.data[0];
@@ -61,10 +61,6 @@ class EditProfile extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-  }
-
-  logState() {
-    console.log('edit profile - state:', this.state);
   }
 
   render() {
