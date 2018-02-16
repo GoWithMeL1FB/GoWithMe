@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row, Col } from 'react-materialize';
 import './Sidebar.css'
-//hi kevin
+
 class Sidebar extends Component {
 
   constructor(props) {
@@ -15,20 +15,19 @@ class Sidebar extends Component {
       bio: null,
       dCCount: 0,
       mostLikedDC: 'Unavailable',
-      mostSharedDC: 'Unavailable'
+      mostSharedDC: 'Unavailable',
+      img: "/assets/images/default-user-img.jpg"
 
     }
   }
 
   async componentWillMount() {
     await this.setState( {
-      id: sessionStorage.getItem('id'),
-      username: sessionStorage.getItem('username')
+      id: localStorage.getItem('id'),
+      username: localStorage.getItem('username')
   })
-    console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.username)
       .then( result => {
-      console.log('----this is the result', result.data);
       this.setState({
         email: result.data[0].email,
         birthday: result.data[0].birthday,
@@ -41,6 +40,9 @@ class Sidebar extends Component {
           mostSharedDC: result.data[1].mostSharedDC
         })
       }
+      if(result.data[2]){
+        this.setState({img: result.data[2]})
+      }
 
     })
     .catch((err) => {
@@ -51,25 +53,49 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div className="User">
-        <Row className="User">
-          <Col s={3} m={3}>
-          <div>
-          <img src="assets/images/prof.jpg"/>
+      <div >
+      <ul >
+        <li className="UpperUser">
+          <div >
+          <p> <img class="circle" src={this.state.img}/></p>
+          <p class="white-text name">{this.state.username}</p>
+          <p class="white-text email">{this.state.email}</p>
           </div>
-
-        <p>{this.state.username}</p>
-        <p>{this.state.email}</p>
-        <p>Bio: {this.state.bio}</p>
-        <p>Number of Date Courses made: {this.state.dCCount}</p>
-        <p>Most Likes: {this.state.mostLikedDC}</p>
-        <p>Most Shares: {this.state.mostSharedDC}</p>
-        </Col>
-      </Row>
-
+        </li>
+        <li className="User">Bio: {this.state.bio}</li>
+        <li><div class="divider"></div></li>
+        <li className="User">Number of Date Courses made: {this.state.dCCount}</li>
+        <li><div class="divider"></div></li>
+        <li class="subheader User">Most Likes: {this.state.mostLikedDC}</li>
+        <li><div class="divider"></div></li>
+        <li class="subheader User">Most Shares: {this.state.mostSharedDC}</li>
+        </ul>
+        
       </div>
     )
   }
 }
+
+{/* <Row className="UpperUser">
+          <Col s={3} m={3}>
+          <div>
+          <img src={this.state.img}/>
+          </div>
+
+        <p>{this.state.username}</p>
+        <p>{this.state.email}</p>
+        </Col>
+      </Row>
+      <Row>
+          <Col s={3} m={3}>
+        <p>Bio:</p>
+        <p>{this.state.bio}</p>
+        <p>Number of Date Courses made: {this.state.dCCount}</p>
+        <p>{this.state.dCCount}</p>
+        <p>Most Likes: {this.state.mostLikedDC}</p>
+        <p>Most Shares: {this.state.mostSharedDC}</p>
+        </Col>
+      </Row> */}
+
 
 export default Sidebar;

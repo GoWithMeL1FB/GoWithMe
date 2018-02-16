@@ -12,6 +12,7 @@ import Sidebar from '../Sidebar/Sidebar.jsx';
 import CreateDateCourse from '../createDateCourse/createDateCourse.jsx';
 import SearchEvents from '../SearchEvents/SearchEvents.jsx';
 import Favorites from '../Favorites/favorites.jsx';
+import MyItin from '../MyItin/myItin.jsx';
 
 
 class Home extends Component {
@@ -22,6 +23,9 @@ class Home extends Component {
       <div>
         <Nav />
         <Row>
+          <Col s={3} m={3}>
+            <Sidebar />
+          </Col>
           <div className="container" id="contents">
             <Col s={3} m={3}>
               <Sidebar />
@@ -33,15 +37,13 @@ class Home extends Component {
                 <Route path="/Home/EditProfile" component={EditProfile} />
                 <Route path="/Home/HomeView" component={HomeView} />
                 <Route path="/Home/searchEvents" component={SearchEvents} />
+                <Route path="/Home/myItineraries" component={MyItin} />
                 <Route path='/Home' component={HomeView} />
               </Switch>
-
             </Col>
 
           </div>
         </Row>
-
-
         <Footer />
       </div>
     )

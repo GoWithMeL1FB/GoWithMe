@@ -47,11 +47,12 @@ class DropBox extends React.Component {
         })
           this.state.dateCourse.forEach(async(item) => {
           const { name, description, location, prefix, suffix, } = item.dragData.venue;
-          const data = { name, description, location: 'west covina', prefix, suffix, itineraryId: this.state.dateCourseID};
+
+          const data = { name, description, location, prefix, suffix, itineraryId: this.state.dateCourseID};
+
           axios.post(`${url.eventServer}/api/events/createEvent`, data)
             .then((event) => {
-              // console.log('event please', event);
-              axios.post(`http://localhost:3031/api/itinerary/addEventToItinerary`, { eventId: event.data._id, itineraryId: this.state.dateCourseID, })
+              axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, { eventId: event.data._id, itineraryId: this.state.dateCourseID, })
             })
             .catch((err) => {
               console.log('faeiled to save event to itin', err.message);
@@ -119,6 +120,7 @@ class DropBox extends React.Component {
   }
 
   render () {
+    console.log(this.state);
     return(
       <div id="fixedElement">
         <Card className="grey lighten-3">

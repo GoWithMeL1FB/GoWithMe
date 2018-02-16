@@ -35,12 +35,12 @@ class LoginPage extends Component {
     axios.post(`${url.restServer}/api/auth/login`, payload)
     .then((results) => {
       this.props.setUsername(this.state.username);
-      //console.log(sessionStorage.getItem('authentication'));
-      sessionStorage.setItem('authentication', results.headers.authentication);
-      sessionStorage.setItem('id', results.data.id);
-      sessionStorage.setItem('username', results.data.username);
+      //console.log(localStorage.getItem('authentication'));
+      localStorage.setItem('authentication', results.headers.authentication);
+      localStorage.setItem('id', results.data.id);
+      localStorage.setItem('username', results.data.username);
       this.props.redirectToHome();
-      console.log('Log in Successful! res:', results);
+      console.log('Log in Successful!');
     })
     .catch((err) => {
       console.log('Log in Failed err:', err);
