@@ -51,6 +51,7 @@ class EditProfile extends Component {
       const payload = this.state;
       const data = await axios.put(`${url.restServer}/api/user/updateUser`, payload);
       // console.log(data);
+      if (data) { Materialize.toast('Info Updated!', 4000, 'rounded') }
     } catch(err) {
       console.log('Failed to update user info', err);
     }

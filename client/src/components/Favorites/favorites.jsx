@@ -85,7 +85,7 @@ class Favorites extends Component {
     } else {
       return (
         <div>
-          <h4>Favorites</h4>
+          <h4>My Itineraries</h4>
           <h5>You do not have any items saved!</h5>
         </div>
       )

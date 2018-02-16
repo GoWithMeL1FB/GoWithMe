@@ -17,7 +17,10 @@ class otherDateCourse extends Component {
       type: 'itinerary',
       itineraryID: this.props.itinerary._id,
     }
-    axios.put(`${url.eventServer}/api/stats/likes`, payload);
+    axios.put(`${url.eventServer}/api/stats/likes`, payload)
+      .then(() => {
+        Materialize.toast('Liked!', 3000, 'rounded');
+      });
   }
 
   onFavorite() {
@@ -28,8 +31,8 @@ class otherDateCourse extends Component {
     }
     axios.post(`${url.eventServer}/api/favorites/faveSomething`, payload)
       .then((res) => {
-        console.log('result of fav something:', res);
-      })
+        Materialize.toast('Favorited!', 3000, 'rounded');
+      });
   }
   render() {
     const url = `https://i.imgur.com/2KoKbtz.gif`;

@@ -16,7 +16,6 @@ class EventONLY extends Component {
     console.log('props', this.props)
     await axios.get(`${url.eventServer}/api/events/getEventById/${this.props.eventID.ID}`)
       .then((res) => {
-        console.log('eventonly:', res);
         this.setState({
           events: res.data,
         });

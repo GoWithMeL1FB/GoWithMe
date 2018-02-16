@@ -55,7 +55,7 @@ class MyItin extends Component {
     } else if (this.state.events.length === 0 || this.state.itineraries.length === 0) {
       return (
           <div>
-            <h3>Favorites</h3>
+            <h4>Favorites</h4>
             <h5>There are currently 0 items... Go like something!</h5>
           </div>
         )

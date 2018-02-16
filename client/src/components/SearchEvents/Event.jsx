@@ -17,9 +17,9 @@ class Event extends Component {
       type: 'event',
     }
     axios.post(`${url.eventServer}/api/favorites/faveSomething`, payload)
-      .then((res) => {
-        console.log('fave searched event:', res);
-      })
+    .then((res) => {
+      Materialize.toast('Favorited!', 3000, 'rounded');
+    });
   }
   render() {
     const url = `https://marriedbiography.com/wp-content/uploads/2017/07/Levy-Tran.jpg`;
