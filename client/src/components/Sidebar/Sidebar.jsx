@@ -15,15 +15,16 @@ class Sidebar extends Component {
       bio: null,
       dCCount: 0,
       mostLikedDC: 'Unavailable',
-      mostSharedDC: 'Unavailable'
+      mostSharedDC: 'Unavailable',
+      img: "/assets/images/default-user-img.jpg"
 
     }
   }
 
   async componentWillMount() {
     await this.setState( {
-      id: sessionStorage.getItem('id'),
-      username: sessionStorage.getItem('username')
+      id: localStorage.getItem('id'),
+      username: localStorage.getItem('username')
   })
     console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.username)
@@ -41,6 +42,9 @@ class Sidebar extends Component {
           mostSharedDC: result.data[1].mostSharedDC
         })
       }
+      if(result.data[2]){
+        console.log("LOOK YOU HAVE AN IMAGE", result.data[2])
+      }
 
     })
     .catch((err) => {
@@ -55,13 +59,15 @@ class Sidebar extends Component {
         <Row className="User">
           <Col s={3} m={3}>
           <div>
-          <img src="assets/images/prof.jpg"/>
+          <img src={this.state.img}/>
           </div>
 
         <p>{this.state.username}</p>
         <p>{this.state.email}</p>
-        <p>Bio: {this.state.bio}</p>
+        <p>Bio:</p>
+        <p>{this.state.bio}</p>
         <p>Number of Date Courses made: {this.state.dCCount}</p>
+        <p>{this.state.dCCount}</p>
         <p>Most Likes: {this.state.mostLikedDC}</p>
         <p>Most Shares: {this.state.mostSharedDC}</p>
         </Col>

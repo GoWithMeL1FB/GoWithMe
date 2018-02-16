@@ -20,12 +20,16 @@ class EditProfile extends Component {
     this.submitUpdate = this.submitUpdate.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
+  componentWillMount() {
+    this.setState({
+      username: localStorage.getItem('username')
+    })
+  }
 
   componentDidMount() {
-    this.setState({
-      username: this.props.authUsername.username,
-    });
-    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.props.authUsername.username}`)
+    //this.props.authUsername.username,
+    console.log(this.state.username);
+    axios.get(`${url.restServer}/api/user/fetchUsersInfo/${this.state.username}`)
       .then((data) => {
         const { firstname, lastname, email, bio, birthday } = data.data[0];
         this.setState({
@@ -71,6 +75,7 @@ class EditProfile extends Component {
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
           <Input s={6} type="email" name="email" label="Email" onChange={this.onChangeHandler}/>
           <Input s={6} name="birthday" label="Birthday" onChange={this.onChangeHandler}/>
+          <Input s={6} name="profileImage" label="profile Image" onChange={this.onChangeHandler}/>
           <Input s={12} name="bio" label="Bio" onChange={this.onChangeHandler}/>
           <Button waves='light' onClick={this.submitUpdate}>submit</Button>
         </Row>
