@@ -25,7 +25,7 @@ class Nav extends Component {
           icon: "success",
         })
         .then(() => {
-          window.location.href = 'http://ec2-52-53-252-145.us-west-1.compute.amazonaws.com:3050';
+          window.location.href = 'localhost:3050';
         })
       } else {
         swal("Glad ya stayed!");
