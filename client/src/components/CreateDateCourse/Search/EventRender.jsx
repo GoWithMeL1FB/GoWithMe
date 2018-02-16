@@ -38,6 +38,7 @@ class EventRender extends Component {
           attendees='1-2'
           prefix={this.props.venue.prefix}
           suffix={this.props.venue.suffix}
+          coordinates={this.props.venue.coordinates}
         />
         </DragDropContainer>
         {/* <button onClick = {this.test}>props checker</button> */}
