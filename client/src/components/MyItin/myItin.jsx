@@ -15,7 +15,7 @@ class MyItin extends Component {
   }
 
   async componentWillMount() {
-    await axios.get(`${url.eventServer}/api/favorites/getFavs/${this.props.authUsername.username}`)
+    await axios.get(`${url.eventServer}/api/favorites/getFavs/kevinvoduy`)
       .then((faves) => {
         this.setState({
           itineraries: faves.data[0].itinerary,
@@ -28,8 +28,7 @@ class MyItin extends Component {
   }
 
   render() {
-    console.log(this.state);
-    if (this.state.events.length) {
+    if (this.state.events.length >= 1 || this.state.itineraries.length >= 1) {
       return (
         <div>
           <h4>My Faves</h4>
@@ -55,6 +54,13 @@ class MyItin extends Component {
           </div>
         </div>
       )
+    } else if (this.state.events.length === 0 || this.state.itineraries.length >= 1) {
+      return (
+          <div>
+            <h3>Favorites</h3>
+            <h5>There are currently 0 items... Go like something!</h5>
+          </div>
+        )
     } else {
       return (
         <h3>Working... Please wait.</h3>

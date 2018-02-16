@@ -16,6 +16,7 @@ class Favorites extends Component {
   async componentWillMount() {
     await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/${this.props.authUsername.username}`)
       .then((itineraries) => {
+        console.log('faves - itin', itineraries)
         this.setState({
           itineraries: itineraries.data,
         });
@@ -50,13 +51,15 @@ class Favorites extends Component {
                     icon="assignment"
                     key={index}
                     >
-                    <h5>{itinerary.description}</h5>
+                    <strong>{itinerary.description}</strong>
+                    <span className="new badge" data-badge-caption="likes">
+                      {itinerary.meta.likes.length}
+                    </span>
 
                     <Collapsible>
                       {
                         this.state.events[index].map((itin, otherindex) => {
-                          return
-                            (
+                          return(
                               <CollapsibleItem header={itin.name} key={otherindex}>
                                 <strong>{itin.description}</strong>
                                 <span className="new badge" data-badge-caption="likes">
