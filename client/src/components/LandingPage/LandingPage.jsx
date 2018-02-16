@@ -116,9 +116,9 @@ class LandingPage extends Component {
             <div className="center-align">
               <p className="bold">Product Manager/Software Engineer - David Chung</p>
               <p className="bold">Software Engineer - Karolee Ann Carlson</p>
-              <p className="bold"><Icon>smoking_rooms</Icon>Software Consultant - Jae Chi<Icon>smoking_rooms</Icon></p>
-              <p className="bold"><Icon>timer_10</Icon>Debug GOD / janitor - Brian Hong<Icon>timer_10</Icon></p>
-              <p className="bold">Software Engineer - Kevin Vo</p>
+              <p className="bold">Tech Consultant - Jae Chi</p>
+              <p className="bold">Tech Consultant - Brian Hong</p>
+              <p className="bold">Systems Architect - Kevin Vo</p>
             </div>
           </div>
         </div>
