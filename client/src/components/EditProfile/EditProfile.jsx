@@ -69,7 +69,7 @@ class EditProfile extends Component {
   render() {
     return (
       <div>
-        <h3>Edit Profile</h3>
+        <h4>Edit Profile</h4>
         <Row>
           <Input s={6} name="firstname" label="First Name" onChange={this.onChangeHandler}/>
           <Input s={6} name="lastname" label="Last Name" onChange={this.onChangeHandler}/>
