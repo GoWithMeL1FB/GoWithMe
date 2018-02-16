@@ -19,6 +19,7 @@ class EventRender extends Component {
 
   render() {
     return(
+      <Col s={6}>
       <div key={this.props.venue.id}>
         <DragDropContainer
           item={this.props.venue}
@@ -41,6 +42,7 @@ class EventRender extends Component {
         </DragDropContainer>
         {/* <button onClick = {this.test}>props checker</button> */}
       </div>
+      </Col>
     )
   }
 }

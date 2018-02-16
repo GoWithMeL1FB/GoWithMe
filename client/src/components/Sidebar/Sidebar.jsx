@@ -26,10 +26,8 @@ class Sidebar extends Component {
       id: localStorage.getItem('id'),
       username: localStorage.getItem('username')
   })
-    console.log("sidebar - id:", this.state.id)
     axios.get('http://localhost:3030/api/user/fetchUsersInfo/' + this.state.username)
       .then( result => {
-      console.log('----this is the result', result.data);
       this.setState({
         email: result.data[0].email,
         birthday: result.data[0].birthday,
