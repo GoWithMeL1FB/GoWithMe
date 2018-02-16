@@ -114,11 +114,6 @@ class DropBox extends React.Component {
       // this.state.eventCounter =+ 1;
     }
   }
-
-  logState() {
-    console.log('create itin - event ids:', this.state);
-  }
-
   render () {
     console.log(this.state);
     return(
