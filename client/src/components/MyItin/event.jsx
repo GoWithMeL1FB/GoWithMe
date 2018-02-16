@@ -14,13 +14,13 @@ class Event extends Component {
   }
 
   async componentDidMount() {
-    await axios.get(`${url.eventServer}/api/events/getEventsByItin/5a854426bf93a36a17f50081`)
+    await axios.get(`${url.eventServer}/api/events/getEventsByItin/${this.props.itinID.ID}`)
       .then((res) => {
         this.setState({
           events: res.data,
         });
       })
-    await axios.get(`${url.eventServer}/api/itinerary/getItineraryById/5a854426bf93a36a17f50081`)
+    await axios.get(`${url.eventServer}/api/itinerary/getItineraryById/${this.props.itinID.ID}`)
       .then((res) => {
         this.setState({
           itinInfo: res.data
@@ -30,8 +30,8 @@ class Event extends Component {
 
   render() {
     return (
-      <CollapsibleItem header={(<span><strong>Itinerary</strong></span>)} icon="assignment">
-        <strong>{this.state.itinInfo.title}</strong>
+      <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{this.state.itinInfo.title}</span>)} icon="assignment">
+        <strong>{this.state.itinInfo.description}</strong>
         <span className="new badge" data-badge-caption="likes">56</span>
         <Collapsible>
         {

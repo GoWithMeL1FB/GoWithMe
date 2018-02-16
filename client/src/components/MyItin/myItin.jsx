@@ -15,7 +15,7 @@ class MyItin extends Component {
   }
 
   async componentWillMount() {
-    await axios.get(`${url.eventServer}/api/favorites/getFavs/kevinvoduy`)
+    await axios.get(`${url.eventServer}/api/favorites/getFavs/${this.props.authUsername.username}`)
       .then((faves) => {
         this.setState({
           itineraries: faves.data[0].itinerary,
@@ -28,31 +28,38 @@ class MyItin extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h4>My Faves</h4>
+    console.log(this.state);
+    if (this.state.events.length) {
+      return (
         <div>
-          <Collapsible accordion popout id="itinerary">
-            {
-              this.state.itineraries.map((itinerary, index) => (
-                <Event itinID={itinerary}/>
-              ))
-            }
-          </Collapsible>
+          <h4>My Faves</h4>
+          <div>
+            <Collapsible accordion popout id="itinerary">
+              {
+                this.state.itineraries.map((itinerary, index) => (
+                  <Event itinID={itinerary}/>
+                ))
+              }
+            </Collapsible>
 
-          <Collapsible accordion popout id="events">
-            {
-              this.state.events.map((event, index) => (
-                <CollapsibleItem header={(<span><strong>Event</strong></span>)} icon="event" key={index}>
-                  <span><strong>title</strong>{' 4.5'}{'stars'}</span>
-                  <p>description</p>
-                </CollapsibleItem>
-              ))
-            }
-          </Collapsible>
+            <Collapsible accordion popout id="events">
+              {
+                this.state.events.map((event, index) => (
+                  <CollapsibleItem header={(<span><strong>Event</strong></span>)} icon="event" key={index}>
+                    <span><strong>title</strong>{' 4.5'}{'stars'}</span>
+                    <p>description</p>
+                  </CollapsibleItem>
+                ))
+              }
+            </Collapsible>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <h3>Working... Please wait.</h3>
+      )
+    }
   }
 }
 

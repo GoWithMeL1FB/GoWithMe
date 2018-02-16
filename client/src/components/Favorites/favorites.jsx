@@ -14,7 +14,7 @@ class Favorites extends Component {
   }
 
   async componentWillMount() {
-    await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/kevinvoduy`)
+    await axios.get(`${url.eventServer}/api/itinerary/getItinerariesByUsername/${this.props.authUsername.username}`)
       .then((itineraries) => {
         this.setState({
           itineraries: itineraries.data,
@@ -36,7 +36,6 @@ class Favorites extends Component {
   }
 
   render() {
-    console.log('favorites - state.itin:', this.state);
     if (this.state.events.length) {
       return (
         <div>
@@ -46,17 +45,30 @@ class Favorites extends Component {
               {
                 this.state.itineraries.map((itinerary, index) => (
 
-                  <CollapsibleItem header={(<span><strong>Itinerary</strong>{' '}{itinerary.title}</span>)} icon="assignment" key={index}>
+                  <CollapsibleItem
+                    header={(<span><strong>Itinerary</strong>{' '}{itinerary.title}</span>)}
+                    icon="assignment"
+                    key={index}
+                    >
                     <h5>{itinerary.description}</h5>
+
                     <Collapsible>
                       {
                         this.state.events[index].map((itin, otherindex) => {
-                          return (<CollapsibleItem header={itin.name} key={otherindex} >
-                            <strong>{itin.description}</strong><span className="new badge" data-badge-caption="likes">{itin.meta.likes.length}</span>
-                          </CollapsibleItem>)
-                        })
+                          return
+                            (
+                              <CollapsibleItem header={itin.name} key={otherindex}>
+                                <strong>{itin.description}</strong>
+                                <span className="new badge" data-badge-caption="likes">
+                                  {itin.meta.likes.length}
+                                </span>
+                              </CollapsibleItem>
+                            )
+                          }
+                        )
                       }
                     </Collapsible>
+
                   </CollapsibleItem>
                 ))
               }

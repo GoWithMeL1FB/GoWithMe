@@ -45,7 +45,6 @@ class DropBox extends React.Component {
 
           axios.post(`${url.eventServer}/api/events/createEvent`, data)
             .then((event) => {
-              console.log('event please', event);
               axios.post(`http://localhost:3031/api/itinerary/addEventToItinerary`, { eventId: event.data._id, itineraryId: this.state.dateCourseID, })
             })
             .catch((err) => {
