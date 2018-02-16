@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
+import Event from './event.jsx';
 import url from '../../../config';
 
 class MyItin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
       itineraries: [],
+      events: [],
     };
   }
 
   async componentWillMount() {
     await axios.get(`${url.eventServer}/api/favorites/getFavs/kevinvoduy`)
       .then((faves) => {
-        console.log('dta', faves.data[0].event)
         this.setState({
           itineraries: faves.data[0].itinerary,
           events: faves.data[0].event,
@@ -33,18 +33,15 @@ class MyItin extends Component {
       <div>
         <h4>My Faves</h4>
         <div>
-          <Collapsible accordion popout>
+          <Collapsible accordion popout id="itinerary">
             {
               this.state.itineraries.map((itinerary, index) => (
-                <CollapsibleItem header={(<span><strong>Itinerary</strong></span>)} icon="event" key={index}>
-                  <span><strong>title</strong>{' 4.5'}{'stars'}</span>
-                  <p>description</p>
-                </CollapsibleItem>
+                <Event itinID={itinerary}/>
               ))
             }
           </Collapsible>
 
-          <Collapsible accordion popout>
+          <Collapsible accordion popout id="events">
             {
               this.state.events.map((event, index) => (
                 <CollapsibleItem header={(<span><strong>Event</strong></span>)} icon="event" key={index}>
