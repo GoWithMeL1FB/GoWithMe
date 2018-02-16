@@ -47,6 +47,7 @@ class DropBox extends React.Component {
         })
           this.state.dateCourse.forEach(async(item) => {
           const { name, description, location, prefix, suffix, } = item.dragData.venue;
+
           const data = { name, description, location, prefix, suffix, itineraryId: this.state.dateCourseID};
 
           axios.post(`${url.eventServer}/api/events/createEvent`, data)
