@@ -27,7 +27,6 @@ class DropBox extends React.Component {
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
-    this.logState = this.logState.bind(this);
     this.getDistancesOfEvents = this.getDistancesOfEvents.bind(this);
   }
 
@@ -94,7 +93,7 @@ class DropBox extends React.Component {
       console.log('dataaa', data)
       this.state.distanceData.push([data.data.rows[0].elements[0].distance.text, data.data.rows[0].elements[0].duration.text]);
       // console.log('the state of the distanceData', this.state.distanceData);
-      Materialize.toast(`${data.data.rows[0].elements[0].distance.text}, ${data.data.rows[0].elements[0].duration.text}`, 10000, 'rounded');
+      Materialize.toast(`It will take ${data.data.rows[0].elements[0].duration.text}, ${data.data.rows[0].elements[0].distanc.text}!`, 10000, 'rounded');
       this.setState({distanceCounter: this.state.distanceCounter});
     })
     .catch(err => {
@@ -125,7 +124,8 @@ class DropBox extends React.Component {
         {
           this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue;
-          console.log('WHAT EACH VENUE LOOKS LIKE', venue)
+          // console.log('WHAT EACH VENUE LOOKS LIKE', venue)
+          console.log('venue inside the dropbox', venue)
           this.state.distanceCounter += 1;
           // console.log('why isnt the state being changed?', this.state.distanceCounter);
           return (
@@ -142,9 +142,9 @@ class DropBox extends React.Component {
                 >
                 <Events
                   id={venue.id}
-                  name={venue.name}
-                  address={venue.location}
-                  category={venue.description}
+                  title={venue.name}
+                  location={venue.location}
+                  // description={venue.description}
                   prefix={venue.prefix}
                   suffix={venue.suffix}
                   coordinates={venue.coordinates}
