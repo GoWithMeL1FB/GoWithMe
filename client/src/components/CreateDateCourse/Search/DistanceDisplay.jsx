@@ -9,10 +9,6 @@ class DistanceDisplay extends Component {
     this.test = this.test.bind(this);
   }
 
-  test() {
-    console.log(this.props);
-  }
-
   render() {
     return (
       <div>
