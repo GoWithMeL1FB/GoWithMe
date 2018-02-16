@@ -14,7 +14,7 @@ class EditProfile extends Component {
       email: '',
       bio: '',
       birthday: 0,
-      profileimage: null,
+      profileImage: null,
 
     }
     this.submitUpdate = this.submitUpdate.bind(this);
