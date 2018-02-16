@@ -43,7 +43,7 @@ class Sidebar extends Component {
         })
       }
       if(result.data[2]){
-        console.log("LOOK YOU HAVE AN IMAGE", result.data[2])
+        this.setState({img: result.data[2]})
       }
 
     })
