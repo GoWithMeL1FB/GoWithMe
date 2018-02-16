@@ -18,11 +18,15 @@ class DropBox extends React.Component {
       dateCourseID: '',
       events: [],
       eventIDs: [],
+      eventCounter: 0,
+      arrayLengthCounter: 0,
+      distanceData: []
     };
     this.saveDateCourseEntry = this.saveDateCourseEntry.bind(this);
     // this.addEventToDataCourse = this.addEventToDataCourse.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
     this.logState = this.logState.bind(this);
+    this.getDistancesOfEvents = this.getDistancesOfEvents.bind(this);
   }
 
   async saveDateCourseEntry() {
@@ -63,8 +67,40 @@ class DropBox extends React.Component {
     // }
 
   }
+
+  getDistancesOfEvents = () => {
+    // console.log('this', this, 'this.state:', this.state)
+    // console.log('the state of the events', this.state.dateCourse, 'first dateCourse', this.state.dateCourse[0])
+    const eventOne = this.state.dateCourse[this.state.eventCounter];
+    const eventTwo = this.state.dateCourse[this.state.eventCounter + 1];
+    // console.log('eventOne:', eventOne.dragData.venue.coordinates);
+    // console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
+    axios.get('http://localhost:3031/api/google/getDistance', {
+      params: {
+        origin: eventOne.dragData.venue.coordinates,
+        destination: eventTwo.dragData.venue.coordinates,
+      }
+    })
+    .then(function(data) {
+      console.log('google data', data)
+      let temp = this.state.dateCourse;
+      temp[this.state.eventCounter] = [eventOne, data];
+      this.state({distanceData: temp});
+      this.state({eventCounter: this.state.eventCounter + 1});
+      console.log('is it setting the distancedata?', this.state.distancedata)
+      // console.log('when two dateCourse are added:', this.state.dateCourse);
+    })
+    .catch(err => console.log('getDistancesOfEventsNotWorking', err))
+  }
+
   handleDrop = (e) => {
     this.state.dateCourse.push(e);
+    this.state.arrayLengthCounter++;
+    // console.log('arraycounter:', this.state.arrayLengthCounter);
+    if ( this.state.arrayLengthCounter > 1 ) {
+      // console.log('is this hitting?')
+      this.getDistancesOfEvents()
+    }
     this.setState({dateCourse: this.state.dateCourse});
   }
 
@@ -83,7 +119,6 @@ class DropBox extends React.Component {
         {
           this.state.dateCourse.map((v) => {
           let venue = v.dragData.venue;
-          let pObj = v.dragData.venue;
 
           return (
             <div key={venue.id}>
@@ -101,6 +136,7 @@ class DropBox extends React.Component {
                   category={venue.description}
                   prefix={venue.prefix}
                   suffix={venue.suffix}
+                  coordinates={venue.coordinates}
                 />
               </DragDropContainer>
             </div>
