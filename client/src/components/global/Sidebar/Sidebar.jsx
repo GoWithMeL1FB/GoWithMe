@@ -41,7 +41,7 @@ class Sidebar extends Component {
       <Row className="User">
         <Col s={3} m={3}>
         <div>
-        <img src="assets/images/prof.jpg"/>
+        <img src="/assets/images/default-user-img.jpg"/>
         </div>
 
         <p>{this.state.username}</p>
