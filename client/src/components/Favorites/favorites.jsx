@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Collapsible, CollapsibleItem, Button } from 'react-materialize';
+import { Collapsible, CollapsibleItem } from 'react-materialize';
 import url from '../../../config';
 
 class Favorites extends Component {
@@ -24,7 +24,6 @@ class Favorites extends Component {
       .then(async()=> {
         for (let j = 0; j < this.state.itineraries.length; j++) {
           const event = await axios.get(`${url.eventServer}/api/events/getEventsByItin/${this.state.itineraries[j]._id}`);
-          console.log('three:', event)
           this.state.events.push(event.data);
         }
         this.setState({
@@ -41,7 +40,6 @@ class Favorites extends Component {
   }
 
   render() {
-    console.log('first', this.state);
     if (this.state.events.events) {
       return (
         <div>
@@ -62,7 +60,6 @@ class Favorites extends Component {
                     </span>
 
                     <Collapsible>
-                      {/* this mother fucker causes so many issues*/}
                       {
                         this.state.events.events[index].map((itin, otherindex) => {
                           return(
