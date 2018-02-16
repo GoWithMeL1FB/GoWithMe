@@ -1,19 +1,15 @@
 .User {
-  color: #FFFFF0;
-  text-align: center;
-  font-family: 'Montserrat', 'Arial Narrow Bold', sans-serif;
-  background: url('../temp/download.jpg');
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  margin: auto;
-
+  padding: 7%;
 }
 
-.User img {
+.UpperUser {
+  background: url('../temp/michael-carnevale-435126-1.jpg');
+  background-size: cover;
+  padding: 7%;
+}
+ 
+.UpperUser img {
   border-radius: 50%;
-  height: 450%;
-  width: 450%;
+  height: 100px;
+  width: 100px;
 }
