@@ -25,7 +25,7 @@ class Nav extends Component {
           icon: "success",
         })
         .then(() => {
-          window.location.href = 'localhost:3050';
+          window.location.href = 'http://localhost:3050/';
         })
       } else {
         swal("Glad ya stayed!");

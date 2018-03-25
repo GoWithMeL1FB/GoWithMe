@@ -1,14 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
-import { Row, Col, Icon, Button, Card } from 'react-materialize';
 import Events from '../../global/Events/Events.jsx';
 import DistanceDisplay from './DistanceDisplay.jsx';
+import { DropTarget, DragDropContainer } from 'react-drag-drop-container';
+import { Row, Col, Icon, Button, Card } from 'react-materialize';
 import url from '../../../../config';
-
 import './DropBox.css';
-
 class DropBox extends React.Component {
   constructor(props){
     super(props);
@@ -27,7 +25,6 @@ class DropBox extends React.Component {
     this.handleDrop = this.handleDrop.bind(this);
     this.getDistancesOfEvents = this.getDistancesOfEvents.bind(this);
   }
-
   async saveDateCourseEntry() {
     let payload = {
       title: this.props.dateCourseInfo.title,
@@ -35,7 +32,6 @@ class DropBox extends React.Component {
       image: this.props.dateCourseInfo.image,
       owner: this.props.authUsername.username
     }
-
     // creates itinerary with username and returns its ID
     axios.post(`${url.eventServer}/api/itinerary/createItinerary`, payload)
       .then((itin) => {
@@ -44,9 +40,7 @@ class DropBox extends React.Component {
         })
           this.state.dateCourse.forEach(async(item) => {
           const { name, description, location, prefix, suffix, } = item.dragData.venue;
-
           const data = { name, description, location, prefix, suffix, itineraryId: this.state.dateCourseID};
-
           axios.post(`${url.eventServer}/api/events/createEvent`, data)
             .then((event) => {
               axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, { eventId: event.data._id, itineraryId: this.state.dateCourseID, })
@@ -56,18 +50,13 @@ class DropBox extends React.Component {
             })
         })
     })
-
-
     // loops through queued events, saves, and returns ids
-
     // saves event to itinerary
     // for (let j = 0; j < this.state.eventIDs; j++) {
     //   axios.post(`${url.eventServer}/api/itinerary/addEventToItinerary`, { eventId: this.state.eventIDs[j].data._id, itineraryId: this.state.itineraryId, });
     //   console.log('hit');
     // }
-
   }
-
   getDistancesOfEvents = () => {
     // console.log('this', this, 'this.state:', this.state)
     // console.log('the state of the events', this.state.dateCourse, 'first dateCourse', this.state.dateCourse[0])
@@ -75,10 +64,9 @@ class DropBox extends React.Component {
     const eventTwo = this.state.dateCourse[this.state.eventCounter + 1];
     console.log('eventOne', eventOne, 'eventTwo', eventTwo)
     this.state.eventCounter += 1;
-
     // console.log('eventOne:', eventOne.dragData.venue.coordinates);
     // console.log('coordinate one', typeof eventOne.dragData.venue.coordinates, "coordinate two", eventTwo.dragData.venue.coordinates)
-    axios.get(`${url.eventServer}/api/google/getDistance`, {
+    axios.get(`http://localhost:3031/api/google/getDistance`, {
       params: {
         origin: [eventOne.dragData.venue.coordinates],
         destination: [eventTwo.dragData.venue.coordinates],
@@ -98,7 +86,6 @@ class DropBox extends React.Component {
       console.log('getDistancesOfEventsNotWorking', err)
     })
   }
-
   handleDrop = (e) => {
     this.state.distanceCounter = 0;
     this.state.dateCourse.push(e);
@@ -150,10 +137,8 @@ class DropBox extends React.Component {
               </DragDropContainer>
             </div>
           )
-
           })
         }
-
         {/* {
           this.state.distanceData.map((time) => {
             return (
@@ -176,7 +161,6 @@ class DropBox extends React.Component {
           </DropTarget>
         </center>
         </Col>
-
         <Col s={12}>
           <Button onClick={this.saveDateCourseEntry}>Save</Button>
         </Col>
@@ -186,12 +170,10 @@ class DropBox extends React.Component {
     )
   }
 }
-
 function mapStateToProps(state) {
   return {
     dateCourseInfo: state.dateCourseInfo,
     authUsername: state.username,
   }
 }
-
 export default connect(mapStateToProps)(DropBox);
